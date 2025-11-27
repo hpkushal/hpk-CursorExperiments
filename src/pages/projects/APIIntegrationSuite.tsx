@@ -100,7 +100,7 @@ const APIIntegrationSuite: React.FC = () => {
         </div>
       ),
       quote: {
-        text: "Integration gaps weren't just a technical issue—they were fundamentally limiting our ability to serve enterprise customers and scale our business. Every manual workaround was a barrier to customer success.",
+        text: "Integration gaps weren't just a technical issue: they were fundamentally limiting our ability to serve enterprise customers and scale our business. Every manual workaround was a barrier to customer success.",
         author: "Steven Liu, VP of Enterprise Solutions at Resulta"
       }
     },
@@ -154,7 +154,7 @@ const APIIntegrationSuite: React.FC = () => {
         "Scalable architecture supporting future integration expansion"
       ],
       quote: {
-        text: "The key was understanding that integrations aren't just technical features—they're enablers of customer success. Every integration we built solved real workflow problems and removed barriers to customer achievement.",
+        text: "The key was understanding that integrations aren't just technical features: they're enablers of customer success. Every integration we built solved real workflow problems and removed barriers to customer achievement.",
         author: "Maria Gonzalez, Head of Platform Engineering at Resulta"
       }
     },

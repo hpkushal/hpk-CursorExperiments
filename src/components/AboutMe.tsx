@@ -504,14 +504,14 @@ const AboutMe: React.FC = () => {
 
   const conversation = [
     {
-      kushalResponse: "Hi! I'm Kushal Horabylu Parameshwara — a builder at heart, a strategist by trade, and a big believer in turning constraints into creativity.",
+      kushalResponse: "Hi! I'm Kushal Horabylu Parameshwara: a builder at heart, a strategist by trade, and a big believer in turning constraints into creativity.",
       nextQuestions: [
         "That's interesting! What's your background?",
         "How did you get into product management?"
       ]
     },
     {
-      kushalResponse: "I've always been obsessed with systems—how they work, where they break, and what makes them scale. That mindset pulled me into product management.",
+      kushalResponse: "I've always been obsessed with systems: how they work, where they break, and what makes them scale. That mindset pulled me into product management.",
       nextQuestions: [
         "What do you do currently?",
         "Tell me about your current role"
@@ -526,7 +526,7 @@ const AboutMe: React.FC = () => {
       ]
     },
     {
-      kushalResponse: "I work at the intersection of product, technology, and AI to bring ambitious ideas to life—faster, sharper, and always with an eye on growth.",
+      kushalResponse: "I work at the intersection of product, technology, and AI to bring ambitious ideas to life: faster, sharper, and always with an eye on growth.",
       nextQuestions: [
         "What do you believe about the future of product development?",
         "What are your core beliefs about building products?",
@@ -534,7 +534,7 @@ const AboutMe: React.FC = () => {
       ]
     },
     {
-      kushalResponse: "AI won't replace builders — it will supercharge them. Speed is strategy. A rough idea launched fast > a perfect idea trapped in planning. Being technical makes you dangerous — in a good way.",
+      kushalResponse: "AI won't replace builders, it will supercharge them. Speed is strategy. A rough idea launched fast > a perfect idea trapped in planning. Being technical makes you dangerous (in a good way).",
       nextQuestions: [
         "What do you do outside of work?",
         "Tell me about your interests beyond product management",
@@ -676,7 +676,7 @@ const AboutMe: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              I'm Kushal Horabylu Parameshwara. Yes, my name could pass for a secure API key — but I use it to unlock fast, AI-driven product development every day.
+              I'm Kushal Horabylu Parameshwara. Yes, my name could pass for a secure API key, but I use it to unlock fast, AI-driven product development every day.
             </DescriptionText>
 
             <MissionText
@@ -685,7 +685,7 @@ const AboutMe: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Want to know what makes me tick or how I think about building products?<br />
-              Use the chat — I'm just a few keystrokes away from a good convo.
+              Use the chat, I'm just a few keystrokes away from a good convo.
             </MissionText>
           </IntroSection>
 

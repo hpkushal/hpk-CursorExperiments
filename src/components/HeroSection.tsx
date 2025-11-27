@@ -167,7 +167,7 @@ const Location = styled.span`
 `;
 
 const CTAButton = styled.button`
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: #2A2A2A;
   border: none;
   color: white;
   padding: 15px 30px;
@@ -176,10 +176,12 @@ const CTAButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   &:hover {
+    background: #000000;
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 `;
 

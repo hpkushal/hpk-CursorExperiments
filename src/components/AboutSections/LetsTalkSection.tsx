@@ -185,7 +185,7 @@ const LetsTalkSection: React.FC<LetsTalkSectionProps> = ({ variants }) => {
         <DecorativeElements />
         <SectionTitle variants={variants}>Let's Talk</SectionTitle>
         <ContactText variants={variants}>
-          If you're building something that blends tech, product, and momentum—or just want to riff on what AI means for the future of work—I'd love to connect.
+          If you're building something that blends tech, product, and momentum (or just want to riff on what AI means for the future of work) I'd love to connect.
         </ContactText>
         <ContactButton
           href="#get-in-touch"

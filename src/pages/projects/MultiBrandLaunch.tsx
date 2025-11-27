@@ -52,7 +52,7 @@ const MultiBrandLaunch: React.FC = () => {
             As the <strong>Digital Product Strategist</strong>, I was tasked with leading this ambitious expansion initiative. The challenge encompassed both organic growth through new brand creation and inorganic growth through strategic acquisitions and subsequent rebranding efforts.
           </p>
           <p>
-            The initiative represented a fundamental shift in business strategy—moving from a service-based model to a hybrid approach that included owned digital properties. This transformation required not just tactical execution but strategic vision to ensure each brand could operate independently while benefiting from shared resources and cross-promotional opportunities.
+            The initiative represented a fundamental shift in business strategy: moving from a service-based model to a hybrid approach that included owned digital properties. This transformation required not just tactical execution but strategic vision to ensure each brand could operate independently while benefiting from shared resources and cross-promotional opportunities.
           </p>
           <p>
             With my experience in <strong>50+ project deliveries</strong> and deep understanding of digital product lifecycle management, I was positioned to architect and execute this complex multi-brand strategy that would diversify revenue streams and create long-term competitive advantages.
@@ -75,7 +75,7 @@ const MultiBrandLaunch: React.FC = () => {
           
           <p><strong>Limited Scalability of Service Model</strong></p>
           <p>
-            The traditional agency model required linear scaling—more clients meant more team members, creating operational complexity and margin pressure. Growth was constrained by hiring capacity and project management overhead.
+            The traditional agency model required linear scaling: more clients meant more team members, creating operational complexity and margin pressure. Growth was constrained by hiring capacity and project management overhead.
           </p>
           
           <p><strong>Acquired Assets Integration Challenges</strong></p>
@@ -95,7 +95,7 @@ const MultiBrandLaunch: React.FC = () => {
           
           <p><strong>Competitive Differentiation Challenges</strong></p>
           <p>
-            The crowded agency market made differentiation increasingly difficult. Without owned products or unique market positions, the company competed primarily on execution quality and pricing—a unsustainable long-term strategy.
+            The crowded agency market made differentiation increasingly difficult. Without owned products or unique market positions, the company competed primarily on execution quality and pricing: a unsustainable long-term strategy.
           </p>
         </div>
       ),
@@ -154,7 +154,7 @@ const MultiBrandLaunch: React.FC = () => {
         "Performance analytics and optimization systems across all brands"
       ],
       quote: {
-        text: "The key was creating true synergy—each brand strengthens the others while maintaining its unique value proposition. We built an ecosystem, not just a collection of separate businesses.",
+        text: "The key was creating true synergy: each brand strengthens the others while maintaining its unique value proposition. We built an ecosystem, not just a collection of separate businesses.",
         author: "Amanda Thompson, VP of Business Development at Resulta"
       }
     },
@@ -208,7 +208,7 @@ const MultiBrandLaunch: React.FC = () => {
         </div>
       ),
       quote: {
-        text: "This transformation exceeded our wildest expectations. We didn't just diversify revenue—we created a competitive moat through ecosystem ownership that positions us for sustained long-term growth.",
+        text: "This transformation exceeded our wildest expectations. We didn't just diversify revenue; we created a competitive moat through ecosystem ownership that positions us for sustained long-term growth.",
         author: "Robert Chen, CEO of Resulta"
       }
     },

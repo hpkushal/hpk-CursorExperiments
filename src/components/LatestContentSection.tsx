@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { media } from '../styles/GlobalStyles';
-import { articles as writingsArticles } from './Writings';
+import { articles as writingsArticles } from '../data/articles';
 import { useNavigate } from 'react-router-dom';
 
 const LatestContentContainer = styled.section`

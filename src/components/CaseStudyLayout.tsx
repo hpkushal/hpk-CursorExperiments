@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import GetInTouchSection from './GetInTouchSection';
@@ -317,20 +318,18 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
     <>
       <CaseStudyContainer>
         <Breadcrumb>
-          <a 
-            href="/projects"
-            onClick={(e) => {
-              e.preventDefault();
+          <Link 
+            to="/projects"
+            onClick={() => {
               window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: 'auto'
               });
-              window.location.href = '/projects';
             }}
           >
             ← Back to Projects
-          </a>
+          </Link>
         </Breadcrumb>
 
         <Header>
@@ -390,7 +389,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           {problem.quote && (
             <Quote>
               "{problem.quote.text}"
-              <QuoteAuthor>— {problem.quote.author}</QuoteAuthor>
+              <QuoteAuthor>- {problem.quote.author}</QuoteAuthor>
             </Quote>
           )}
         </Section>
@@ -411,7 +410,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           {solution.quote && (
             <Quote>
               "{solution.quote.text}"
-              <QuoteAuthor>— {solution.quote.author}</QuoteAuthor>
+              <QuoteAuthor>- {solution.quote.author}</QuoteAuthor>
             </Quote>
           )}
         </Section>
@@ -422,7 +421,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           {impact.quote && (
             <Quote>
               "{impact.quote.text}"
-              <QuoteAuthor>— {impact.quote.author}</QuoteAuthor>
+              <QuoteAuthor>- {impact.quote.author}</QuoteAuthor>
             </Quote>
           )}
         </Section>

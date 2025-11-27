@@ -1,4 +1,4 @@
-# Kushal HP Portfolio 
+# Kushal HP Portfolio - ShipwithKushal
 
 A modern, responsive portfolio website built with React 19, TypeScript, and styled-components. This project showcases professional product management experience, thought leadership through writings, and comprehensive case studies with real business impact metrics.
 
@@ -79,32 +79,32 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 ### Writing Articles (20 Total)
 
 **AI & Technology** (10 articles)
-- `/writings/pm-os-2025` — The PM OS 2025
-- `/writings/ai-winter-that-never-came` — The AI Winter That Never Came
-- `/writings/beyond-chatgpt-enterprise-ai` — Beyond ChatGPT: Enterprise AI
-- `/writings/great-ai-talent-war` — The Great AI Talent War
-- `/writings/great-ai-model-commoditization` — AI Model Commoditization
-- `/writings/ai-governance-gap` — The AI Governance Gap
-- `/writings/multimodal-ai-end-of-specialized-software` — Multimodal AI
-- `/writings/ai-infrastructure-wars` — AI Infrastructure Wars
-- `/writings/ai-alignment-control-problem` — AI Alignment Problem
-- `/writings/ai-regulation-innovation-balance` — AI Regulation Balance
+- `/writings/pm-os-2025` - The PM OS 2025
+- `/writings/ai-winter-that-never-came` - The AI Winter That Never Came
+- `/writings/beyond-chatgpt-enterprise-ai` - Beyond ChatGPT: Enterprise AI
+- `/writings/great-ai-talent-war` - The Great AI Talent War
+- `/writings/great-ai-model-commoditization` - AI Model Commoditization
+- `/writings/ai-governance-gap` - The AI Governance Gap
+- `/writings/multimodal-ai-end-of-specialized-software` - Multimodal AI
+- `/writings/ai-infrastructure-wars` - AI Infrastructure Wars
+- `/writings/ai-alignment-control-problem` - AI Alignment Problem
+- `/writings/ai-regulation-innovation-balance` - AI Regulation Balance
 
 **Business & Strategy** (7 articles)
-- `/writings/death-of-ten-year-business-plan` — Death of 10-Year Business Plan
-- `/writings/venture-capital-new-playbook` — VC's New Playbook
-- `/writings/remote-work-settlement` — Remote Work Settlement
-- `/writings/platform-economics-unbundling-rebundling` — Platform Economics
-- `/writings/consulting-industry-ai-disruption` — Consulting Industry Disruption
-- `/writings/growth-hacking-maturation` — Growth Hacking Maturation
-- `/writings/pricing-psychology-revolution` — Pricing Psychology Revolution
+- `/writings/death-of-ten-year-business-plan` - Death of 10-Year Business Plan
+- `/writings/venture-capital-new-playbook` - VC's New Playbook
+- `/writings/remote-work-settlement` - Remote Work Settlement
+- `/writings/platform-economics-unbundling-rebundling` - Platform Economics
+- `/writings/consulting-industry-ai-disruption` - Consulting Industry Disruption
+- `/writings/growth-hacking-maturation` - Growth Hacking Maturation
+- `/writings/pricing-psychology-revolution` - Pricing Psychology Revolution
 
 **Industry Evolution** (2 articles)
-- `/writings/subscription-economy-next-chapter` — Subscription Economy
-- `/writings/creator-economy-maturation` — Creator Economy Maturation
+- `/writings/subscription-economy-next-chapter` - Subscription Economy
+- `/writings/creator-economy-maturation` - Creator Economy Maturation
 
 **Society & Culture** (1 article)
-- `/writings/attention-economy-backlash` — Attention Economy Backlash
+- `/writings/attention-economy-backlash` - Attention Economy Backlash
 
 ---
 
@@ -506,11 +506,11 @@ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 ### Animation Keyframes
 
 Available global animations in `GlobalStyles.ts`:
-- `float` — Floating element animation
-- `floatCode1-4` — Code snippet floating effects
-- `blink-caret` — Typewriter cursor blink
-- `ripple` — Button click ripple
-- `pulse` — Subtle scale pulse
+- `float` - Floating element animation
+- `floatCode1-4` - Code snippet floating effects
+- `blink-caret` - Typewriter cursor blink
+- `ripple` - Button click ripple
+- `pulse` - Subtle scale pulse
 
 ---
 
@@ -693,7 +693,7 @@ npm run deploy
 
 ## 📋 Version Changelog
 
-### v2.0.0 (Current) — November 2025
+### v2.0.0 (Current) - November 2025
 **Major Feature Release**
 
 #### New Features
@@ -709,7 +709,7 @@ npm run deploy
 - ✅ Footer navigation matches header navigation
 - ✅ Improved responsive design across all pages
 
-### v1.5.0 — November 2025
+### v1.5.0 - November 2025
 **Projects Portfolio Release**
 
 #### New Features
@@ -719,7 +719,7 @@ npm run deploy
 - ✅ **Hero Images**: Contextual images for all case studies
 - ✅ **Lead Generation**: GetInTouchSection integration
 
-### v1.0.0 — November 2025
+### v1.0.0 - November 2025
 **Initial Release**
 
 #### Core Features
@@ -745,7 +745,7 @@ This is a personal portfolio project. For questions or collaboration opportuniti
 
 ## 📄 License
 
-© 2025 Kushal Horabylu Parameshwara — ShipwithKushal. All rights reserved.
+© 2025 Kushal Horabylu Parameshwara - ShipwithKushal. All rights reserved.
 
 ---
 

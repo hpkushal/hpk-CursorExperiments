@@ -208,7 +208,7 @@ const MarketingAutomation: React.FC = () => {
         </div>
       ),
       quote: {
-        text: "This automation infrastructure didn't just improve our efficiency—it transformed our entire relationship with customers. We now deliver personalized experiences that feel human while operating at a scale that would be impossible manually.",
+        text: "This automation infrastructure didn't just improve our efficiency; it transformed our entire relationship with customers. We now deliver personalized experiences that feel human while operating at a scale that would be impossible manually.",
         author: "Angela Martinez, Chief Marketing Officer at Resulta"
       }
     },

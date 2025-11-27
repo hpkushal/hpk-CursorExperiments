@@ -208,7 +208,7 @@ const PerformanceMarketingOptimization: React.FC = () => {
         </div>
       ),
       quote: {
-        text: "This optimization system didn't just improve our marketing—it transformed our entire approach to growth. We now have the confidence and data to scale marketing investments aggressively while maintaining profitability.",
+        text: "This optimization system didn't just improve our marketing; it transformed our entire approach to growth. We now have the confidence and data to scale marketing investments aggressively while maintaining profitability.",
         author: "Rachel Anderson, Chief Revenue Officer at Resulta"
       }
     },

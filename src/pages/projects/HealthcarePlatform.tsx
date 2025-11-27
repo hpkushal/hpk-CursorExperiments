@@ -49,7 +49,7 @@ const HealthcarePlatform: React.FC = () => {
             <strong>Healthcare Professional Community</strong> needed a centralized platform for accessing educational resources, sharing best practices, and collaborating on patient care strategies. The challenge was creating a resource that served both experienced practitioners and those new to the field while maintaining medical accuracy and accessibility.
           </p>
           <p>
-            As the <strong>Digital Product Strategist</strong> leading this healthcare initiative, I recognized that existing medical education platforms were either too academic for practical use or too simplified for professional development. Healthcare professionals needed a middle ground—accessible yet comprehensive resources that could be quickly consumed in busy clinical environments.
+            As the <strong>Digital Product Strategist</strong> leading this healthcare initiative, I recognized that existing medical education platforms were either too academic for practical use or too simplified for professional development. Healthcare professionals needed a middle ground: accessible yet comprehensive resources that could be quickly consumed in busy clinical environments.
           </p>
           <p>
             The project required deep understanding of healthcare workflows, medical communication standards, and accessibility requirements for diverse professional audiences. The platform needed to serve physicians, nurses, specialists, and allied health professionals with varying levels of experience and technological comfort.
@@ -154,7 +154,7 @@ const HealthcarePlatform: React.FC = () => {
         "Interactive learning modules with progress tracking and certification"
       ],
       quote: {
-        text: "The platform succeeded because it understood the dual nature of healthcare communication—professional rigor combined with accessible presentation that serves both practitioners and patients effectively.",
+        text: "The platform succeeded because it understood the dual nature of healthcare communication: professional rigor combined with accessible presentation that serves both practitioners and patients effectively.",
         author: "Maria Rodriguez, Director of Medical Education at Spring Loaded Technology"
       }
     },

@@ -90,7 +90,7 @@ const MobileLocation = styled.span`
 `;
 
 const MobileCTAButton = styled.button`
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: #2A2A2A;
   border: none;
   color: white;
   padding: 14px 28px;
@@ -102,10 +102,12 @@ const MobileCTAButton = styled.button`
   width: 100%;
   max-width: 200px;
   touch-action: manipulation;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   &:hover, &:active {
+    background: #000000;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
 
   &:active {

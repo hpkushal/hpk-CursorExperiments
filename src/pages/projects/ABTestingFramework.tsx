@@ -208,7 +208,7 @@ const ABTestingFramework: React.FC = () => {
         </div>
       ),
       quote: {
-        text: "This testing framework didn't just improve our conversion rates—it transformed our entire culture around optimization. We now approach every product decision with a testing mindset and data-driven validation.",
+        text: "This testing framework didn't just improve our conversion rates; it transformed our entire culture around optimization. We now approach every product decision with a testing mindset and data-driven validation.",
         author: "Nicole Foster, Chief Product Officer at Resulta"
       }
     },

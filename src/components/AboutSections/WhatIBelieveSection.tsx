@@ -149,7 +149,7 @@ interface WhatIBelieveSectionProps {
 const WhatIBelieveSection: React.FC<WhatIBelieveSectionProps> = ({ variants }) => {
   const beliefs = [
     {
-      text: "AI won't replace builders — it will supercharge them.",
+      text: "AI won't replace builders, it will supercharge them.",
       icon: "🤖"
     },
     {
@@ -157,11 +157,11 @@ const WhatIBelieveSection: React.FC<WhatIBelieveSectionProps> = ({ variants }) =
       icon: "⚡"
     },
     {
-      text: "Being technical makes you dangerous — in a good way. I use TypeScript, React, and modern tools to prototype alongside engineers.",
+      text: "Being technical makes you dangerous (in a good way). I use TypeScript, React, and modern tools to prototype alongside engineers.",
       icon: "⚔️"
     },
     {
-      text: "Great teams talk like humans — not handoffs.",
+      text: "Great teams talk like humans, not handoffs.",
       icon: "💬"
     }
   ];

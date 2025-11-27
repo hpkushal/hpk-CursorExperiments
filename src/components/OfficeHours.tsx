@@ -180,7 +180,7 @@ const OfficeHours: React.FC = () => {
           <Subtitle>Stuck on your product idea? Let's fix that.</Subtitle>
           
           <Description>
-            Whether you need help validating a concept, mapping your MVP, or launching without code — I'll help you cut through the noise and get moving.
+            Whether you need help validating a concept, mapping your MVP, or launching without code, I'll help you cut through the noise and get moving.
           </Description>
           
           <HighlightText>

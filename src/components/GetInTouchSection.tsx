@@ -349,7 +349,7 @@ const GetInTouchSection: React.FC = () => {
             <TouchTitle>Office Hours</TouchTitle>
             <TouchSubtitle>Stuck on your product idea? Let's fix that.</TouchSubtitle>
             <TouchDescription>
-              Whether you need help validating a concept, mapping your MVP, or launching without code — I'll help you cut through the noise and get moving.
+              Whether you need help validating a concept, mapping your MVP, or launching without code, I'll help you cut through the noise and get moving.
             </TouchDescription>
             <TouchStats>
               <StatsLine>I've guided <StatsHighlight>50+ projects</StatsHighlight> from idea to execution.</StatsLine>

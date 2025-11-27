@@ -144,7 +144,7 @@ const AIPrototypingFramework: React.FC = () => {
         "Version control integration with automated deployment pipelines"
       ],
       quote: {
-        text: "The AI framework doesn't replace human creativity—it amplifies it. Our designers and developers now focus on solving complex problems instead of repetitive tasks.",
+        text: "The AI framework doesn't replace human creativity; it amplifies it. Our designers and developers now focus on solving complex problems instead of repetitive tasks.",
         author: "Marcus Rodriguez, Head of Engineering at Resulta"
       }
     },
@@ -158,7 +158,7 @@ const AIPrototypingFramework: React.FC = () => {
           
           <p><strong>Dramatic Timeline Reduction</strong></p>
           <p>
-            Our average development cycle dropped from 12 weeks to 6 weeks—a <strong>50% improvement</strong> that fundamentally changed our competitive positioning. Complex enterprise projects that previously took 16 weeks now complete in 8 weeks, allowing us to take on more ambitious projects within client timelines.
+            Our average development cycle dropped from 12 weeks to 6 weeks (a <strong>50% improvement</strong>) that fundamentally changed our competitive positioning. Complex enterprise projects that previously took 16 weeks now complete in 8 weeks, allowing us to take on more ambitious projects within client timelines.
           </p>
           
           <p><strong>Enhanced Iteration Velocity</strong></p>
@@ -193,7 +193,7 @@ const AIPrototypingFramework: React.FC = () => {
         </div>
       ),
       quote: {
-        text: "This AI framework didn't just improve our processes—it transformed our entire value proposition. We're now competing on innovation speed rather than just execution quality, which has opened entirely new market opportunities.",
+        text: "This AI framework didn't just improve our processes; it transformed our entire value proposition. We're now competing on innovation speed rather than just execution quality, which has opened entirely new market opportunities.",
         author: "Jennifer Park, CEO of Resulta"
       }
     },

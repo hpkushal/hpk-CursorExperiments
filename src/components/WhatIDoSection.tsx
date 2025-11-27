@@ -32,7 +32,7 @@ const Container = styled.div`
 `;
 
 const SectionHeader = styled.div`
-  text-align: center;
+  text-align: left;
   margin-bottom: 50px;
 `;
 
@@ -48,8 +48,7 @@ const SectionTitle = styled.h2`
     content: '';
     position: absolute;
     bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 60px;
     height: 3px;
     background: linear-gradient(135deg, #667eea, #764ba2);
@@ -69,7 +68,7 @@ const SectionSubtitle = styled.p`
   font-size: 1.1rem;
   color: #666;
   max-width: 550px;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.5;
 
   ${media.mobile} {

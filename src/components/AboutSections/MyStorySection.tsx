@@ -186,7 +186,7 @@ const MyStorySection: React.FC<MyStorySectionProps> = ({ variants }) => {
       <StoryGrid>
         <StoryContent>
           <Paragraph variants={variants}>
-            I've always been obsessed with systems—how they work, where they break, and what makes them scale. That mindset pulled me into product management, where I found a sweet spot: translating big vision into outcomes that ship.
+            I've always been obsessed with systems: how they work, where they break, and what makes them scale. That mindset pulled me into product management, where I found a sweet spot: translating big vision into outcomes that ship.
           </Paragraph>
           <Paragraph variants={variants}>
             Today, I work as a <strong>Digital Product Strategist at Resulta</strong>, leading initiatives that blend AI, martech, and performance-driven product thinking. My focus? Helping teams go from "backlog" to "launched" with clarity and speed.
