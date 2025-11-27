@@ -1,478 +1,490 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { media } from '../../styles/GlobalStyles';
-import RelatedArticles from '../../components/RelatedArticles';
+import React from 'react';
+import ArticleLayout from '../../components/ArticleLayout';
 
-const ArticleContainer = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  
-  ${media.tablet} {
-    padding: 30px 15px;
-  }
-`;
-
-const Header = styled.header`
-  margin-bottom: 50px;
-  text-align: center;
-`;
-
-const Category = styled.span`
-  display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1f2937;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  
-  ${media.tablet} {
-    font-size: 2.5rem;
-  }
-  
-  ${media.mobile} {
-    font-size: 2rem;
-  }
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.3rem;
-  color: #6b7280;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  
-  ${media.mobile} {
-    font-size: 1.1rem;
-  }
-`;
-
-const Meta = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  font-size: 0.95rem;
-  color: #9ca3af;
-  
-  ${media.mobile} {
-    flex-direction: column;
-    gap: 10px;
-  }
-`;
-
-const Content = styled.div`
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #374151;
-  
-  p {
-    margin-bottom: 25px;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin: 50px 0 25px 0;
-    line-height: 1.3;
-  }
-  
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #374151;
-    margin: 40px 0 20px 0;
-    line-height: 1.4;
-  }
-  
-  ul, ol {
-    margin: 25px 0;
-    padding-left: 30px;
+// SVG Components for visuals
+const ConsultingValueChain: React.FC = () => (
+  <svg viewBox="0 0 800 320" style={{ width: '100%', height: 'auto', margin: '2rem 0' }}>
+    <rect width="800" height="320" fill="#0f0f0f" rx="12" />
     
-    li {
-      margin-bottom: 10px;
-      line-height: 1.7;
-    }
-  }
-  
-  blockquote {
-    background: #f8fafc;
-    border-left: 4px solid #667eea;
-    padding: 25px 30px;
-    margin: 30px 0;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #4b5563;
-  }
-  
-  .highlight {
-    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-  
-  .emphasis {
-    color: #667eea;
-    font-weight: 600;
-  }
-`;
+    <text x="400" y="35" fill="white" fontSize="16" fontWeight="600" textAnchor="middle">The Traditional Consulting Value Chain</text>
+    <text x="400" y="55" fill="rgba(255,255,255,0.5)" fontSize="11" textAnchor="middle">Each layer is being disrupted differently</text>
+    
+    {[
+      { layer: 'Information Gathering', who: 'Junior analysts', aiImpact: '80%+ automatable', color: '#ef4444' },
+      { layer: 'Pattern Recognition', who: 'Mid-level consultants', aiImpact: '60%+ augmented', color: '#f97316' },
+      { layer: 'Strategic Synthesis', who: 'Senior consultants', aiImpact: '30% augmented', color: '#eab308' },
+      { layer: 'Change Leadership', who: 'Partners', aiImpact: 'Still human', color: '#22c55e' },
+    ].map((item, i) => (
+      <g key={i}>
+        <rect x={50 + i * 185} y="80" width="165" height="200" rx="10" fill="rgba(255,255,255,0.02)" stroke={item.color} strokeWidth="1" />
+        <text x={132 + i * 185} y="115" fill="white" fontSize="11" fontWeight="600" textAnchor="middle">{item.layer}</text>
+        <text x={132 + i * 185} y="145" fill="rgba(255,255,255,0.5)" fontSize="10" textAnchor="middle">{item.who}</text>
+        
+        <rect x={72 + i * 185} y="170" width="120" height="30" rx="4" fill={item.color} opacity="0.2" />
+        <text x={132 + i * 185} y="190" fill={item.color} fontSize="10" textAnchor="middle">{item.aiImpact}</text>
+        
+        {/* Arrow down */}
+        {i < 3 && (
+          <path d={`M${215 + i * 185} 180 L${235 + i * 185} 180`} stroke="rgba(255,255,255,0.3)" strokeWidth="2" markerEnd="url(#arrowRight)" />
+        )}
+      </g>
+    ))}
+    
+    <defs>
+      <marker id="arrowRight" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.3)" />
+      </marker>
+    </defs>
+    
+    <text x="400" y="300" fill="rgba(255,255,255,0.4)" fontSize="11" textAnchor="middle">The bottom of the pyramid is being compressed. The top remains valuable.</text>
+  </svg>
+);
+
+const PyramidDisruption: React.FC = () => (
+  <svg viewBox="0 0 800 350" style={{ width: '100%', height: 'auto', margin: '2rem 0' }}>
+    <rect width="800" height="350" fill="#0f0f0f" rx="12" />
+    
+    <text x="400" y="35" fill="white" fontSize="16" fontWeight="600" textAnchor="middle">The Pyramid Model Under Pressure</text>
+    
+    {/* Traditional pyramid */}
+    <text x="200" y="70" fill="rgba(255,255,255,0.6)" fontSize="12" textAnchor="middle">Traditional</text>
+    <polygon points="200,100 100,280 300,280" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+    <text x="200" y="140" fill="white" fontSize="9" textAnchor="middle">Partners</text>
+    <text x="200" y="180" fill="white" fontSize="9" textAnchor="middle">Managers</text>
+    <text x="200" y="220" fill="white" fontSize="9" textAnchor="middle">Consultants</text>
+    <text x="200" y="260" fill="white" fontSize="9" textAnchor="middle">Analysts</text>
+    
+    {/* Arrow */}
+    <path d="M350 180 L450 180" stroke="rgba(255,255,255,0.3)" strokeWidth="2" markerEnd="url(#arrowRight2)" />
+    <text x="400" y="165" fill="rgba(255,255,255,0.4)" fontSize="10" textAnchor="middle">AI</text>
+    
+    {/* AI-enabled pyramid (flatter) */}
+    <text x="600" y="70" fill="rgba(255,255,255,0.6)" fontSize="12" textAnchor="middle">AI-Enabled</text>
+    <polygon points="600,140 480,280 720,280" fill="none" stroke="#22c55e" strokeWidth="2" />
+    <text x="600" y="175" fill="white" fontSize="9" textAnchor="middle">Partners + AI</text>
+    <text x="600" y="215" fill="white" fontSize="9" textAnchor="middle">Senior + AI</text>
+    <text x="600" y="255" fill="#ef4444" fontSize="9" textAnchor="middle">Compressed</text>
+    
+    <defs>
+      <marker id="arrowRight2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.3)" />
+      </marker>
+    </defs>
+    
+    <text x="400" y="320" fill="rgba(255,255,255,0.4)" fontSize="11" textAnchor="middle">6 analysts spending 2 weeks → 1 analyst + AI in 2 days</text>
+  </svg>
+);
+
+const FirmPlatforms: React.FC = () => (
+  <svg viewBox="0 0 800 280" style={{ width: '100%', height: 'auto', margin: '2rem 0' }}>
+    <rect width="800" height="280" fill="#0f0f0f" rx="12" />
+    
+    <text x="400" y="35" fill="white" fontSize="16" fontWeight="600" textAnchor="middle">How Leading Firms Are Responding</text>
+    
+    {[
+      { firm: 'McKinsey', platform: 'Lilli', desc: 'Instant access to firm knowledge', color: '#3b82f6' },
+      { firm: 'BCG', platform: 'GAMMA', desc: 'AI + analytics practice', color: '#22c55e' },
+      { firm: 'Deloitte', platform: 'AI Institute', desc: 'Research + tools + consulting', color: '#8b5cf6' },
+      { firm: 'Accenture', platform: 'AI Hub', desc: 'Generative AI capabilities', color: '#f97316' },
+    ].map((item, i) => (
+      <g key={i}>
+        <rect x={50 + i * 185} y="70" width="165" height="160" rx="10" fill="rgba(255,255,255,0.02)" stroke={item.color} strokeWidth="1" />
+        <text x={132 + i * 185} y="105" fill="white" fontSize="13" fontWeight="600" textAnchor="middle">{item.firm}</text>
+        <text x={132 + i * 185} y="130" fill={item.color} fontSize="11" textAnchor="middle">{item.platform}</text>
+        <text x={132 + i * 185} y="165" fill="rgba(255,255,255,0.5)" fontSize="9" textAnchor="middle">{item.desc.split(' ').slice(0, 3).join(' ')}</text>
+        <text x={132 + i * 185} y="180" fill="rgba(255,255,255,0.5)" fontSize="9" textAnchor="middle">{item.desc.split(' ').slice(3).join(' ')}</text>
+      </g>
+    ))}
+    
+    <text x="400" y="260" fill="rgba(255,255,255,0.4)" fontSize="11" textAnchor="middle">These platforms create defensible advantages by combining methodology with AI</text>
+  </svg>
+);
+
+const SkillsShift: React.FC = () => (
+  <svg viewBox="0 0 800 320" style={{ width: '100%', height: 'auto', margin: '2rem 0' }}>
+    <rect width="800" height="320" fill="#0f0f0f" rx="12" />
+    
+    <text x="400" y="35" fill="white" fontSize="16" fontWeight="600" textAnchor="middle">Where the Skills Premium Is Moving</text>
+    
+    {/* Declining skills */}
+    <rect x="50" y="70" width="330" height="200" rx="10" fill="rgba(239, 68, 68, 0.05)" stroke="#ef4444" strokeWidth="1" />
+    <text x="215" y="100" fill="#ef4444" fontSize="13" fontWeight="600" textAnchor="middle">Declining Premium</text>
+    
+    {[
+      'Data gathering and synthesis',
+      'Basic financial modeling',
+      'Benchmarking research',
+      'Presentation creation',
+    ].map((item, i) => (
+      <text key={i} x="70" y={135 + i * 30} fill="rgba(255,255,255,0.6)" fontSize="11">↓ {item}</text>
+    ))}
+    
+    {/* Rising skills */}
+    <rect x="420" y="70" width="330" height="200" rx="10" fill="rgba(34, 197, 94, 0.05)" stroke="#22c55e" strokeWidth="1" />
+    <text x="585" y="100" fill="#22c55e" fontSize="13" fontWeight="600" textAnchor="middle">Rising Premium</text>
+    
+    {[
+      'Relationship building and trust',
+      'Creative problem-solving',
+      'Change leadership',
+      'AI-human collaboration',
+    ].map((item, i) => (
+      <text key={i} x="440" y={135 + i * 30} fill="rgba(255,255,255,0.6)" fontSize="11">↑ {item}</text>
+    ))}
+    
+    <text x="400" y="300" fill="rgba(255,255,255,0.4)" fontSize="11" textAnchor="middle">The most valuable consultants are those who can do what AI cannot</text>
+  </svg>
+);
+
+const NewEngagementModels: React.FC = () => (
+  <svg viewBox="0 0 800 280" style={{ width: '100%', height: 'auto', margin: '2rem 0' }}>
+    <rect width="800" height="280" fill="#0f0f0f" rx="12" />
+    
+    <text x="400" y="35" fill="white" fontSize="16" fontWeight="600" textAnchor="middle">The New Engagement Models</text>
+    
+    {[
+      { model: 'Performance-Based', desc: 'Shared risk/reward', old: 'Fixed fee', color: '#22c55e' },
+      { model: 'Subscription', desc: 'Ongoing AI insights', old: 'Project-based', color: '#3b82f6' },
+      { model: 'Product-Like', desc: 'Deployable solutions', old: 'Custom builds', color: '#8b5cf6' },
+      { model: 'Continuous', desc: 'Real-time optimization', old: 'Point-in-time', color: '#f97316' },
+    ].map((item, i) => (
+      <g key={i}>
+        <rect x={50 + i * 185} y="70" width="165" height="160" rx="10" fill="rgba(255,255,255,0.02)" stroke={item.color} strokeWidth="1" />
+        <text x={132 + i * 185} y="100" fill="white" fontSize="11" fontWeight="600" textAnchor="middle">{item.model}</text>
+        <text x={132 + i * 185} y="125" fill={item.color} fontSize="10" textAnchor="middle">{item.desc}</text>
+        
+        <line x1={72 + i * 185} y1="150" x2={195 + i * 185} y2="150" stroke="rgba(255,255,255,0.1)" />
+        
+        <text x={132 + i * 185} y="175" fill="rgba(255,255,255,0.4)" fontSize="9" textAnchor="middle">Replacing:</text>
+        <text x={132 + i * 185} y="195" fill="#ef4444" fontSize="9" textAnchor="middle">{item.old}</text>
+      </g>
+    ))}
+    
+    <text x="400" y="260" fill="rgba(255,255,255,0.4)" fontSize="11" textAnchor="middle">AI enables models that weren't possible before</text>
+  </svg>
+);
 
 const ConsultingIndustryAIDisruption: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <ArticleContainer>
-      <Header>
-        <Category>Business & Strategy</Category>
-        <Title>The Consulting Industry's AI Disruption</Title>
-        <Subtitle>
-          How AI is transforming the trillion-dollar consulting industry and what it means for knowledge work
-        </Subtitle>
-        <Meta>
-          <span>April 22, 2024</span>
-          <span>•</span>
-          <span>11 min read</span>
-        </Meta>
-      </Header>
-
-      <Content>
-        <p>
-          The global consulting industry, worth over $900 billion annually, has long operated on a fundamental premise: companies will pay premium rates for access to specialized knowledge, analytical capabilities, and implementation expertise. For decades, this model has created enormous value for both consultants and clients, built on information asymmetries and the scarcity of certain types of expertise.
-        </p>
-
-        <p>
-          <span className="highlight">But AI is fundamentally challenging these assumptions, forcing a complete reimagination of how consulting value is created and delivered.</span> The industry is experiencing its most significant transformation since the rise of strategy consulting in the 1960s, with implications that extend far beyond consulting to all forms of knowledge work. This transformation parallels what we're seeing across <a href="/writings/ai-winter-that-never-came" style={{color: '#667eea', textDecoration: 'underline'}}>the broader AI revolution</a>, 
-          where traditional business models are being disrupted at unprecedented speed.
-        </p>
-
-        <h2>The Traditional Consulting Value Chain</h2>
-
-        <p>
-          To understand the magnitude of AI's impact, we need to examine how traditional consulting creates value:
-        </p>
-
-        <h3>Information Gathering and Analysis</h3>
-        <p>
-          Much of junior consultant time is spent gathering data, conducting research, and performing analysis. This includes market research, competitive analysis, benchmarking studies, and data synthesis—work that requires intelligence but follows established methodologies.
-        </p>
-
-        <h3>Pattern Recognition and Framework Application</h3>
-        <p>
-          Mid-level consultants excel at recognizing patterns across industries and applying proven frameworks to new situations. They bring cross-industry insights and structured problem-solving approaches that clients may lack internally.
-        </p>
-
-        <h3>Strategic Synthesis and Recommendation</h3>
-        <p>
-          Senior consultants provide high-level strategic thinking, synthesizing complex information into actionable recommendations. They leverage experience across multiple engagements to identify solutions and anticipate implementation challenges.
-        </p>
-
-        <h3>Change Management and Implementation</h3>
-        <p>
-          Many consulting engagements extend into implementation, helping organizations navigate change management, build new capabilities, and execute transformation initiatives.
-        </p>
-
-        <p>
-          <span className="emphasis">AI is disrupting each layer of this value chain, but in different ways and at different speeds</span>.
-        </p>
-
-        <h2>AI's Impact by Consulting Segment</h2>
-
-        <h3>Strategy Consulting: From Analysis to Insight</h3>
-
-        <p>
-          The elite strategy firms—McKinsey, BCG, Bain—have historically commanded the highest fees for their analytical rigor and strategic insight. AI is changing the game in several ways:
-        </p>
-
-        <p>
-          <strong>Automated Analysis:</strong> AI can now perform much of the quantitative analysis that forms the backbone of strategy consulting. Market sizing, competitive benchmarking, and scenario modeling can be done faster and more comprehensively than ever before.
-        </p>
-
-        <p>
-          <strong>Pattern Recognition at Scale:</strong> Large language models trained on vast amounts of business literature can identify patterns and analogies across industries that even experienced consultants might miss.
-        </p>
-
-        <p>
-          <strong>Hypothesis Generation:</strong> AI can generate multiple strategic hypotheses based on data analysis, allowing consultants to focus on validation and refinement rather than initial ideation.
-        </p>
-
-        <p>
-          However, the highest levels of strategy consulting—understanding client context, navigating organizational dynamics, and providing trusted advisory relationships—remain largely human domains.
-        </p>
-
-        <h3>Management Consulting: The Efficiency Revolution</h3>
-
-        <p>
-          Operational consulting focused on process improvement and efficiency gains is seeing perhaps the most dramatic AI impact:
-        </p>
-
-        <ul>
-          <li><strong>Process Analysis:</strong> AI can analyze operational processes in real-time, identifying inefficiencies and optimization opportunities without extensive human observation</li>
-          <li><strong>Benchmarking:</strong> Automated comparison against industry best practices using comprehensive datasets</li>
-          <li><strong>Implementation Tracking:</strong> AI-powered monitoring of change initiatives with real-time performance feedback</li>
-          <li><strong>Predictive Optimization:</strong> Machine learning models that predict the impact of different improvement initiatives</li>
-        </ul>
-
-        <h3>Technology Consulting: Transformation and Threat</h3>
-
-        <p>
-          Technology consulting faces a paradox: while AI creates new opportunities for technology transformation projects, it also automates many traditional technology consulting activities:
-        </p>
-
-        <p>
-          <strong>New Opportunities:</strong>
-        </p>
-        <ul>
-          <li>AI strategy and implementation projects</li>
-          <li>Data modernization and AI infrastructure</li>
-          <li>AI governance and risk management</li>
-          <li>Intelligent automation initiatives</li>
-        </ul>
-
-        <p>
-          <strong>Automated Activities:</strong>
-        </p>
-        <ul>
-          <li>System analysis and requirements gathering</li>
-          <li>Code review and quality assurance</li>
-          <li>Test case generation and execution</li>
-          <li>Documentation creation and maintenance</li>
-        </ul>
-
-        <h2>The Labor Arbitrage Model Under Pressure</h2>
-
-        <p>
-          Much of the consulting industry's profitability has relied on labor arbitrage—hiring recent graduates at relatively low salaries and billing their time at premium rates. This model is under severe pressure from AI.
-        </p>
-
-        <h3>The Pyramid Model Disruption</h3>
-
-        <p>
-          Traditional consulting firms operate with a pyramid structure: many junior analysts and associates supporting fewer senior consultants and partners. <span className="highlight">AI is collapsing this pyramid by automating many junior-level tasks</span>.
-        </p>
-
-        <p>
-          Consider a typical strategy engagement:
-        </p>
-
-        <ul>
-          <li><strong>Traditional approach:</strong> 6 analysts spend 2 weeks gathering and analyzing market data</li>
-          <li><strong>AI-enhanced approach:</strong> 1 analyst uses AI tools to gather and analyze the same data in 2 days</li>
-        </ul>
-
-        <p>
-          This efficiency gain is positive for clients and senior consultants but devastating for entry-level consulting jobs.
-        </p>
-
-        <h3>The Skills Premium Shift</h3>
-
-        <p>
-          As routine analytical work becomes automated, the premium shifts to skills that remain uniquely human:
-        </p>
-
-        <ul>
-          <li><strong>Relationship building:</strong> Understanding client needs, building trust, managing stakeholder dynamics</li>
-          <li><strong>Creative problem-solving:</strong> Developing novel solutions to unprecedented challenges</li>
-          <li><strong>Change leadership:</strong> Guiding organizations through complex transformations</li>
-          <li><strong>Domain expertise:</strong> Deep understanding of specific industries or functional areas</li>
-        </ul>
-
-        <h2>The New Consulting Value Proposition</h2>
-
-        <p>
-          Leading consulting firms are reimagining their value proposition around AI-human collaboration rather than competing with AI:
-        </p>
-
-        <h3>AI-Augmented Analysis</h3>
-
-        <p>
-          Instead of replacing human analysts, the most successful firms are using AI to augment human capabilities:
-        </p>
-
-        <ul>
-          <li>AI handles data gathering and initial analysis</li>
-          <li>Humans focus on interpretation, validation, and strategic synthesis</li>
-          <li>Faster turnaround times enable more iteration and refinement</li>
-          <li>Higher quality insights through comprehensive data analysis</li>
-        </ul>
-
-        <h3>Platform-Based Consulting</h3>
-
-        <p>
-          Some firms are developing proprietary AI platforms that combine consulting expertise with technology:
-        </p>
-
-        <ul>
-          <li><strong>McKinsey's Lilli:</strong> AI platform that provides instant access to the firm's knowledge base</li>
-          <li><strong>BCG's GAMMA:</strong> AI and analytics consulting practice with proprietary tools</li>
-          <li><strong>Deloitte's AI Institute:</strong> Combining research, tools, and consulting capabilities</li>
-        </ul>
-
-        <p>
-          <span className="emphasis">These platforms create defensible competitive advantages by combining consulting methodologies with AI capabilities</span>.
-        </p>
-
-        <h3>Outcome-Based Engagements</h3>
-
-        <p>
-          AI enables new engagement models focused on outcomes rather than time:
-        </p>
-
-        <ul>
-          <li>Performance-based contracts with shared risk and reward</li>
-          <li>Subscription models for ongoing AI-powered insights</li>
-          <li>Product-like solutions that can be deployed across multiple clients</li>
-          <li>Real-time monitoring and optimization services</li>
-        </ul>
-
-        <h2>Winners and Losers</h2>
-
-        <h3>Firms Positioning for Success</h3>
-
-        <p>
-          The consulting firms thriving in the AI era share several characteristics:
-        </p>
-
-        <ul>
-          <li><strong>Technology Integration:</strong> Heavy investment in AI tools and platforms</li>
-          <li><strong>Talent Evolution:</strong> Retraining programs and new hiring profiles</li>
-          <li><strong>Client Partnership:</strong> Deeper, longer-term relationships focused on continuous improvement</li>
-          <li><strong>Specialized Expertise:</strong> Development of unique domain knowledge and methodologies</li>
-        </ul>
+    <ArticleLayout
+      category="Business & Strategy"
+      title="The Consulting Industry's AI Reckoning: What I'm Seeing Inside the Firms"
+      subtitle="40% of consulting work can now be augmented or automated by AI. Here's what that means for the trillion-dollar industry."
+      author="Kushal Parameshwara"
+      date="November 22, 2025"
+      readTime="12 min read"
+      heroImage={{
+        src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop",
+        alt: "Business consulting meeting with digital transformation elements"
+      }}
+      keyTakeaways={[
+        "McKinsey reports 40% of consulting work can now be augmented or automated by AI.",
+        "The traditional labor arbitrage model (billing junior analysts at premium rates) is collapsing.",
+        "Leading firms are building proprietary AI platforms: McKinsey's Lilli, BCG's GAMMA, Deloitte's AI Institute.",
+        "The skills premium is shifting to relationship building, creative problem-solving, and change leadership.",
+        "This transformation is a preview of what's coming to all knowledge work."
+      ]}
+      tags={['Consulting', 'AI Transformation', 'Professional Services', 'Future of Work', 'Strategy']}
+      articleId="consulting-industry-ai-disruption"
+    >
+      <p>
+        I've been watching the consulting industry closely for years, both as someone who's worked 
+        with consultants and as someone fascinated by business model disruption. What I'm seeing 
+        now is unprecedented: <strong>the fundamental model that's powered this trillion-dollar 
+        industry for decades is being dismantled by AI.</strong>
+      </p>
+
+      <p>
+        This isn't hyperbole. McKinsey itself reports that 40% of consulting work can now be 
+        augmented or automated by AI. The implications extend far beyond consulting to all forms 
+        of knowledge work.
+      </p>
+
+      <p>
+        Let me share what I'm observing and what I think it means.
+      </p>
+
+      <h2>How Traditional Consulting Creates Value</h2>
+
+      <p>
+        To understand the disruption, you need to understand the traditional model. Consulting 
+        value comes from a layered system:
+      </p>
+
+      <ConsultingValueChain />
+
+      <h3>Information Gathering and Analysis</h3>
+
+      <p>
+        Junior consultants spend enormous time gathering data, conducting research, and performing 
+        analysis. Market research, competitive analysis, benchmarking, data synthesis. This work 
+        follows established methodologies and requires intelligence but not deep expertise.
+      </p>
+
+      <h3>Pattern Recognition and Framework Application</h3>
+
+      <p>
+        Mid-level consultants recognize patterns across industries and apply proven frameworks 
+        to new situations. They bring cross-industry insights and structured approaches that 
+        clients may lack internally.
+      </p>
+
+      <h3>Strategic Synthesis and Recommendation</h3>
+
+      <p>
+        Senior consultants synthesize complex information into actionable recommendations. They 
+        leverage experience across multiple engagements to anticipate challenges and identify 
+        solutions.
+      </p>
+
+      <h3>Change Leadership and Implementation</h3>
+
+      <p>
+        Partners and senior leaders guide organizations through complex transformations. This 
+        requires relationship building, political navigation, and the credibility to drive change.
+      </p>
+
+      <p>
+        Here's the key insight: <strong>AI is disrupting each layer differently, and at different 
+        speeds.</strong>
+      </p>
+
+      <h2>The Labor Arbitrage Model Is Collapsing</h2>
+
+      <p>
+        Much of consulting's profitability has relied on labor arbitrage: hiring recent graduates 
+        at relatively low salaries and billing their time at premium rates. The pyramid model.
+      </p>
+
+      <PyramidDisruption />
+
+      <p>
+        Consider a typical strategy engagement under the traditional model: 6 analysts spend 2 
+        weeks gathering and analyzing market data. That's expensive.
+      </p>
+
+      <p>
+        With AI-enhanced approaches: 1 analyst uses AI tools to gather and analyze the same data 
+        in 2 days. The quality is often better because AI can process more data more consistently.
+      </p>
 
-        <h3>Firms Under Pressure</h3>
+      <p>
+        This efficiency gain is positive for clients and senior consultants. It's devastating 
+        for entry-level consulting jobs. The pyramid is being compressed from the bottom.
+      </p>
 
-        <p>
-          Conversely, firms struggling with the transition typically exhibit:
-        </p>
+      <blockquote>
+        "We're not experimenting with AI anymore. We're deploying it across every practice area. 
+        The question isn't whether AI changes consulting. It's how fast." - Senior Partner at 
+        Big 4 Firm
+      </blockquote>
 
-        <ul>
-          <li>Over-reliance on traditional labor arbitrage models</li>
-          <li>Slow adoption of AI tools and capabilities</li>
-          <li>Commodity service offerings without clear differentiation</li>
-          <li>Resistance to new engagement models and pricing structures</li>
-        </ul>
+      <h2>How Leading Firms Are Responding</h2>
 
-        <h2>Implications for Knowledge Workers</h2>
+      <p>
+        The top consulting firms aren't standing still. They're building proprietary AI platforms 
+        that combine consulting methodologies with AI capabilities:
+      </p>
 
-        <p>
-          The transformation of consulting has broader implications for all knowledge work:
-        </p>
+      <FirmPlatforms />
 
-        <h3>The Skills Evolution</h3>
+      <h3>McKinsey's Lilli</h3>
 
-        <p>
-          <span className="highlight">The most valuable knowledge workers will be those who can effectively collaborate with AI while providing uniquely human value</span>:
-        </p>
+      <p>
+        An AI platform providing instant access to the firm's knowledge base. Consultants can 
+        query decades of research, frameworks, and case examples. It accelerates the pattern 
+        recognition that previously required years of experience.
+      </p>
 
-        <ul>
-          <li><strong>AI Literacy:</strong> Understanding how to prompt, validate, and refine AI outputs</li>
-          <li><strong>Critical Thinking:</strong> Ability to evaluate AI recommendations and identify limitations</li>
-          <li><strong>Emotional Intelligence:</strong> Managing human relationships and organizational dynamics</li>
-          <li><strong>Creative Problem-Solving:</strong> Developing novel approaches to complex challenges</li>
-        </ul>
+      <h3>BCG's GAMMA</h3>
 
-        <h3>Career Strategy Adaptations</h3>
+      <p>
+        BCG's AI and analytics consulting practice combines proprietary tools with consulting 
+        capabilities. They're not just using AI; they're productizing it.
+      </p>
 
-        <p>
-          For current and aspiring knowledge workers:
-        </p>
+      <h3>Deloitte's AI Institute</h3>
 
-        <ul>
-          <li><strong>Develop AI collaboration skills:</strong> Learn to work effectively with AI tools</li>
-          <li><strong>Build deep expertise:</strong> Specialize in areas where human judgment remains critical</li>
-          <li><strong>Focus on relationships:</strong> Invest in networking and client relationship skills</li>
-          <li><strong>Embrace continuous learning:</strong> Stay current with rapidly evolving AI capabilities</li>
-        </ul>
+      <p>
+        Combines research, tools, and consulting into an integrated offering. They're positioning 
+        themselves to help clients with AI transformation while using AI internally.
+      </p>
 
-        <h2>The Client Perspective</h2>
+      <p>
+        These platforms create defensible competitive advantages by embedding consulting IP into 
+        AI systems. The barrier to entry goes up, not down, for new competitors.
+      </p>
 
-        <p>
-          For organizations buying consulting services, the AI transformation creates both opportunities and challenges:
-        </p>
+      <h2>The Skills Premium Shift</h2>
 
-        <h3>Increased Expectations</h3>
+      <p>
+        As routine analytical work becomes automated, the premium shifts to skills that remain 
+        uniquely human:
+      </p>
 
-        <ul>
-          <li>Faster delivery times for analytical work</li>
-          <li>More comprehensive data analysis and insights</li>
-          <li>Real-time monitoring and optimization capabilities</li>
-          <li>Better ROI measurement and outcome tracking</li>
-        </ul>
+      <SkillsShift />
 
-        <h3>New Evaluation Criteria</h3>
+      <h3>What's Declining</h3>
 
-        <p>
-          When selecting consulting partners, clients should consider:
-        </p>
+      <ul>
+        <li><strong>Data gathering:</strong> AI can synthesize information faster and more comprehensively</li>
+        <li><strong>Basic modeling:</strong> AI can build and validate financial models</li>
+        <li><strong>Research synthesis:</strong> AI can review documents and extract insights</li>
+        <li><strong>Presentation creation:</strong> AI can generate slides and visualizations</li>
+      </ul>
 
-        <ul>
-          <li>AI tool sophistication and integration</li>
-          <li>Track record of successful AI-augmented projects</li>
-          <li>Ability to transfer AI capabilities to client teams</li>
-          <li>Flexibility in engagement models and pricing</li>
-        </ul>
+      <h3>What's Rising</h3>
 
-        <h2>Looking Forward: The Next Phase</h2>
+      <ul>
+        <li><strong>Relationship building:</strong> Understanding client needs, building trust, navigating politics</li>
+        <li><strong>Creative problem-solving:</strong> Developing novel solutions to unprecedented challenges</li>
+        <li><strong>Change leadership:</strong> Guiding organizations through complex transformations</li>
+        <li><strong>AI-human collaboration:</strong> Knowing how to use AI effectively as a thinking partner</li>
+      </ul>
 
-        <p>
-          As we look toward 2026 and beyond, several trends will shape the consulting industry's continued evolution:
-        </p>
+      <p>
+        The consultants who thrive will be those who can do what AI cannot: build relationships, 
+        navigate ambiguity, lead change, and provide the trusted judgment that clients need.
+      </p>
 
-        <h3>Democratization of Consulting Tools</h3>
+      <h2>New Engagement Models</h2>
 
-        <p>
-          AI-powered consulting tools will become more accessible to companies, reducing reliance on external consultants for routine analytical work. This will push consulting firms further toward high-value advisory roles.
-        </p>
+      <p>
+        AI is enabling engagement models that weren't possible before:
+      </p>
 
-        <h3>Industry Specialization</h3>
+      <NewEngagementModels />
 
-        <p>
-          Generic consulting capabilities will become less valuable as AI handles general analysis. Success will require deep industry expertise and specialized knowledge that AI cannot easily replicate.
-        </p>
+      <h3>Performance-Based Contracts</h3>
 
-        <h3>Continuous Engagement Models</h3>
+      <p>
+        When AI can measure outcomes in real-time, it becomes possible to tie fees to results. 
+        Shared risk and reward models align consultant and client incentives.
+      </p>
 
-        <p>
-          Rather than project-based engagements, we'll see more ongoing partnerships where AI enables continuous optimization and strategic adjustment.
-        </p>
+      <h3>Subscription Models</h3>
 
-        <h2>Conclusion: Reinventing Knowledge Work</h2>
+      <p>
+        Instead of project-based engagements, firms offer ongoing AI-powered insights. Continuous 
+        monitoring and optimization rather than point-in-time analysis.
+      </p>
 
-        <p>
-          The consulting industry's AI transformation is a preview of changes coming to all knowledge work. <span className="highlight">The fundamental question is not whether AI will change these industries, but how quickly organizations and individuals will adapt to the new reality</span>.
-        </p>
+      <h3>Product-Like Solutions</h3>
 
-        <p>
-          The firms and professionals who thrive will be those who embrace AI as a collaborative partner while doubling down on uniquely human capabilities. They will create new forms of value that leverage both artificial and human intelligence.
-        </p>
-
-        <p>
-          For the consulting industry specifically, this transformation represents both its greatest challenge and its greatest opportunity. By successfully navigating this transition, consulting firms can emerge stronger, more valuable, and better positioned to help clients navigate their own AI transformations.
-        </p>
-
-        <blockquote>
-          "The future of consulting isn't about humans versus AI—it's about creating new forms of value through human-AI collaboration that neither could achieve alone."
-        </blockquote>
-      </Content>
-
-      <RelatedArticles currentArticleId="consulting-industry-ai-disruption" />
-    </ArticleContainer>
+      <p>
+        Some consulting deliverables are becoming products that can be deployed across multiple 
+        clients. The economics shift from billable hours to scalable solutions.
+      </p>
+
+      <h2>What This Means for Knowledge Workers</h2>
+
+      <p>
+        The consulting transformation is a preview of changes coming to all knowledge work. The 
+        patterns are clear:
+      </p>
+
+      <h3>Skills That Matter</h3>
+
+      <ul>
+        <li><strong>AI literacy:</strong> Understanding how to prompt, validate, and refine AI outputs</li>
+        <li><strong>Critical thinking:</strong> Evaluating AI recommendations and identifying limitations</li>
+        <li><strong>Emotional intelligence:</strong> Managing human relationships and organizational dynamics</li>
+        <li><strong>Creative problem-solving:</strong> Developing novel approaches to complex challenges</li>
+      </ul>
+
+      <h3>Career Strategy Adaptations</h3>
+
+      <ul>
+        <li><strong>Develop AI collaboration skills:</strong> Learn to work effectively with AI as a partner</li>
+        <li><strong>Build deep expertise:</strong> Specialize where human judgment remains critical</li>
+        <li><strong>Focus on relationships:</strong> Invest in networking and client relationship skills</li>
+        <li><strong>Embrace continuous learning:</strong> Stay current with rapidly evolving AI capabilities</li>
+      </ul>
+
+      <h2>For Organizations Buying Consulting</h2>
+
+      <p>
+        If you're a client of consulting firms, this transformation creates opportunities:
+      </p>
+
+      <h3>Increased Expectations</h3>
+
+      <ul>
+        <li>Faster delivery times for analytical work</li>
+        <li>More comprehensive data analysis and insights</li>
+        <li>Real-time monitoring and optimization capabilities</li>
+        <li>Better ROI measurement and outcome tracking</li>
+      </ul>
+
+      <h3>New Selection Criteria</h3>
+
+      <ul>
+        <li>AI tool sophistication and integration</li>
+        <li>Track record of successful AI-augmented projects</li>
+        <li>Ability to transfer AI capabilities to your teams</li>
+        <li>Flexibility in engagement models and pricing</li>
+      </ul>
+
+      <h2>My Take on What Comes Next</h2>
+
+      <p>
+        Looking ahead, I see several trends shaping consulting's evolution:
+      </p>
+
+      <p>
+        <strong>Democratization of analysis:</strong> AI-powered consulting tools will become 
+        accessible to companies directly, reducing reliance on external consultants for routine 
+        analytical work.
+      </p>
+
+      <p>
+        <strong>Deeper specialization:</strong> Generic consulting capabilities become less 
+        valuable as AI handles general analysis. Success requires deep industry expertise and 
+        specialized knowledge.
+      </p>
+
+      <p>
+        <strong>Continuous engagement:</strong> Rather than project-based work, more ongoing 
+        partnerships where AI enables continuous optimization.
+      </p>
+
+      <p>
+        <strong>Blurring lines:</strong> The distinction between consulting, technology, and 
+        software will continue to blur. Consulting firms become technology companies; technology 
+        companies offer consulting services.
+      </p>
+
+      <h2>The Bottom Line</h2>
+
+      <p>
+        The consulting industry's AI transformation is a preview of changes coming to all 
+        knowledge work. The fundamental question isn't whether AI will change these industries, 
+        but how quickly organizations and individuals will adapt.
+      </p>
+
+      <p>
+        The firms and professionals who thrive will be those who embrace AI as a collaborative 
+        partner while doubling down on uniquely human capabilities. They'll create new forms of 
+        value that leverage both artificial and human intelligence.
+      </p>
+
+      <blockquote>
+        The future of consulting isn't about humans versus AI. It's about creating new forms 
+        of value through human-AI collaboration that neither could achieve alone.
+      </blockquote>
+
+      <p>
+        For the consulting industry specifically, this transformation represents both its greatest 
+        challenge and its greatest opportunity. The firms that successfully navigate this 
+        transition will emerge stronger and more valuable.
+      </p>
+
+      <p>
+        Those that cling to the old model will find themselves increasingly irrelevant in a 
+        world where AI can do their routine work better, faster, and cheaper.
+      </p>
+    </ArticleLayout>
   );
 };
 
-export default ConsultingIndustryAIDisruption; 
+export default ConsultingIndustryAIDisruption;

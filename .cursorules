@@ -1,0 +1,56 @@
+# Kushal HP Portfolio - Project Style Guide
+
+## Writing Style Rules
+
+### 1. No Em Dashes (—)
+**NEVER use em dashes (—) in any content.**
+
+Instead, use these alternatives:
+- Use a colon `:` for introducing explanations or lists
+- Use a comma `,` for light pauses
+- Use a period `.` to break into separate sentences
+- Use parentheses `()` for asides or clarifications
+- Use a hyphen `-` for compound modifiers or simple separators
+
+**Examples:**
+- ❌ "The results were clear—we needed to pivot"
+- ✅ "The results were clear: we needed to pivot"
+- ✅ "The results were clear. We needed to pivot"
+
+- ❌ "AI tools—like ChatGPT and Claude—are transforming PM work"
+- ✅ "AI tools (like ChatGPT and Claude) are transforming PM work"
+- ✅ "AI tools, like ChatGPT and Claude, are transforming PM work"
+
+### 2. First-Person Voice
+Articles should be written from Kushal's first-person perspective:
+- Use "I", "my", "I've learned", etc.
+- Share personal experiences and anecdotes
+- Make the content feel authentic and relatable
+
+### 3. Natural Flow
+- Break complex ideas into digestible paragraphs
+- Use conversational language
+- Add personal examples where relevant
+- Include visual elements (SVG graphics, charts) to break up text
+
+## Code Style
+
+### React/TypeScript
+- Use functional components with TypeScript
+- SVG components should be inline for custom graphics
+- Follow existing patterns in the codebase
+
+### CSS/Styling
+- Use styled-components patterns consistent with the project
+- Dark theme with accent colors
+- Responsive design considerations
+
+## Content Structure for Articles
+
+1. **Opening**: Personal hook or relatable scenario
+2. **Context**: Why this matters, your journey
+3. **Core Content**: Frameworks, insights, examples
+4. **Visuals**: Charts, diagrams, or graphics where helpful
+5. **Practical Application**: Real examples, templates
+6. **Closing**: Key takeaways, call to action
+
