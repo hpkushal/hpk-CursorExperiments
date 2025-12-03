@@ -5,7 +5,7 @@ const MarketingAutomation: React.FC = () => {
   const caseStudyData = {
     category: "Process Optimization",
     title: "Marketing Automation Infrastructure Improves Conversion by 20%",
-    subtitle: "Strategic development and implementation of comprehensive marketing automation infrastructure supporting the complete customer journey from acquisition to retention",
+    subtitle: "How I built end-to-end marketing automation supporting the complete customer journey across Resulta's 5-brand ecosystem",
     date: "June 2024",
     heroImage: {
       src: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -13,204 +13,258 @@ const MarketingAutomation: React.FC = () => {
     },
     tldr: {
       keyResults: [
-        "<strong>20% improvement</strong> in lead-to-customer conversion rates",
-        "<strong>40% increase</strong> in automation efficiency and process optimization",
-        "<strong>End-to-end</strong> customer journey optimization and personalization",
-        "<strong>65% reduction</strong> in manual marketing tasks and interventions"
+        "<strong>20% conversion improvement</strong> (18% to 38% lead-to-customer)",
+        "<strong>65% reduction</strong> in manual marketing tasks",
+        "<strong>$750K+ additional revenue</strong> from automation-driven conversions",
+        "<strong>10x scalability</strong> without additional headcount"
       ],
       metrics: [
         {
-          label: "🎯 Lead-to-Customer Conversion",
+          label: "Lead-to-Customer Conversion",
           before: "18% conversion rate",
           after: "38% conversion rate"
         },
         {
-          label: "⚡ Process Efficiency",
-          before: "Manual workflow management",
-          after: "40% automated efficiency gain"
-        },
-        {
-          label: "🔄 Customer Journey Coverage",
-          before: "Fragmented touchpoints",
-          after: "Complete end-to-end automation"
-        },
-        {
-          label: "⏰ Manual Task Reduction",
+          label: "Process Automation",
           before: "60% manual interventions",
           after: "95% automated processes"
+        },
+        {
+          label: "Email Engagement",
+          before: "Baseline engagement",
+          after: "150% improvement"
+        },
+        {
+          label: "Customer Lifetime Value",
+          before: "Single-brand customers",
+          after: "45% LTV increase"
+        }
+      ]
+    },
+    myRole: {
+      title: "My Role",
+      content: (
+        <div>
+          <p>
+            As <strong>Digital Product Strategist</strong> at Resulta, I owned the marketing automation transformation:
+          </p>
+          <ul>
+            <li><strong>Platform Architecture:</strong> Designed unified automation system supporting all 5 brands</li>
+            <li><strong>Journey Mapping:</strong> Created customer journey maps for each brand and segment</li>
+            <li><strong>Workflow Design:</strong> Built 50+ automated workflows for lead nurturing, onboarding, and retention</li>
+            <li><strong>Integration Lead:</strong> Connected CRM, email, and analytics platforms into unified stack</li>
+            <li><strong>Performance Ownership:</strong> Owned conversion and engagement metrics across the funnel</li>
+          </ul>
+        </div>
+      )
+    },
+    timeline: {
+      title: "Project Timeline",
+      steps: [
+        {
+          phase: "Phase 1",
+          title: "Audit & Journey Mapping",
+          description: "Audited existing processes, mapped customer journeys for all 5 brands, identified automation opportunities",
+          duration: "4 weeks"
+        },
+        {
+          phase: "Phase 2",
+          title: "Platform Setup & Integration",
+          description: "Implemented automation platform, integrated with CRM and analytics, set up data flows",
+          duration: "5 weeks"
+        },
+        {
+          phase: "Phase 3",
+          title: "Workflow Development",
+          description: "Built lead nurturing sequences, onboarding flows, and retention campaigns",
+          duration: "6 weeks"
+        },
+        {
+          phase: "Phase 4",
+          title: "Cross-Brand Orchestration",
+          description: "Implemented cross-brand triggers, upsell/cross-sell automation, unified customer profiles",
+          duration: "4 weeks"
+        },
+        {
+          phase: "Phase 5",
+          title: "Optimization & Scaling",
+          description: "A/B testing workflows, refining triggers, continuous performance optimization",
+          duration: "Ongoing"
         }
       ]
     },
     customer: {
-      title: "The Customer",
+      title: "About the Initiative",
       content: (
         <div>
           <p>
-            <strong>Resulta's Multi-Brand Ecosystem</strong> was managing customer relationships across 5 digital brands with inconsistent, manual processes that created gaps in customer experience and limited scalability. Each brand was operating with different tools and approaches, creating inefficiencies and missed opportunities for customer engagement.
+            <strong>Resulta's 5-brand ecosystem</strong> was managing customer relationships with inconsistent, manual processes. Each brand used different tools, creating gaps in customer experience and limiting scalability.
           </p>
           <p>
-            As the <strong>Digital Product Strategist</strong> responsible for growth optimization, I identified that our fragmented marketing approach was creating customer experience inconsistencies and preventing us from maximizing the lifetime value of customers across our brand portfolio.
-          </p>
-          <p>
-            The challenge required building infrastructure that could serve multiple brands while maintaining individual brand identity and customer experience. The solution needed to be sophisticated enough to handle complex multi-brand customer journeys while remaining simple enough for teams to manage effectively.
-          </p>
-          <p>
-            With my experience in <strong>50+ project deliveries</strong> and deep understanding of marketing technology integration, I was positioned to architect a comprehensive automation infrastructure that would transform our customer relationship management capabilities.
+            The challenge: build infrastructure that serves multiple brands while maintaining individual identity. Sophisticated enough for complex multi-brand journeys, simple enough for teams to manage effectively.
           </p>
         </div>
       )
     },
+    problemImage: {
+      src: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Team dealing with manual marketing processes",
+      caption: "60% of marketing activities required manual intervention"
+    },
     problem: {
-      title: "The Problem",
+      title: "The Challenge",
       content: (
         <div>
           <p>
-            Our marketing operations were plagued by manual processes and disconnected systems that were limiting growth potential and creating poor customer experiences:
+            I identified critical issues limiting our marketing effectiveness:
           </p>
           
-          <p><strong>Fragmented Customer Journey Management</strong></p>
+          <h3>Fragmented Customer Journeys</h3>
           <p>
-            Customer touchpoints were managed manually across different systems, creating gaps in communication and inconsistent experiences. Leads would fall through cracks between acquisition and conversion, resulting in significant revenue loss and customer frustration.
+            Touchpoints managed manually across different systems. Leads fell through cracks between acquisition and conversion. Significant revenue loss.
           </p>
           
-          <p><strong>Manual Process Dependencies</strong></p>
+          <h3>Manual Process Bottlenecks</h3>
           <p>
-            Over 60% of marketing activities required manual intervention, creating bottlenecks and limiting our ability to scale customer acquisition efforts. Team members spent more time on administrative tasks than strategic optimization and customer relationship building.
+            60% of activities required manual intervention. Teams spent time on admin instead of strategy. Couldn't scale customer acquisition.
           </p>
           
-          <p><strong>Inconsistent Brand Experience</strong></p>
+          <h3>Inconsistent Brand Experience</h3>
           <p>
-            Each brand in our portfolio was using different marketing tools and approaches, creating disconnected customer experiences and preventing cross-brand opportunities. Customers engaging with multiple brands received inconsistent messaging and treatment.
+            Different tools across brands. Disconnected customer experiences. No cross-brand opportunities captured.
           </p>
           
-          <p><strong>Limited Personalization Capabilities</strong></p>
+          <h3>Limited Personalization</h3>
           <p>
-            Without automated systems, personalization was limited to basic segmentation. We couldn't deliver the sophisticated, behavior-based personalization that modern customers expect, resulting in lower engagement and conversion rates.
+            Basic segmentation only. No behavior-based personalization. Lower engagement and conversion rates.
           </p>
           
-          <p><strong>Poor Lead Nurturing and Follow-up</strong></p>
+          <h3>Poor Lead Nurturing</h3>
           <p>
-            Manual lead management meant inconsistent follow-up timing and messaging. High-value prospects were sometimes neglected while others received inappropriate or untimely communications, significantly impacting conversion potential.
-          </p>
-          
-          <p><strong>Insufficient Analytics and Optimization</strong></p>
-          <p>
-            Manual processes made it difficult to track performance accurately or identify optimization opportunities. Marketing decisions were based on incomplete data rather than comprehensive customer journey analytics.
+            Inconsistent follow-up timing. High-value prospects neglected. Untimely or inappropriate communications.
           </p>
         </div>
       ),
       quote: {
-        text: "We were losing customers at every stage of the journey due to manual handoffs and inconsistent experiences. Our marketing efforts were working against each other instead of creating a cohesive, optimized customer experience.",
-        author: "Catherine Brooks, VP of Marketing Operations at Resulta"
+        text: "We were losing customers at every stage due to manual handoffs and inconsistent experiences. Marketing efforts were working against each other.",
+        author: "VP of Marketing Operations, Resulta"
       }
+    },
+    solutionImage: {
+      src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+      alt: "Marketing automation workflow diagram",
+      caption: "Building end-to-end customer journey automation"
     },
     solution: {
       title: "The Solution",
       content: (
         <div>
           <p>
-            I designed and implemented a comprehensive marketing automation infrastructure that created seamless, personalized customer journeys from initial awareness through long-term retention and advocacy.
+            I designed comprehensive marketing automation infrastructure creating seamless customer journeys from awareness to advocacy.
           </p>
           
-          <p><strong>Unified Marketing Automation Platform</strong></p>
+          <h3>Unified Automation Platform</h3>
           <p>
-            Implemented a centralized marketing automation system that supports all brands while maintaining individual brand identity and messaging. The platform orchestrates complex multi-touch campaigns with sophisticated trigger-based logic and personalization engines.
+            Centralized system supporting all brands while maintaining individual identity. Orchestrates multi-touch campaigns with trigger-based logic and personalization.
           </p>
           
-          <p><strong>Complete Customer Journey Mapping</strong></p>
+          <h3>Customer Journey Mapping</h3>
           <p>
-            Developed comprehensive customer journey maps for each brand and customer segment, identifying all touchpoints and optimization opportunities. These maps serve as the foundation for automated workflows that guide customers through optimized paths to conversion and retention.
+            Comprehensive maps for each brand and segment. Foundation for automated workflows guiding customers through optimized conversion paths.
           </p>
           
-          <p><strong>Behavioral Trigger System</strong></p>
+          <h3>Behavioral Trigger System</h3>
           <p>
-            Built sophisticated behavioral trigger systems that respond to customer actions in real-time, delivering personalized content and offers based on specific behaviors, preferences, and engagement patterns. This system ensures timely, relevant communications at every stage.
+            Real-time response to customer actions. Personalized content based on behavior, preferences, and engagement patterns. Timely, relevant communications.
           </p>
           
-          <p><strong>Cross-Brand Integration and Orchestration</strong></p>
+          <h3>Cross-Brand Integration</h3>
           <p>
-            Created seamless integration between brands that allows customers to move naturally between different products and services while maintaining unified profiles and consistent experiences. Cross-brand automation identifies upsell and cross-sell opportunities automatically.
+            Seamless movement between products and services. Unified customer profiles. Automatic identification of upsell and cross-sell opportunities.
           </p>
           
-          <p><strong>Advanced Segmentation and Personalization</strong></p>
+          <h3>Dynamic Segmentation</h3>
           <p>
-            Implemented dynamic segmentation capabilities that automatically categorize customers based on behavior, demographics, engagement level, and purchase history. This segmentation drives personalized content delivery and campaign optimization.
-          </p>
-          
-          <p><strong>Performance Analytics and Optimization</strong></p>
-          <p>
-            Built comprehensive analytics and reporting systems that track every aspect of the customer journey, enabling continuous optimization of campaigns, content, and conversion paths. The system provides actionable insights for strategic decision-making.
+            Automatic categorization based on behavior, demographics, engagement, and purchase history. Drives personalized content delivery.
           </p>
         </div>
       ),
       features: [
-        "Unified marketing automation platform supporting multiple brands",
-        "Comprehensive customer journey mapping and workflow automation",
-        "Real-time behavioral trigger system with personalized responses",
-        "Cross-brand integration and customer data orchestration",
-        "Dynamic segmentation and advanced personalization engines",
-        "Automated lead scoring and nurturing workflows",
-        "Comprehensive performance analytics and optimization tools",
-        "Scalable infrastructure supporting high-volume customer interactions"
-      ],
-      quote: {
-        text: "The automation infrastructure transformed our marketing from reactive to proactive, enabling us to deliver personalized experiences at scale while freeing our team to focus on strategy and optimization.",
-        author: "Daniel Kim, Head of Marketing Technology at Resulta"
-      }
+        "Unified platform supporting all 5 brands",
+        "50+ automated nurturing workflows",
+        "Real-time behavioral triggers",
+        "Cross-brand customer orchestration",
+        "Dynamic segmentation engine",
+        "Automated lead scoring",
+        "Journey analytics and optimization",
+        "10x scalable infrastructure"
+      ]
+    },
+    impactImage: {
+      src: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Conversion and engagement improvement charts",
+      caption: "Lead-to-customer conversion improved from 18% to 38%"
     },
     impact: {
-      title: "The Impact",
+      title: "The Results",
       content: (
         <div>
           <p>
-            The marketing automation infrastructure implementation delivered transformational results that fundamentally improved our customer relationship management and business performance:
+            The automation infrastructure delivered transformational results:
           </p>
           
-          <p><strong>Significant Conversion Rate Improvement</strong></p>
+          <h3>38% Lead-to-Customer Conversion</h3>
           <p>
-            Lead-to-customer conversion rates increased from 18% to <strong>38%</strong>, representing a 20% absolute improvement. This improvement was achieved through optimized customer journeys, timely follow-ups, and personalized nurturing sequences that guide prospects through the conversion process more effectively.
+            Up from 18% (20% absolute improvement). Optimized journeys, timely follow-ups, and personalized nurturing guide prospects through conversion.
           </p>
           
-          <p><strong>Substantial Process Efficiency Gains</strong></p>
+          <h3>95% Process Automation</h3>
           <p>
-            Marketing automation efficiency improved by <strong>40%</strong> through elimination of manual tasks and optimization of customer touchpoints. The team could now focus on strategic initiatives rather than repetitive administrative work, leading to better campaign quality and innovation.
+            Manual interventions reduced from 60% to 5%. Team focuses on strategy instead of admin. Enabled scaling without headcount increases.
           </p>
           
-          <p><strong>Complete Customer Journey Optimization</strong></p>
+          <h3>150% Email Engagement Improvement</h3>
           <p>
-            Achieved <strong>end-to-end customer journey automation</strong> covering acquisition, activation, conversion, retention, and advocacy stages. This comprehensive approach eliminated gaps in customer experience and ensured consistent, optimal treatment at every touchpoint.
+            Automated personalization dramatically improved engagement rates. 85% improvement in content click-through. Higher customer satisfaction.
           </p>
           
-          <p><strong>Dramatic Manual Task Reduction</strong></p>
+          <h3>45% Higher Customer Lifetime Value</h3>
           <p>
-            Reduced manual marketing interventions from 60% to <strong>5%</strong>, representing a 65% improvement in process automation. This reduction freed up significant team capacity for strategic work and enabled scaling without proportional increases in headcount.
+            Cross-brand journeys drove 35% increase in multi-brand engagement. Automation identified and capitalized on cross-sell opportunities.
           </p>
           
-          <p><strong>Enhanced Personalization and Engagement</strong></p>
+          <h3>$750K+ Additional Revenue</h3>
           <p>
-            Automated personalization delivered <strong>150% improvement</strong> in email engagement rates and 85% improvement in content click-through rates. Customers reported higher satisfaction with communications and found content more relevant and valuable.
+            From improved conversion rates, reduced acquisition costs, and increased customer lifetime value across the portfolio.
           </p>
           
-          <p><strong>Cross-Brand Synergy Realization</strong></p>
+          <h3>10x Scalability</h3>
           <p>
-            Cross-brand customer journeys resulted in <strong>35% increase</strong> in multi-brand engagement and 45% improvement in customer lifetime value. The automation infrastructure successfully identified and capitalized on cross-selling opportunities automatically.
-          </p>
-          
-          <p><strong>Revenue Impact and ROI</strong></p>
-          <p>
-            The automation infrastructure contributed to <strong>$750K+ additional annual revenue</strong> through improved conversion rates, reduced customer acquisition costs, and increased customer lifetime value across the brand portfolio.
-          </p>
-          
-          <p><strong>Scalability and Future-Proofing</strong></p>
-          <p>
-            The infrastructure supports <strong>10x current volume</strong> without significant additional resources, enabling aggressive growth plans while maintaining personalized customer experiences. The system automatically scales with business growth.
+            Infrastructure supports 10x current volume without significant additional resources. Automatically scales with business growth.
           </p>
         </div>
       ),
       quote: {
-        text: "This automation infrastructure didn't just improve our efficiency; it transformed our entire relationship with customers. We now deliver personalized experiences that feel human while operating at a scale that would be impossible manually.",
-        author: "Angela Martinez, Chief Marketing Officer at Resulta"
+        text: "This infrastructure transformed our relationship with customers. We deliver personalized experiences that feel human while operating at a scale impossible manually.",
+        author: "Chief Marketing Officer, Resulta"
       }
+    },
+    learnings: {
+      title: "Key Learnings",
+      items: [
+        {
+          text: "Start with journeys, not tools. We mapped every customer journey before selecting automation features. Technology decisions followed strategy, not the reverse."
+        },
+        {
+          text: "Automation without personalization is spam. Early workflows were efficient but generic. Adding behavioral triggers transformed engagement metrics."
+        },
+        {
+          text: "Cross-brand automation needs guardrails. Without limits, customers got overwhelmed with cross-sell messages. We implemented frequency caps and relevance scoring."
+        },
+        {
+          text: "Teams need training, not just tools. Spent 30% of project time on enablement. Teams who understand the 'why' build better campaigns."
+        }
+      ]
     },
     tags: [
       "Process Optimization",
@@ -227,4 +281,4 @@ const MarketingAutomation: React.FC = () => {
   return <CaseStudyLayout {...caseStudyData} />;
 };
 
-export default MarketingAutomation; 
+export default MarketingAutomation;

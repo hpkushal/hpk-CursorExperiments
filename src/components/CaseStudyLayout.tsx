@@ -113,19 +113,53 @@ const HeroImage = styled.img`
   object-position: center;
 `;
 
+const ContentBreakImage = styled.div`
+  width: 100%;
+  height: 280px;
+  margin: 50px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (max-width: 768px) {
+    height: 200px;
+    margin: 40px 0;
+    border-radius: 12px;
+  }
+`;
+
+const ImageCaption = styled.p`
+  text-align: center;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: -40px;
+  margin-bottom: 50px;
+  font-style: italic;
+`;
+
 const TLDRSection = styled(motion.div)`
   background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 30px;
+  padding: 28px;
   margin-bottom: 50px;
 `;
 
 const TLDRTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 20px;
   color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 `;
 
 const KeyResults = styled.div`
@@ -136,18 +170,22 @@ const ResultItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
-  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
 `;
 
-const ResultIcon = styled.span`
-  font-size: 1.2rem;
+const ResultBullet = styled.span`
+  width: 6px;
+  height: 6px;
+  background: #6366f1;
+  border-radius: 50%;
+  flex-shrink: 0;
 `;
 
 const MetricsTable = styled.div`
   display: grid;
-  gap: 20px;
-  margin-top: 30px;
+  gap: 16px;
+  margin-top: 24px;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -157,49 +195,50 @@ const MetricsTable = styled.div`
 const MetricCard = styled.div`
   background: white;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 18px;
 `;
 
 const MetricLabel = styled.div`
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
 `;
 
-const MetricBefore = styled.div`
-  color: #dc2626;
-  margin-bottom: 8px;
+const MetricRow = styled.div<{ variant: 'before' | 'after' }>`
+  color: ${props => props.variant === 'before' ? '#dc2626' : '#059669'};
   display: flex;
   align-items: center;
   gap: 8px;
-`;
+  font-size: 0.9rem;
+  margin-bottom: ${props => props.variant === 'before' ? '6px' : '0'};
+  font-weight: ${props => props.variant === 'after' ? '600' : '400'};
 
-const MetricAfter = styled.div`
-  color: #059669;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  &::before {
+    content: '${props => props.variant === 'before' ? '✕' : '✓'}';
+    font-size: 0.75rem;
+  }
 `;
 
 const Section = styled.section`
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #1f2937;
 `;
 
 const SectionContent = styled.div`
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: #374151;
 
   p {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   strong {
@@ -208,32 +247,39 @@ const SectionContent = styled.div`
   }
 
   ul {
-    margin: 20px 0;
+    margin: 16px 0;
     padding-left: 20px;
     
     li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 28px 0 10px;
   }
 `;
 
 const Quote = styled.blockquote`
-  border-left: 4px solid #6366f1;
-  padding-left: 20px;
+  border-left: 3px solid #6366f1;
   margin: 30px 0;
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #4b5563;
   background: #f9fafb;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 20px 24px;
+  border-radius: 0 8px 8px 0;
 `;
 
 const QuoteAuthor = styled.div`
-  margin-top: 15px;
+  margin-top: 12px;
   font-weight: 600;
   color: #1f2937;
   font-style: normal;
+  font-size: 0.9rem;
 `;
 
 const TagList = styled.div`
@@ -244,13 +290,217 @@ const TagList = styled.div`
 `;
 
 const Tag = styled.span`
-  background: #e0e7ff;
-  color: #3730a3;
-  padding: 6px 12px;
+  background: #f3f4f6;
+  color: #4b5563;
+  padding: 6px 14px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 `;
+
+// My Role Section
+const MyRoleSection = styled(motion.div)`
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 50px;
+`;
+
+const MyRoleTitle = styled.h2`
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+`;
+
+const MyRoleContent = styled.div`
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #374151;
+
+  p {
+    margin-bottom: 12px;
+  }
+
+  ul {
+    margin: 12px 0;
+    padding-left: 20px;
+    
+    li {
+      margin-bottom: 8px;
+    }
+  }
+`;
+
+// Timeline Section
+const TimelineSection = styled(motion.div)`
+  margin-bottom: 50px;
+`;
+
+const TimelineContainer = styled.div`
+  position: relative;
+  padding-left: 24px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: #e5e7eb;
+  }
+`;
+
+const TimelineItem = styled(motion.div)`
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border: 2px solid #6366f1;
+    border-radius: 50%;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const TimelinePhase = styled.span`
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+`;
+
+const TimelineTitle = styled.h3`
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 4px 0;
+`;
+
+const TimelineDescription = styled.p`
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 4px;
+`;
+
+const TimelineDuration = styled.span`
+  font-size: 0.8rem;
+  color: #9ca3af;
+`;
+
+// Learnings Section
+const LearningsSection = styled(motion.div)`
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 50px;
+`;
+
+const LearningsTitle = styled.h2`
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+`;
+
+const LearningsGrid = styled.div`
+  display: grid;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const LearningCard = styled.div`
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 16px;
+`;
+
+const LearningNumber = styled.span`
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #f59e0b;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 24px;
+  margin-bottom: 10px;
+`;
+
+const LearningText = styled.p`
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+`;
+
+// Features Grid
+const FeaturesGrid = styled.div`
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const FeatureItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #f9fafb;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #374151;
+`;
+
+const FeatureCheck = styled.span`
+  color: #059669;
+  font-weight: 600;
+  flex-shrink: 0;
+`;
+
+interface TimelineStep {
+  phase: string;
+  title: string;
+  description: string;
+  duration?: string;
+}
+
+interface Learning {
+  text: string;
+}
+
+interface ContentImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
 
 interface CaseStudyLayoutProps {
   category: string;
@@ -269,10 +519,19 @@ interface CaseStudyLayoutProps {
       after: string;
     }>;
   };
+  myRole?: {
+    title: string;
+    content: React.ReactNode;
+  };
+  timeline?: {
+    title: string;
+    steps: TimelineStep[];
+  };
   customer: {
     title: string;
     content: React.ReactNode;
   };
+  problemImage?: ContentImage;
   problem: {
     title: string;
     content: React.ReactNode;
@@ -281,6 +540,7 @@ interface CaseStudyLayoutProps {
       author: string;
     };
   };
+  solutionImage?: ContentImage;
   solution: {
     title: string;
     content: React.ReactNode;
@@ -290,6 +550,7 @@ interface CaseStudyLayoutProps {
       author: string;
     };
   };
+  impactImage?: ContentImage;
   impact: {
     title: string;
     content: React.ReactNode;
@@ -297,6 +558,10 @@ interface CaseStudyLayoutProps {
       text: string;
       author: string;
     };
+  };
+  learnings?: {
+    title: string;
+    items: Learning[];
   };
   tags: string[];
 }
@@ -308,10 +573,16 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
   date,
   heroImage,
   tldr,
+  myRole,
+  timeline,
   customer,
+  problemImage,
   problem,
+  solutionImage,
   solution,
+  impactImage,
   impact,
+  learnings,
   tags
 }) => {
   return (
@@ -355,13 +626,12 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <TLDRTitle><strong>TL;DR</strong></TLDRTitle>
+          <TLDRTitle>Summary</TLDRTitle>
           
           <KeyResults>
-            <strong>Key Results:</strong>
             {tldr.keyResults.map((result, index) => (
               <ResultItem key={index}>
-                <ResultIcon>🚀</ResultIcon>
+                <ResultBullet />
                 <span dangerouslySetInnerHTML={{ __html: result }} />
               </ResultItem>
             ))}
@@ -371,17 +641,62 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
             {tldr.metrics.map((metric, index) => (
               <MetricCard key={index}>
                 <MetricLabel>{metric.label}</MetricLabel>
-                <MetricBefore>❌ {metric.before}</MetricBefore>
-                <MetricAfter>✅ {metric.after}</MetricAfter>
+                <MetricRow variant="before">{metric.before}</MetricRow>
+                <MetricRow variant="after">{metric.after}</MetricRow>
               </MetricCard>
             ))}
           </MetricsTable>
         </TLDRSection>
 
+        {myRole && (
+          <MyRoleSection
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <MyRoleTitle>{myRole.title}</MyRoleTitle>
+            <MyRoleContent>{myRole.content}</MyRoleContent>
+          </MyRoleSection>
+        )}
+
+        {timeline && (
+          <TimelineSection
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <SectionTitle>{timeline.title}</SectionTitle>
+            <TimelineContainer>
+              {timeline.steps.map((step, index) => (
+                <TimelineItem
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                >
+                  <TimelinePhase>{step.phase}</TimelinePhase>
+                  <TimelineTitle>{step.title}</TimelineTitle>
+                  <TimelineDescription>{step.description}</TimelineDescription>
+                  {step.duration && <TimelineDuration>{step.duration}</TimelineDuration>}
+                </TimelineItem>
+              ))}
+            </TimelineContainer>
+          </TimelineSection>
+        )}
+
         <Section>
           <SectionTitle>{customer.title}</SectionTitle>
           <SectionContent>{customer.content}</SectionContent>
         </Section>
+
+        {problemImage && (
+          <>
+            <ContentBreakImage>
+              <img src={problemImage.src} alt={problemImage.alt} />
+            </ContentBreakImage>
+            {problemImage.caption && <ImageCaption>{problemImage.caption}</ImageCaption>}
+          </>
+        )}
 
         <Section>
           <SectionTitle>{problem.title}</SectionTitle>
@@ -394,18 +709,27 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
           )}
         </Section>
 
+        {solutionImage && (
+          <>
+            <ContentBreakImage>
+              <img src={solutionImage.src} alt={solutionImage.alt} />
+            </ContentBreakImage>
+            {solutionImage.caption && <ImageCaption>{solutionImage.caption}</ImageCaption>}
+          </>
+        )}
+
         <Section>
           <SectionTitle>{solution.title}</SectionTitle>
           <SectionContent>{solution.content}</SectionContent>
           {solution.features && (
-            <SectionContent>
-              <strong>Key Features Implemented:</strong>
-              <ul>
-                {solution.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </SectionContent>
+            <FeaturesGrid>
+              {solution.features.map((feature, index) => (
+                <FeatureItem key={index}>
+                  <FeatureCheck>✓</FeatureCheck>
+                  <span>{feature}</span>
+                </FeatureItem>
+              ))}
+            </FeaturesGrid>
           )}
           {solution.quote && (
             <Quote>
@@ -414,6 +738,15 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
             </Quote>
           )}
         </Section>
+
+        {impactImage && (
+          <>
+            <ContentBreakImage>
+              <img src={impactImage.src} alt={impactImage.alt} />
+            </ContentBreakImage>
+            {impactImage.caption && <ImageCaption>{impactImage.caption}</ImageCaption>}
+          </>
+        )}
 
         <Section>
           <SectionTitle>{impact.title}</SectionTitle>
@@ -425,6 +758,24 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
             </Quote>
           )}
         </Section>
+
+        {learnings && (
+          <LearningsSection
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <LearningsTitle>{learnings.title}</LearningsTitle>
+            <LearningsGrid>
+              {learnings.items.map((learning, index) => (
+                <LearningCard key={index}>
+                  <LearningNumber>{index + 1}</LearningNumber>
+                  <LearningText>{learning.text}</LearningText>
+                </LearningCard>
+              ))}
+            </LearningsGrid>
+          </LearningsSection>
+        )}
 
         <TagList>
           {tags.map((tag, index) => (
@@ -438,4 +789,4 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
   );
 };
 
-export default CaseStudyLayout; 
+export default CaseStudyLayout;

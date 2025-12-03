@@ -5,7 +5,7 @@ const PerformanceMarketingOptimization: React.FC = () => {
   const caseStudyData = {
     category: "Revenue Generation",
     title: "Performance Marketing Optimization Drives $1M+ Revenue Attribution",
-    subtitle: "Strategic implementation of advanced analytics and optimization frameworks resulting in dramatic improvements in marketing ROI and revenue attribution",
+    subtitle: "How I implemented Matomo analytics and CRM integration to improve marketing ROI by 3.5x and reduce CAC by 45% at Resulta",
     date: "October 2024",
     heroImage: {
       src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -13,204 +13,258 @@ const PerformanceMarketingOptimization: React.FC = () => {
     },
     tldr: {
       keyResults: [
-        "<strong>$1M+ attributed revenue</strong> through optimized marketing campaigns",
-        "<strong>3.5x improvement</strong> in marketing ROI across all channels",
-        "<strong>45% reduction</strong> in customer acquisition costs",
-        "<strong>250% increase</strong> in conversion tracking accuracy"
+        "<strong>$1M+ attributed revenue</strong> (up from $285K tracked)",
+        "<strong>7.4x ROAS</strong> (up from 2.1x return on ad spend)",
+        "<strong>45% CAC reduction</strong> ($145 to $79 per customer)",
+        "<strong>90%+ tracking accuracy</strong> (up from 35%)"
       ],
       metrics: [
         {
-          label: "💰 Attributed Revenue",
+          label: "Attributed Revenue",
           before: "$285K tracked annually",
           after: "$1M+ tracked annually"
         },
         {
-          label: "📊 Marketing ROI",
+          label: "Marketing ROI",
           before: "2.1x return on ad spend",
           after: "7.4x return on ad spend"
         },
         {
-          label: "💸 Customer Acquisition Cost",
+          label: "Customer Acquisition Cost",
           before: "$145 average CAC",
           after: "$79 average CAC"
         },
         {
-          label: "🎯 Conversion Tracking",
+          label: "Conversion Tracking",
           before: "35% tracking accuracy",
           after: "90%+ tracking accuracy"
         }
       ]
     },
-    customer: {
-      title: "The Customer",
+    myRole: {
+      title: "My Role",
       content: (
         <div>
           <p>
-            <strong>Resulta</strong> had been running marketing campaigns across multiple channels for several years, but was struggling with accurate performance measurement and optimization. As the company expanded its digital brand portfolio and increased marketing investments, the need for sophisticated attribution and optimization became critical.
+            As <strong>Digital Product Strategist</strong> at Resulta, I owned the marketing analytics transformation:
+          </p>
+          <ul>
+            <li><strong>Analytics Architecture:</strong> Designed and implemented Matomo tracking across all 5 brands</li>
+            <li><strong>Attribution Modeling:</strong> Built multi-touch attribution framework connecting marketing to revenue</li>
+            <li><strong>CRM Integration:</strong> Led integration between marketing platforms and CRM for complete journey visibility</li>
+            <li><strong>Dashboard Development:</strong> Created automated reporting replacing 15-20 hours/week of manual work</li>
+            <li><strong>Optimization Strategy:</strong> Established budget allocation framework and campaign optimization processes</li>
+          </ul>
+        </div>
+      )
+    },
+    timeline: {
+      title: "Project Timeline",
+      steps: [
+        {
+          phase: "Phase 1",
+          title: "Audit & Requirements",
+          description: "Audited existing tracking, identified gaps, mapped customer journeys across all brands",
+          duration: "3 weeks"
+        },
+        {
+          phase: "Phase 2",
+          title: "Matomo Implementation",
+          description: "Deployed Matomo analytics, configured custom events, set up cross-domain tracking",
+          duration: "4 weeks"
+        },
+        {
+          phase: "Phase 3",
+          title: "CRM Integration",
+          description: "Connected marketing data to CRM, built attribution models, enabled LTV calculations",
+          duration: "5 weeks"
+        },
+        {
+          phase: "Phase 4",
+          title: "Dashboard & Automation",
+          description: "Built real-time performance dashboards, automated reporting, created alerting systems",
+          duration: "4 weeks"
+        },
+        {
+          phase: "Phase 5",
+          title: "Optimization & Scaling",
+          description: "Implemented budget optimization, A/B testing protocols, continuous performance improvement",
+          duration: "Ongoing"
+        }
+      ]
+    },
+    customer: {
+      title: "About the Initiative",
+      content: (
+        <div>
+          <p>
+            <strong>Resulta</strong> was running campaigns across multiple channels but struggling with accurate measurement. Only 35% of conversions were attributed to marketing, leaving most revenue impact invisible.
           </p>
           <p>
-            As the <strong>Digital Product Strategist</strong> with responsibility for growth initiatives, I identified that our marketing performance was significantly underperforming industry benchmarks. While we were generating leads and customers, the lack of proper attribution and optimization was resulting in inefficient budget allocation and missed revenue opportunities.
-          </p>
-          <p>
-            The challenge was particularly acute because we were operating multiple brands with different customer journeys, attribution windows, and conversion patterns. Traditional marketing measurement approaches were inadequate for our complex multi-touch, multi-brand ecosystem.
-          </p>
-          <p>
-            With my background in <strong>50+ project deliveries</strong> and deep understanding of digital analytics, I recognized this as a strategic opportunity to implement advanced performance marketing frameworks that would drive significant improvements in marketing efficiency and revenue attribution.
+            With 5 brands, different customer journeys, and varying attribution windows, traditional measurement approaches weren't working. We needed sophisticated attribution and optimization for our multi-touch, multi-brand ecosystem.
           </p>
         </div>
       )
     },
+    problemImage: {
+      src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+      alt: "Marketing analytics dashboard with unclear data",
+      caption: "Only 35% of conversions were properly attributed to marketing channels"
+    },
     problem: {
-      title: "The Problem",
+      title: "The Challenge",
       content: (
         <div>
           <p>
-            Our marketing operations were suffering from fundamental measurement and optimization challenges that were limiting growth potential and wasting marketing budget:
+            I identified critical gaps in our marketing measurement:
           </p>
           
-          <p><strong>Poor Attribution Visibility</strong></p>
+          <h3>Poor Attribution Visibility</h3>
           <p>
-            Only 35% of conversions were properly attributed to marketing channels, leaving the majority of revenue impact invisible. This created a massive blind spot in understanding which campaigns, channels, and audiences were actually driving results.
+            Only 35% of conversions attributed to marketing. The majority of revenue impact was invisible. We couldn't identify which campaigns actually drove results.
           </p>
           
-          <p><strong>Inefficient Budget Allocation</strong></p>
+          <h3>Inefficient Budget Allocation</h3>
           <p>
-            Without accurate attribution data, marketing budgets were allocated based on incomplete information. High-performing channels were under-funded while low-performing channels continued to receive budget, resulting in suboptimal ROI across the entire marketing portfolio.
+            Without accurate data, budgets were allocated on incomplete information. High performers were underfunded. Low performers kept receiving budget.
           </p>
           
-          <p><strong>Limited Cross-Channel Optimization</strong></p>
+          <h3>Siloed Channels</h3>
           <p>
-            Each marketing channel operated in isolation without understanding of cross-channel customer journeys. This siloed approach prevented optimization of the complete customer experience and missed opportunities for channel synergy.
+            Each channel operated in isolation. No visibility into cross-channel journeys. Missed opportunities for channel synergy.
           </p>
           
-          <p><strong>Manual Reporting and Analysis</strong></p>
+          <h3>Manual Reporting Burden</h3>
           <p>
-            Marketing performance analysis required 15-20 hours per week of manual data compilation from multiple platforms. This time-intensive process delayed optimization decisions and limited the frequency of campaign adjustments.
+            15-20 hours/week spent compiling data from multiple platforms. Delayed optimization decisions. Data was outdated by the time we acted.
           </p>
           
-          <p><strong>Inconsistent Data Quality</strong></p>
+          <h3>Inconsistent Data</h3>
           <p>
-            Different platforms used varying attribution models, tracking implementations, and data definitions, making it impossible to create unified performance views. Data discrepancies undermined confidence in marketing decisions.
-          </p>
-          
-          <p><strong>Limited Optimization Velocity</strong></p>
-          <p>
-            Slow data processing and analysis cycles meant optimization decisions were made on outdated information. By the time performance issues were identified and addressed, significant budget had already been wasted.
+            Different platforms used different attribution models and definitions. Impossible to create unified views. Discrepancies undermined confidence.
           </p>
         </div>
       ),
       quote: {
-        text: "We were essentially flying blind with our marketing investments. We knew we were generating revenue, but couldn't accurately identify which efforts were driving results and which were wasting budget.",
-        author: "Lisa Wang, CMO of Resulta"
+        text: "We were flying blind with our marketing investments. We knew we were generating revenue, but couldn't identify which efforts were driving results and which were wasting budget.",
+        author: "CMO, Resulta"
       }
+    },
+    solutionImage: {
+      src: "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Unified analytics dashboard",
+      caption: "Building a unified attribution and analytics infrastructure"
     },
     solution: {
       title: "The Solution",
       content: (
         <div>
           <p>
-            I designed and implemented a comprehensive performance marketing optimization system that transformed our ability to measure, analyze, and optimize marketing investments across all channels and brands.
+            I designed and implemented a comprehensive performance marketing system with accurate attribution and automated optimization.
           </p>
           
-          <p><strong>Advanced Analytics Infrastructure Implementation</strong></p>
+          <h3>Matomo Analytics Implementation</h3>
           <p>
-            Deployed <strong>Matomo Analytics</strong> as the central analytics platform, providing privacy-compliant, accurate tracking across all digital properties. This implementation included custom event tracking, enhanced e-commerce monitoring, and cross-domain attribution capabilities.
+            Deployed Matomo as the central analytics platform. Privacy-compliant, accurate tracking across all properties. Custom event tracking, enhanced e-commerce, cross-domain attribution.
           </p>
           
-          <p><strong>Unified CRM Integration and Attribution</strong></p>
+          <h3>CRM Integration</h3>
           <p>
-            Integrated marketing data with CRM systems to create complete customer journey visibility from first touch to final conversion. This integration enabled multi-touch attribution modeling and accurate lifetime value calculations for different acquisition channels.
+            Connected marketing data to CRM for complete journey visibility. First touch to final conversion. Enabled multi-touch attribution and accurate LTV calculations.
           </p>
           
-          <p><strong>Automated Performance Reporting Dashboard</strong></p>
+          <h3>Automated Dashboards</h3>
           <p>
-            Built comprehensive performance dashboards that automatically aggregate data from all marketing channels, providing real-time visibility into campaign performance, ROI, and optimization opportunities. This eliminated manual reporting and enabled daily optimization decisions.
+            Built real-time dashboards aggregating all channel data. Eliminated manual reporting. Enabled daily optimization decisions.
           </p>
           
-          <p><strong>Cross-Channel Attribution Modeling</strong></p>
+          <h3>Multi-Touch Attribution</h3>
           <p>
-            Implemented sophisticated attribution models that accurately credit each touchpoint in complex customer journeys. This approach revealed the true contribution of brand awareness campaigns, retargeting efforts, and direct response advertising.
+            Implemented sophisticated models crediting each touchpoint accurately. Revealed true contribution of awareness vs. retargeting vs. direct response.
           </p>
           
-          <p><strong>Predictive Analytics and Optimization Algorithms</strong></p>
+          <h3>Optimization Framework</h3>
           <p>
-            Developed machine learning models that identify high-value customer segments, predict optimal budget allocation across channels, and automatically flag underperforming campaigns for immediate attention.
-          </p>
-          
-          <p><strong>Performance Optimization Framework</strong></p>
-          <p>
-            Created systematic processes for campaign optimization, including automated A/B testing protocols, bid optimization strategies, and audience refinement methodologies that continuously improve performance across all channels.
+            Created systematic processes for campaign optimization: automated A/B testing, bid optimization, audience refinement. Continuous improvement across all channels.
           </p>
         </div>
       ),
       features: [
-        "Matomo Analytics implementation with custom event tracking and attribution",
-        "Unified CRM integration for complete customer journey visibility",
-        "Automated performance reporting dashboards with real-time data",
-        "Multi-touch attribution modeling across all marketing channels",
-        "Predictive analytics for budget optimization and customer segmentation",
-        "Machine learning algorithms for automated campaign optimization",
-        "Cross-brand performance comparison and optimization frameworks",
-        "Privacy-compliant tracking implementation meeting GDPR standards"
-      ],
-      quote: {
-        text: "The transformation was immediate and dramatic. We went from guessing about marketing performance to having precise, actionable insights that drive daily optimization decisions.",
-        author: "Michael Torres, VP of Growth Marketing at Resulta"
-      }
+        "Matomo Analytics with custom event tracking",
+        "CRM integration for complete journey visibility",
+        "Real-time automated performance dashboards",
+        "Multi-touch attribution modeling",
+        "Predictive budget optimization",
+        "Automated campaign optimization",
+        "Cross-brand performance comparison",
+        "GDPR-compliant tracking"
+      ]
+    },
+    impactImage: {
+      src: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Revenue growth charts",
+      caption: "Marketing ROI improved from 2.1x to 7.4x ROAS"
     },
     impact: {
-      title: "The Impact",
+      title: "The Results",
       content: (
         <div>
           <p>
-            The performance marketing optimization initiative delivered exceptional results that fundamentally transformed our marketing effectiveness and revenue generation capabilities:
+            The optimization initiative delivered transformational results:
           </p>
           
-          <p><strong>Massive Revenue Attribution Improvement</strong></p>
+          <h3>$1M+ Attributed Revenue</h3>
           <p>
-            Increased attributed revenue from $285K to over <strong>$1M annually</strong> through improved tracking and optimization. This improvement revealed previously hidden revenue streams and enabled more confident marketing investments.
+            Up from $285K tracked annually. Improved tracking revealed previously hidden revenue streams and enabled confident marketing investments.
           </p>
           
-          <p><strong>Dramatic ROI Enhancement</strong></p>
+          <h3>7.4x ROAS</h3>
           <p>
-            Marketing ROI improved from 2.1x to <strong>7.4x return on ad spend</strong> through precise attribution, budget optimization, and performance-driven campaign management. This improvement directly translated to increased profitability and marketing budget expansion opportunities.
+            Marketing ROI improved from 2.1x to 7.4x through precise attribution, budget optimization, and performance-driven campaign management.
           </p>
           
-          <p><strong>Significant Cost Reduction</strong></p>
+          <h3>45% CAC Reduction</h3>
           <p>
-            Customer acquisition costs decreased by <strong>45%</strong> (from $145 to $79) through identification and elimination of inefficient campaigns, better audience targeting, and optimized channel mix allocation.
+            Customer acquisition cost dropped from $145 to $79. Identified and eliminated inefficient campaigns. Better targeting and channel mix.
           </p>
           
-          <p><strong>Enhanced Tracking Accuracy</strong></p>
+          <h3>90%+ Tracking Accuracy</h3>
           <p>
-            Conversion tracking accuracy improved from 35% to <strong>over 90%</strong>, providing reliable data for all optimization decisions and enabling confident scaling of successful campaigns.
+            Up from 35%. Reliable data for all optimization decisions. Confident scaling of successful campaigns.
           </p>
           
-          <p><strong>Operational Efficiency Gains</strong></p>
+          <h3>15-20 Hours Saved Weekly</h3>
           <p>
-            Eliminated 15-20 hours of weekly manual reporting through automation, allowing the marketing team to focus on strategic optimization rather than data compilation. This time savings translated to faster optimization cycles and improved campaign performance.
+            Eliminated manual reporting through automation. Team focused on strategy instead of data compilation. Faster optimization cycles.
           </p>
           
-          <p><strong>Strategic Decision-Making Enhancement</strong></p>
+          <h3>Evidence-Based Strategy</h3>
           <p>
-            Data-driven insights enabled strategic decisions about channel investments, audience expansion, and product positioning that were previously impossible. Marketing strategy shifted from intuition-based to evidence-based decision making.
-          </p>
-          
-          <p><strong>Scalable Growth Foundation</strong></p>
-          <p>
-            The optimization framework created a foundation for sustainable marketing growth, with systems that automatically improve performance as volume increases. This scalability supports aggressive growth targets without proportional increases in management overhead.
-          </p>
-          
-          <p><strong>Competitive Advantage Development</strong></p>
-          <p>
-            Superior marketing measurement and optimization capabilities created a significant competitive advantage, enabling more aggressive bidding in profitable audiences while maintaining healthy unit economics.
+            Shifted from intuition-based to data-driven decision making. Channel investments, audience expansion, and positioning now backed by data.
           </p>
         </div>
       ),
       quote: {
-        text: "This optimization system didn't just improve our marketing; it transformed our entire approach to growth. We now have the confidence and data to scale marketing investments aggressively while maintaining profitability.",
-        author: "Rachel Anderson, Chief Revenue Officer at Resulta"
+        text: "This system transformed our entire approach to growth. We now have the confidence and data to scale marketing investments aggressively while maintaining profitability.",
+        author: "Chief Revenue Officer, Resulta"
       }
+    },
+    learnings: {
+      title: "Key Learnings",
+      items: [
+        {
+          text: "Attribution is a journey, not a destination. We started with last-click, moved to multi-touch, and continue refining. Perfect attribution doesn't exist, but good-enough attribution transforms decisions."
+        },
+        {
+          text: "Privacy-first pays off. Choosing Matomo over GA4 meant better data ownership and GDPR compliance. No sampling issues, no data retention limits."
+        },
+        {
+          text: "Dashboards need owners. Automated reports only work if someone acts on them. We assigned channel owners who review their dashboards daily."
+        },
+        {
+          text: "CAC isn't the only metric. Early on, we over-optimized for CAC and hurt brand awareness. Now we balance efficiency with scale targets."
+        }
+      ]
     },
     tags: [
       "Performance Marketing",
@@ -227,4 +281,4 @@ const PerformanceMarketingOptimization: React.FC = () => {
   return <CaseStudyLayout {...caseStudyData} />;
 };
 
-export default PerformanceMarketingOptimization; 
+export default PerformanceMarketingOptimization;

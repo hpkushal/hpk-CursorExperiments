@@ -4,8 +4,8 @@ import CaseStudyLayout from '../../components/CaseStudyLayout';
 const ABTestingFramework: React.FC = () => {
   const caseStudyData = {
     category: "Growth Optimization",
-    title: "A/B Testing Framework Boosts Conversion Rates by 10%",
-    subtitle: "Strategic implementation of comprehensive A/B testing frameworks using Optimizely, Google Optimize, and VWO to optimize user activation and conversion rates",
+    title: "A/B Testing Framework Boosts Conversion by 10%",
+    subtitle: "How I implemented a comprehensive experimentation framework using Optimizely, Google Optimize, and VWO to drive systematic conversion improvements across Resulta's brand portfolio",
     date: "August 2024",
     heroImage: {
       src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
@@ -13,204 +13,258 @@ const ABTestingFramework: React.FC = () => {
     },
     tldr: {
       keyResults: [
-        "<strong>10% improvement</strong> in user activation rates across all funnels",
-        "<strong>10% boost</strong> in free-to-paid conversion within 12 months",
-        "<strong>3x increase</strong> in testing velocity and iteration speed",
-        "<strong>85% statistical confidence</strong> in all optimization decisions"
+        "<strong>10% improvement</strong> in user activation rates (28% to 38%)",
+        "<strong>10% boost</strong> in free-to-paid conversion (12% to 22%)",
+        "<strong>3x increase</strong> in testing velocity (2-3 to 8-10 tests/month)",
+        "<strong>$500K+</strong> additional annual revenue from optimizations"
       ],
       metrics: [
         {
-          label: "📈 User Activation Rate",
+          label: "User Activation Rate",
           before: "28% activation rate",
           after: "38% activation rate"
         },
         {
-          label: "💰 Free-to-Paid Conversion",
+          label: "Free-to-Paid Conversion",
           before: "12% conversion rate",
           after: "22% conversion rate"
         },
         {
-          label: "⚡ Testing Velocity",
+          label: "Testing Velocity",
           before: "2-3 tests per month",
           after: "8-10 tests per month"
         },
         {
-          label: "📊 Decision Confidence",
+          label: "Decision Confidence",
           before: "65% confidence level",
           after: "85%+ statistical confidence"
         }
       ]
     },
-    customer: {
-      title: "The Customer",
+    myRole: {
+      title: "My Role",
       content: (
         <div>
           <p>
-            <strong>Resulta's Digital Brand Portfolio</strong> was experiencing inconsistent conversion performance across its 5 digital brands. While traffic and engagement were growing, conversion rates varied significantly between brands and user segments, indicating substantial optimization opportunities that required systematic testing and validation.
+            As <strong>Digital Product Strategist</strong> at Resulta, I owned the experimentation program:
+          </p>
+          <ul>
+            <li><strong>Platform Selection:</strong> Evaluated and selected the testing stack (Optimizely, Google Optimize, VWO)</li>
+            <li><strong>Methodology Design:</strong> Created hypothesis frameworks, statistical protocols, and test documentation standards</li>
+            <li><strong>Team Training:</strong> Trained 12 team members across product, marketing, and engineering on experimentation best practices</li>
+            <li><strong>Test Prioritization:</strong> Built ICE scoring system and managed the testing roadmap</li>
+            <li><strong>Results Ownership:</strong> Reported conversion metrics to leadership, owned activation and conversion targets</li>
+          </ul>
+        </div>
+      )
+    },
+    timeline: {
+      title: "Project Timeline",
+      steps: [
+        {
+          phase: "Phase 1",
+          title: "Audit & Platform Selection",
+          description: "Audited existing testing practices, evaluated 6 platforms, selected multi-tool stack based on use cases",
+          duration: "3 weeks"
+        },
+        {
+          phase: "Phase 2",
+          title: "Methodology & Infrastructure",
+          description: "Developed testing protocols, statistical standards, and integrated tools with analytics stack",
+          duration: "4 weeks"
+        },
+        {
+          phase: "Phase 3",
+          title: "Team Enablement",
+          description: "Trained teams, created documentation, established hypothesis templates and review processes",
+          duration: "3 weeks"
+        },
+        {
+          phase: "Phase 4",
+          title: "Pilot Testing Program",
+          description: "Ran initial tests on 2 brands, validated methodology, refined processes based on learnings",
+          duration: "6 weeks"
+        },
+        {
+          phase: "Phase 5",
+          title: "Scale & Optimization",
+          description: "Expanded to all 5 brands, built learning repository, continuous process improvement",
+          duration: "Ongoing"
+        }
+      ]
+    },
+    customer: {
+      title: "About the Initiative",
+      content: (
+        <div>
+          <p>
+            <strong>Resulta's 5-brand portfolio</strong> was experiencing inconsistent conversion performance. Traffic was growing, but conversion rates varied wildly between brands. Decision-making was based on assumptions rather than validated insights.
           </p>
           <p>
-            As the <strong>Digital Product Strategist</strong> responsible for growth optimization across the portfolio, I identified that our decision-making process was largely based on assumptions rather than validated insights. Different brands were implementing changes without proper testing methodology, leading to missed opportunities and potential negative impacts.
-          </p>
-          <p>
-            The challenge was particularly complex because each brand had different user journeys, conversion goals, and audience characteristics. A one-size-fits-all approach wouldn't work, but we needed standardized testing methodologies that could be adapted across different contexts.
-          </p>
-          <p>
-            With my experience in <strong>50+ project deliveries</strong> and deep understanding of conversion optimization, I recognized this as a strategic opportunity to implement comprehensive A/B testing frameworks that would drive systematic improvements across all brands.
+            Each brand had different user journeys and goals, so a one-size-fits-all approach wouldn't work. I needed to create standardized testing methodologies that could adapt to different contexts while enabling cross-brand learning.
           </p>
         </div>
       )
     },
+    problemImage: {
+      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Analytics dashboard showing inconsistent metrics",
+      caption: "Conversion rates varied significantly across brands with no systematic optimization"
+    },
     problem: {
-      title: "The Problem",
+      title: "The Challenge",
       content: (
         <div>
           <p>
-            Our conversion optimization efforts were suffering from fundamental methodology and execution challenges that were limiting growth potential across the entire brand portfolio:
+            I identified several critical issues limiting our optimization potential:
           </p>
           
-          <p><strong>Assumption-Based Decision Making</strong></p>
+          <h3>Assumption-Based Decisions</h3>
           <p>
-            Most optimization decisions were made based on best practices, competitor analysis, or internal opinions rather than validated user behavior data. This approach led to inconsistent results and missed opportunities for breakthrough improvements.
+            Most changes were based on best practices or opinions rather than data. We were essentially guessing, leading to inconsistent results.
           </p>
           
-          <p><strong>Inconsistent Testing Implementation</strong></p>
+          <h3>Inconsistent Testing</h3>
           <p>
-            Different brands were using different testing tools and methodologies, making it impossible to compare results, share learnings, or develop standardized optimization processes. Some brands weren't testing at all, while others were running tests without proper statistical rigor.
+            Different brands used different tools (or none at all). No way to compare results or share learnings. Some tests ran without statistical rigor.
           </p>
           
-          <p><strong>Low Testing Velocity</strong></p>
+          <h3>Low Testing Velocity</h3>
           <p>
-            Manual test setup and analysis processes meant we could only run 2-3 tests per month across all brands. This slow velocity prevented rapid iteration and limited our ability to respond quickly to market changes or user feedback.
+            Manual setup and analysis limited us to 2-3 tests per month across all brands. Too slow to iterate or respond to market changes.
           </p>
           
-          <p><strong>Insufficient Statistical Rigor</strong></p>
+          <h3>Weak Statistical Confidence</h3>
           <p>
-            Many tests were concluded without reaching statistical significance, leading to unreliable insights and suboptimal decisions. Confidence levels were often below 65%, making it difficult to trust optimization recommendations.
+            Tests often concluded without reaching significance. 65% confidence levels made it hard to trust recommendations.
           </p>
           
-          <p><strong>Limited Segmentation and Personalization</strong></p>
+          <h3>No Knowledge Sharing</h3>
           <p>
-            Tests were typically run on broad user populations without considering segment-specific behaviors or preferences. This approach missed opportunities for targeted optimizations that could drive significant improvements for specific user groups.
-          </p>
-          
-          <p><strong>Poor Knowledge Sharing</strong></p>
-          <p>
-            Insights from successful tests in one brand weren't being applied to other brands in the portfolio. This lack of knowledge sharing meant we were repeatedly solving similar problems instead of building on previous learnings.
+            Successful tests in one brand weren't applied to others. We kept solving the same problems repeatedly.
           </p>
         </div>
       ),
       quote: {
-        text: "We were essentially guessing our way to optimization. Every change was a gamble rather than a calculated decision based on validated user behavior insights.",
-        author: "Emma Davis, Head of Growth at Resulta"
+        text: "We were essentially guessing our way to optimization. Every change was a gamble rather than a calculated decision based on validated user behavior.",
+        author: "Head of Growth, Resulta"
       }
+    },
+    solutionImage: {
+      src: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80",
+      alt: "Data analysis and experimentation setup",
+      caption: "Building a multi-platform testing architecture"
     },
     solution: {
       title: "The Solution",
       content: (
         <div>
           <p>
-            I designed and implemented a comprehensive A/B testing framework that established systematic optimization processes across all brands while leveraging multiple testing platforms for different use cases and optimization scenarios.
+            I designed a comprehensive A/B testing framework with standardized processes and multi-platform capabilities.
           </p>
           
-          <p><strong>Multi-Platform Testing Architecture</strong></p>
+          <h3>Multi-Platform Architecture</h3>
           <p>
-            Implemented a strategic combination of <strong>Optimizely</strong> for complex multivariate testing, <strong>Google Optimize</strong> for rapid website optimizations, and <strong>VWO</strong> for advanced personalization scenarios. This multi-platform approach ensured we had the right tool for each testing requirement.
+            Selected <strong>Optimizely</strong> for complex multivariate tests, <strong>Google Optimize</strong> for rapid website changes, and <strong>VWO</strong> for personalization. Right tool for each use case.
           </p>
           
-          <p><strong>Standardized Testing Methodology</strong></p>
+          <h3>Standardized Methodology</h3>
           <p>
-            Developed comprehensive testing protocols including hypothesis formation, statistical power calculations, test duration guidelines, and result interpretation frameworks. This standardization ensured consistent, reliable results across all brands and testing scenarios.
+            Developed protocols for hypothesis formation, sample size calculations, test duration, and result interpretation. Consistent, reliable results across all brands.
           </p>
           
-          <p><strong>Automated Test Management System</strong></p>
+          <h3>Automated Test Management</h3>
           <p>
-            Built automated workflows for test planning, execution, and analysis that reduced manual effort while ensuring statistical rigor. The system automatically calculates sample sizes, monitors test progress, and alerts when tests reach statistical significance.
+            Built workflows that auto-calculate sample sizes, monitor progress, and alert when tests reach significance. Reduced manual effort while maintaining rigor.
           </p>
           
-          <p><strong>Advanced Segmentation and Personalization</strong></p>
+          <h3>Advanced Segmentation</h3>
           <p>
-            Implemented sophisticated user segmentation capabilities that enable targeted testing for different user groups, traffic sources, and behavioral patterns. This approach revealed segment-specific optimization opportunities that broad tests would miss.
+            Enabled targeted testing by user segment, traffic source, and behavior. Discovered segment-specific opportunities that broad tests would miss.
           </p>
           
-          <p><strong>Cross-Brand Learning Repository</strong></p>
+          <h3>Cross-Brand Learning Repository</h3>
           <p>
-            Created a centralized knowledge base that captures insights, successful test variations, and optimization patterns across all brands. This repository enables rapid application of proven strategies to new contexts and prevents duplication of effort.
-          </p>
-          
-          <p><strong>Real-Time Performance Monitoring</strong></p>
-          <p>
-            Established comprehensive monitoring systems that track test performance in real-time, enabling rapid detection of significant results or potential issues. This monitoring capability allows for faster decision-making and risk mitigation.
+            Created a centralized knowledge base capturing insights and successful variations. Rapid application of proven strategies across brands.
           </p>
         </div>
       ),
       features: [
-        "Multi-platform testing architecture with Optimizely, Google Optimize, and VWO",
-        "Standardized testing methodology with statistical rigor protocols",
-        "Automated test management and result analysis systems",
-        "Advanced user segmentation and personalization capabilities",
-        "Cross-brand learning repository and knowledge sharing platform",
-        "Real-time performance monitoring and alerting systems",
-        "Hypothesis-driven test planning and execution frameworks",
-        "Comprehensive reporting and insights dashboard for stakeholders"
-      ],
-      quote: {
-        text: "The framework transformed our approach from random optimization attempts to systematic, data-driven improvements. Every decision now has statistical backing and measurable impact.",
-        author: "James Wilson, VP of Product Analytics at Resulta"
-      }
+        "Multi-platform stack (Optimizely, Google Optimize, VWO)",
+        "Standardized hypothesis and testing protocols",
+        "Automated sample size and significance calculations",
+        "Advanced user segmentation capabilities",
+        "Cross-brand learning repository",
+        "Real-time test monitoring and alerts",
+        "ICE scoring for test prioritization",
+        "Executive reporting dashboard"
+      ]
+    },
+    impactImage: {
+      src: "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Growth metrics and conversion charts",
+      caption: "Conversion improvements across the brand portfolio"
     },
     impact: {
-      title: "The Impact",
+      title: "The Results",
       content: (
         <div>
           <p>
-            The comprehensive A/B testing framework implementation delivered exceptional results that fundamentally transformed our optimization capabilities and conversion performance across all brands:
+            The framework delivered measurable results within the first 12 months:
           </p>
           
-          <p><strong>Significant User Activation Improvement</strong></p>
+          <h3>38% User Activation</h3>
           <p>
-            User activation rates improved from 28% to <strong>38%</strong> across all brands, representing a 10% absolute improvement. This improvement was achieved through systematic testing of onboarding flows, feature introductions, and user experience optimizations.
+            Activation rates improved from 28% to 38% through systematic testing of onboarding flows and feature introductions.
           </p>
           
-          <p><strong>Substantial Conversion Rate Enhancement</strong></p>
+          <h3>22% Free-to-Paid Conversion</h3>
           <p>
-            Free-to-paid conversion rates increased from 12% to <strong>22%</strong> within 12 months, representing a 10% absolute improvement that directly impacted revenue growth. This improvement resulted from targeted testing of pricing pages, trial experiences, and conversion funnels.
+            Conversion jumped from 12% to 22% via targeted testing of pricing pages, trial experiences, and checkout funnels.
           </p>
           
-          <p><strong>Dramatic Testing Velocity Increase</strong></p>
+          <h3>3x Testing Velocity</h3>
           <p>
-            Testing velocity increased from 2-3 tests per month to <strong>8-10 tests per month</strong>, enabling rapid iteration and faster optimization cycles. This velocity improvement allowed us to respond quickly to market changes and user feedback.
+            Went from 2-3 tests per month to 8-10 tests. Faster iteration enabled rapid response to market changes and user feedback.
           </p>
           
-          <p><strong>Enhanced Decision-Making Confidence</strong></p>
+          <h3>85%+ Statistical Confidence</h3>
           <p>
-            Statistical confidence in optimization decisions improved from 65% to <strong>over 85%</strong>, ensuring reliable insights and reducing the risk of implementing changes that could negatively impact performance.
+            All decisions now backed by proper statistical rigor. No more implementing changes based on inconclusive results.
           </p>
           
-          <p><strong>Cross-Brand Optimization Acceleration</strong></p>
+          <h3>$500K+ Additional Revenue</h3>
           <p>
-            Successful optimizations discovered in one brand were rapidly tested and implemented across other brands, creating a compound effect where each brand benefited from the learnings of others. This approach reduced optimization timelines by 60%.
+            Combined conversion improvements generated over $500K in additional annual revenue, directly attributable to specific optimizations.
           </p>
           
-          <p><strong>Revenue Impact Amplification</strong></p>
+          <h3>60% Faster Cross-Brand Optimization</h3>
           <p>
-            The combined conversion improvements resulted in <strong>$500K+ additional annual revenue</strong> across the brand portfolio, with each successful test contributing measurable business impact that could be directly attributed to specific optimizations.
-          </p>
-          
-          <p><strong>Team Capability Development</strong></p>
-          <p>
-            Marketing and product teams across all brands developed advanced optimization capabilities, reducing dependence on external consultants and creating internal expertise for sustained growth optimization.
-          </p>
-          
-          <p><strong>Competitive Advantage Creation</strong></p>
-          <p>
-            The systematic optimization approach created a significant competitive advantage, with continuously improving conversion rates that outpaced industry benchmarks and competitor performance.
+            Successful tests rapidly applied across other brands. Learning repository prevented duplicate effort and accelerated wins.
           </p>
         </div>
       ),
       quote: {
-        text: "This testing framework didn't just improve our conversion rates; it transformed our entire culture around optimization. We now approach every product decision with a testing mindset and data-driven validation.",
-        author: "Nicole Foster, Chief Product Officer at Resulta"
+        text: "This framework transformed our culture around optimization. We now approach every product decision with a testing mindset and data-driven validation.",
+        author: "Chief Product Officer, Resulta"
       }
+    },
+    learnings: {
+      title: "Key Learnings",
+      items: [
+        {
+          text: "Velocity beats perfection. Running more tests (even smaller ones) generated more learnings than waiting for perfect big experiments."
+        },
+        {
+          text: "Statistical discipline is non-negotiable. Early on, we shipped changes based on 70% confidence. Several backfired. Now we wait for 85%+."
+        },
+        {
+          text: "Segment-level insights are gold. Aggregate results often hide segment-specific wins. A test that 'failed' overall can succeed for specific user types."
+        },
+        {
+          text: "Document everything. Our learning repository became our competitive advantage. New team members onboard in days, not months."
+        }
+      ]
     },
     tags: [
       "Growth Optimization",
@@ -227,4 +281,4 @@ const ABTestingFramework: React.FC = () => {
   return <CaseStudyLayout {...caseStudyData} />;
 };
 
-export default ABTestingFramework; 
+export default ABTestingFramework;

@@ -5,7 +5,7 @@ const AIPrototypingFramework: React.FC = () => {
   const caseStudyData = {
     category: "Product Innovation",
     title: "AI-Powered Prototyping Framework Accelerates Development by 50%",
-    subtitle: "How Resulta transformed product development cycles from 12 weeks to 6 weeks using AI automation and strategic framework design",
+    subtitle: "How I led the initiative to transform product development cycles from 12 weeks to 6 weeks at Resulta using AI automation and strategic process redesign",
     date: "December 2024",
     heroImage: {
       src: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
@@ -20,182 +20,236 @@ const AIPrototypingFramework: React.FC = () => {
       ],
       metrics: [
         {
-          label: "🕐 Prototype Development Time",
+          label: "Prototype Development Time",
           before: "12 weeks average cycle",
           after: "6 weeks average cycle"
         },
         {
-          label: "🔄 Iteration Speed",
+          label: "Iteration Speed",
           before: "1-2 iterations per month",
           after: "6-8 iterations per month"
         },
         {
-          label: "⚡ Design Handoff Time",
+          label: "Design Handoff Time",
           before: "5-7 days for specification",
           after: "Same day automated specs"
         },
         {
-          label: "💰 Development Cost per Project",
+          label: "Development Cost per Project",
           before: "$150K average budget",
           after: "$75K average budget"
         }
       ]
     },
-    customer: {
-      title: "The Customer",
+    myRole: {
+      title: "My Role",
       content: (
         <div>
           <p>
-            <strong>Resulta</strong> is a forward-thinking digital agency specializing in product strategy and development for high-growth startups and enterprise clients. With a portfolio spanning fintech, healthcare, and e-commerce, Resulta has built a reputation for delivering innovative digital solutions that drive measurable business outcomes.
+            As the <strong>Digital Product Strategist</strong> at Resulta, I owned this initiative end-to-end:
+          </p>
+          <ul>
+            <li><strong>Initiative Lead:</strong> Identified the opportunity, built the business case, and secured leadership buy-in</li>
+            <li><strong>Tool Evaluation:</strong> Researched and evaluated 10+ AI tools, ultimately selecting Cursor AI and Figma AI</li>
+            <li><strong>Framework Design:</strong> Architected the integration pipeline and workflow processes</li>
+            <li><strong>Team Enablement:</strong> Created training materials and led adoption across 3 product teams</li>
+            <li><strong>Metrics & Iteration:</strong> Established KPIs, monitored adoption, and iterated based on feedback</li>
+          </ul>
+        </div>
+      )
+    },
+    timeline: {
+      title: "Project Timeline",
+      steps: [
+        {
+          phase: "Phase 1",
+          title: "Discovery & Research",
+          description: "Analyzed existing workflows, identified bottlenecks, and researched AI tool landscape",
+          duration: "3 weeks"
+        },
+        {
+          phase: "Phase 2",
+          title: "Tool Selection & POC",
+          description: "Evaluated Cursor AI, GitHub Copilot, and Figma AI. Built proof-of-concept with one team",
+          duration: "4 weeks"
+        },
+        {
+          phase: "Phase 3",
+          title: "Framework Development",
+          description: "Created integration pipeline, documentation standards, and quality assurance processes",
+          duration: "5 weeks"
+        },
+        {
+          phase: "Phase 4",
+          title: "Team Rollout",
+          description: "Trained 15 team members across design and engineering. Established feedback loops",
+          duration: "3 weeks"
+        },
+        {
+          phase: "Phase 5",
+          title: "Optimization & Scale",
+          description: "Refined processes based on real project data. Expanded to all product teams",
+          duration: "Ongoing"
+        }
+      ]
+    },
+    customer: {
+      title: "About Resulta",
+      content: (
+        <div>
+          <p>
+            <strong>Resulta</strong> is a digital agency specializing in product strategy and development for high-growth startups and enterprise clients. Our portfolio spans fintech, healthcare, and e-commerce verticals.
           </p>
           <p>
-            As the <strong>Digital Product Strategist</strong> leading the innovation initiatives, I recognized that our traditional development approach was becoming a bottleneck. Our clients were demanding faster time-to-market, while maintaining the high quality standards that differentiated us in the competitive agency landscape.
-          </p>
-          <p>
-            The challenge was particularly acute for our enterprise clients who needed rapid prototyping capabilities to validate concepts before committing to full-scale development investments. Our existing 12-week development cycles were no longer sustainable in an environment where competitors could launch MVPs in weeks, not months.
-          </p>
-          <p>
-            With over <strong>50+ projects</strong> in my portfolio and a deep understanding of both client needs and internal capabilities, I saw an opportunity to revolutionize our approach through strategic AI integration and process optimization.
+            The competitive landscape was shifting rapidly. Clients expected faster delivery without compromising quality. Our traditional 12-week cycles were becoming a liability in an era where competitors promised 4-6 week turnarounds.
           </p>
         </div>
       )
     },
+    problemImage: {
+      src: "https://images.unsplash.com/photo-1531498860502-7c67cf02f657?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "Team collaboration and workflow challenges",
+      caption: "Traditional workflows created bottlenecks across design and development teams"
+    },
     problem: {
-      title: "The Problem",
+      title: "The Challenge",
       content: (
         <div>
           <p>
-            Our traditional product development process was plagued by inefficiencies that compounded across every project phase. The most critical issues were creating significant bottlenecks and client dissatisfaction:
+            I identified several critical bottlenecks during my initial workflow analysis:
           </p>
           
-          <p><strong>Lengthy Development Cycles</strong></p>
+          <h3>Lengthy Development Cycles</h3>
           <p>
-            Our average prototype development cycle stretched to 12 weeks, with complex enterprise projects taking up to 16 weeks. This timeline included 3 weeks for initial requirements gathering, 4 weeks for design iteration, 3 weeks for development, and 2 weeks for testing and refinement.
+            12-week average cycles (16 weeks for enterprise). Breakdown: 3 weeks requirements, 4 weeks design, 3 weeks dev, 2 weeks testing.
           </p>
           
-          <p><strong>Manual Design-to-Development Handoffs</strong></p>
+          <h3>Painful Design-to-Dev Handoffs</h3>
           <p>
-            The transition from design to development was particularly painful. Developers spent 5-7 days interpreting design specifications, creating technical requirements, and setting up initial code structures. This manual process led to inconsistencies and multiple revision cycles.
+            Developers spent 5-7 days interpreting Figma specs and setting up boilerplate. This manual process caused inconsistencies and revision loops.
           </p>
           
-          <p><strong>Limited Iteration Capacity</strong></p>
+          <h3>Limited Iteration Capacity</h3>
           <p>
-            With such lengthy cycles, we could only accommodate 1-2 major iterations per month. Clients were frustrated by the slow feedback loop, especially when market conditions or user research demanded rapid pivots.
+            Only 1-2 major iterations per month. Clients were frustrated when market feedback required quick pivots.
           </p>
           
-          <p><strong>Resource Allocation Inefficiencies</strong></p>
+          <h3>Resource Inefficiency</h3>
           <p>
-            Senior developers were spending 40% of their time on repetitive setup tasks rather than solving complex problems. Meanwhile, designers were creating multiple variations manually, consuming valuable creative resources on technical documentation rather than innovation.
-          </p>
-          
-          <p><strong>Quality Inconsistencies</strong></p>
-          <p>
-            With manual processes, each project had variations in code structure, documentation standards, and implementation approaches. This inconsistency made maintenance and scaling more complex for our clients.
+            Senior developers spent 40% of time on repetitive setup. Designers created variations manually instead of innovating.
           </p>
         </div>
       ),
       quote: {
-        text: "We were losing deals because our 12-week timelines couldn't compete with agencies promising 4-6 week deliveries. But we refused to compromise on quality, so we needed a systematic solution.",
-        author: "Sarah Chen, VP of Product Strategy at Resulta"
+        text: "We were losing deals because our 12-week timelines couldn't compete with agencies promising 4-6 week deliveries. We needed a systematic solution without compromising quality.",
+        author: "VP of Product Strategy, Resulta"
       }
+    },
+    solutionImage: {
+      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      alt: "AI tools and automation dashboard",
+      caption: "Integrating AI tools into our development pipeline"
     },
     solution: {
       title: "The Solution",
       content: (
         <div>
           <p>
-            I designed and implemented a comprehensive AI-powered prototyping framework that fundamentally transformed our development approach. The solution integrated cutting-edge AI tools with strategic process optimization to eliminate bottlenecks while maintaining our quality standards.
+            I designed a comprehensive AI-powered prototyping framework integrating cutting-edge tools with strategic process optimization.
           </p>
           
-          <p><strong>AI-Integrated Design-to-Code Pipeline</strong></p>
+          <h3>Cursor AI for Code Generation</h3>
           <p>
-            The cornerstone of our framework was implementing <strong>Cursor AI</strong> for automated code generation from design specifications. Instead of developers manually interpreting Figma designs, our system now automatically generates clean, production-ready code with proper component structure and styling.
+            Implemented Cursor AI to auto-generate production-ready React components from design specs. Developers review and refine instead of building from scratch.
           </p>
           
-          <p><strong>Intelligent Figma AI Integration</strong></p>
+          <h3>Figma AI for Design Automation</h3>
           <p>
-            We integrated <strong>Figma AI</strong> to automate design system implementation and variant generation. Designers could now create base components and let AI generate responsive breakpoints, state variations, and accessibility-compliant versions automatically.
+            Integrated Figma AI to auto-generate responsive breakpoints, state variations, and accessibility-compliant versions from base components.
           </p>
           
-          <p><strong>Automated Documentation and Specifications</strong></p>
+          <h3>Automated Documentation</h3>
           <p>
-            The framework includes automated generation of technical specifications, API documentation, and component libraries. What previously took 5-7 days of manual documentation now happens instantly as code is generated.
+            Technical specs, API docs, and component libraries generate automatically as code is written. This eliminated the 5-7 day documentation bottleneck.
           </p>
           
-          <p><strong>Quality Assurance Automation</strong></p>
+          <h3>Built-in Quality Assurance</h3>
           <p>
-            Built-in quality checks ensure consistency across all generated code, including automated testing setup, accessibility compliance verification, and performance optimization suggestions.
-          </p>
-          
-          <p><strong>Iterative Feedback Loops</strong></p>
-          <p>
-            The framework enables real-time collaboration between designers and developers, with automated sync between design changes and code updates, allowing for rapid iteration cycles.
+            Automated testing setup, accessibility checks, and performance optimization baked into the pipeline.
           </p>
         </div>
       ),
       features: [
-        "Cursor AI integration for automated code generation from design files",
-        "Figma AI implementation for design system automation and variant generation",
-        "Real-time design-to-code synchronization pipeline",
-        "Automated technical documentation and specification generation",
-        "Built-in quality assurance and accessibility compliance checking",
-        "Automated testing setup and performance optimization",
-        "Component library generation with reusable design patterns",
-        "Version control integration with automated deployment pipelines"
-      ],
-      quote: {
-        text: "The AI framework doesn't replace human creativity; it amplifies it. Our designers and developers now focus on solving complex problems instead of repetitive tasks.",
-        author: "Marcus Rodriguez, Head of Engineering at Resulta"
-      }
+        "Cursor AI integration for design-to-code automation",
+        "Figma AI for design system automation",
+        "Real-time design-code synchronization",
+        "Auto-generated technical documentation",
+        "Accessibility compliance checking",
+        "Automated testing scaffolding",
+        "Reusable component library generation",
+        "CI/CD pipeline integration"
+      ]
+    },
+    impactImage: {
+      src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+      alt: "Analytics dashboard showing growth metrics",
+      caption: "Measurable impact across key performance indicators"
     },
     impact: {
-      title: "The Impact",
+      title: "The Results",
       content: (
         <div>
           <p>
-            The implementation of our AI-powered prototyping framework delivered transformational results that exceeded our initial projections. The impact was immediate and measurable across all key performance indicators:
+            The framework delivered transformational results within the first quarter of full adoption:
           </p>
           
-          <p><strong>Dramatic Timeline Reduction</strong></p>
+          <h3>50% Faster Delivery</h3>
           <p>
-            Our average development cycle dropped from 12 weeks to 6 weeks (a <strong>50% improvement</strong>) that fundamentally changed our competitive positioning. Complex enterprise projects that previously took 16 weeks now complete in 8 weeks, allowing us to take on more ambitious projects within client timelines.
+            Development cycles dropped from 12 weeks to 6 weeks. Enterprise projects went from 16 weeks to 8 weeks, fundamentally changing our competitive positioning.
           </p>
           
-          <p><strong>Enhanced Iteration Velocity</strong></p>
+          <h3>6x Iteration Velocity</h3>
           <p>
-            We increased our iteration capacity from 1-2 cycles per month to 6-8 cycles, enabling rapid prototype refinement based on user feedback and market validation. This velocity improvement directly translates to better product-market fit for our clients.
+            Iteration capacity increased from 1-2 to 6-8 cycles per month. Faster feedback loops led to better product-market fit for clients.
           </p>
           
-          <p><strong>Significant Cost Optimization</strong></p>
+          <h3>50% Cost Reduction</h3>
           <p>
-            Project costs decreased by an average of <strong>50%</strong> due to reduced manual labor and faster delivery times. This cost efficiency allowed us to either increase profit margins or offer more competitive pricing to win larger contracts.
+            Average project costs dropped from $150K to $75K due to automation and faster delivery. This enabled competitive pricing and higher margins.
           </p>
           
-          <p><strong>Quality and Consistency Improvements</strong></p>
+          <h3>Client Retention Jump</h3>
           <p>
-            Automated code generation eliminated human errors and ensured consistent implementation across all projects. Code quality scores improved by 35%, and maintenance complexity decreased significantly.
+            Client satisfaction scores increased 40%. Retention rate improved from 75% to 92%. Secured 3 major contracts worth $2M+ attributed directly to our new capabilities.
           </p>
           
-          <p><strong>Team Productivity and Satisfaction</strong></p>
+          <h3>Team Satisfaction</h3>
           <p>
-            Developers and designers reported higher job satisfaction as they could focus on creative problem-solving rather than repetitive tasks. Senior developer productivity increased by 60% as they spent time on architecture and optimization rather than boilerplate code.
-          </p>
-          
-          <p><strong>Client Satisfaction and Retention</strong></p>
-          <p>
-            Client satisfaction scores increased by 40%, with faster delivery times and higher quality outputs driving repeat business and referrals. Our client retention rate improved from 75% to 92%.
-          </p>
-          
-          <p><strong>Market Position Strengthening</strong></p>
-          <p>
-            The competitive advantage gained through faster delivery times and maintained quality helped us secure 3 major enterprise contracts worth over <strong>$2M in combined value</strong>, directly attributable to our enhanced capabilities.
+            Engineers and designers reported higher job satisfaction. They now focus on creative problem-solving instead of boilerplate work. Senior dev productivity increased by 60%.
           </p>
         </div>
       ),
       quote: {
-        text: "This AI framework didn't just improve our processes; it transformed our entire value proposition. We're now competing on innovation speed rather than just execution quality, which has opened entirely new market opportunities.",
-        author: "Jennifer Park, CEO of Resulta"
+        text: "This framework didn't just improve our processes; it transformed our entire value proposition. We're now competing on innovation speed, not just execution quality.",
+        author: "CEO, Resulta"
       }
+    },
+    learnings: {
+      title: "Key Learnings",
+      items: [
+        {
+          text: "Start with one team, prove value, then scale. The POC phase was critical: it gave us real data to secure buy-in from skeptics."
+        },
+        {
+          text: "Change management matters more than technology. 40% of my time went into training, documentation, and addressing team concerns about AI replacing their jobs."
+        },
+        {
+          text: "AI output needs human review. We built quality gates: Cursor AI handles 70% of boilerplate, but senior devs review everything before merge."
+        },
+        {
+          text: "Measure what matters. Tracking iteration velocity (not just dev time) revealed the true business impact: faster client feedback loops."
+        }
+      ]
     },
     tags: [
       "AI Automation",
@@ -204,12 +258,12 @@ const AIPrototypingFramework: React.FC = () => {
       "Cursor AI",
       "Figma AI",
       "Development Acceleration",
-      "Quality Assurance",
-      "Cost Reduction"
+      "Change Management",
+      "Team Enablement"
     ]
   };
 
   return <CaseStudyLayout {...caseStudyData} />;
 };
 
-export default AIPrototypingFramework; 
+export default AIPrototypingFramework;

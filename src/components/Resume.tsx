@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { media } from '../styles/GlobalStyles';
 import OfficeHoursButtonComponent from './OfficeHoursButton';
 
@@ -15,28 +15,27 @@ const fadeInUp = keyframes`
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const pulse = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+const shimmer = keyframes`
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const progressFill = keyframes`
-  from {
-    width: 0%;
-  }
-  to {
-    width: var(--target-width);
-  }
+const float = keyframes`
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+`;
+
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 `;
 
 // Main Container
 const ResumeContainer = styled.div`
   min-height: 100vh;
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #fafbff 0%, #ffffff 100%);
   padding-top: 120px;
+  position: relative;
   
   ${media.mobile} {
     padding-top: 100px;
@@ -66,20 +65,21 @@ const MainContentWrapper = styled.div`
 
 // Sidebar Navigation
 const SidebarNav = styled.div`
-  width: 300px;
+  width: 280px;
   flex-shrink: 0;
   position: sticky;
   top: 140px;
   height: fit-content;
-  background: #f8f9fa;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(102, 126, 234, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.1);
   
   ${media.tablet} {
     width: 100%;
     position: static;
-    padding: 20px;
+    padding: 16px;
   }
 `;
 
@@ -96,14 +96,14 @@ const TabsList = styled.div`
 `;
 
 const SidebarTabButton = styled.button<{ active?: boolean }>`
-  background: transparent;
-  color: #666;
+  background: ${props => props.active ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'transparent'};
+  color: ${props => props.active ? 'white' : '#666'};
   border: none;
-  padding: 15px 20px;
-  border-radius: 12px;
+  padding: 16px 20px;
+  border-radius: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.95rem;
   text-align: left;
   display: flex;
@@ -111,37 +111,24 @@ const SidebarTabButton = styled.button<{ active?: boolean }>`
   gap: 12px;
   position: relative;
   
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 60%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover {
-    background: rgba(102, 126, 234, 0.1);
-    color: #667eea;
-    transform: translateX(5px);
-    
-    &:before {
-      opacity: 1;
+  ${props => !props.active && css`
+    &:hover {
+      background: rgba(102, 126, 234, 0.08);
+      color: #667eea;
+      transform: translateX(4px);
     }
-  }
+  `}
+  
+  ${props => props.active && css`
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  `}
   
   ${media.tablet} {
     text-align: center;
     padding: 12px 16px;
-    
-    &:before {
-      display: none;
-    }
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
   }
   
   ${media.mobile} {
@@ -160,6 +147,10 @@ const TabIcon = styled.span`
 
 const TabText = styled.span`
   flex: 1;
+  
+  ${media.tablet} {
+    flex: none;
+  }
 `;
 
 // Main Content Area
@@ -170,358 +161,65 @@ const MainContent = styled.div`
 
 // Section Headers
 const SectionHeader = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 30px;
-  text-align: center;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 2px;
-  }
-  
-  ${media.tablet} {
-    font-size: 2.2rem;
-  }
-  
-  ${media.mobile} {
-    font-size: 1.8rem;
-  }
-`;
-
-const Section = styled.section`
-  margin-bottom: 80px;
-  scroll-margin-top: 140px;
-  
-  ${media.mobile} {
-    margin-bottom: 60px;
-  }
-`;
-
-// Hero Section (moved to main content)
-const HeroSection = styled.section`
-  padding: 0 0 60px;
-  animation: ${fadeInUp} 1s ease-out;
+  color: #1a1a2e;
   margin-bottom: 40px;
-`;
-
-const HeroGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
-  align-items: start;
-  margin-bottom: 40px;
-  
-  ${media.tablet} {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
-  }
-`;
-
-const HeroLeftContent = styled.div`
-  text-align: center;
-  
-  ${media.tablet} {
-    text-align: center;
-  }
-`;
-
-const HeroRightContent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  
-  ${media.tablet} {
-    justify-content: center;
-  }
-`;
-
-const HeroTitle = styled.h1`
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 15px;
-  
-  ${media.tablet} {
-    font-size: 2.8rem;
-  }
-  
-  ${media.mobile} {
-    font-size: 2.2rem;
-  }
-`;
-
-const HeroSubtitle = styled.h2`
-  font-size: 1.3rem;
-  color: #667eea;
-  margin-bottom: 25px;
-  font-weight: 500;
-  
-  ${media.mobile} {
-    font-size: 1.1rem;
-  }
-`;
-
-const ContactInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-  
-  ${media.mobile} {
-    gap: 15px;
-  }
-`;
-
-const ContactItem = styled.a`
-  color: #666;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    color: #667eea;
-    transform: translateY(-2px);
-  }
-`;
-
-// Stats Grid
-const StatsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-bottom: 50px;
-`;
-
-const StatCard = styled.div`
-  background: #f8f9fa;
-  border-radius: 15px;
-  padding: 25px;
-  text-align: center;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    border-color: #667eea;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
-  }
-`;
-
-const StatNumber = styled.div`
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 8px;
-`;
-
-const StatLabel = styled.div`
-  color: #666;
-  font-size: 0.9rem;
-  font-weight: 500;
-`;
-
-// Professional Summary
-const SummarySection = styled.section`
-  margin-bottom: 50px;
-  padding: 30px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 20px;
-  color: white;
-  text-align: center;
-`;
-
-const SummaryText = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.7;
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-// Experience Section
-const ExperienceGrid = styled.div`
-  display: grid;
-  gap: 25px;
-`;
-
-const ExperienceCard = styled.div<{ expanded: boolean }>`
-  background: white;
-  border: 2px solid #f0f0f0;
-  border-radius: 15px;
-  padding: 25px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  
-  &:hover {
-    border-color: #667eea;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
-    transform: translateY(-2px);
-  }
-`;
-
-const CompanyHeader = styled.div`
-  display: flex;
-  justify-content: between;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  
-  ${media.mobile} {
-    flex-direction: column;
-    gap: 8px;
-  }
-`;
-
-const CompanyName = styled.h3`
-  color: #667eea;
-  font-size: 1.4rem;
-  margin-bottom: 5px;
-  font-weight: 600;
-`;
-
-const JobTitle = styled.h4`
-  color: #333;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-  font-weight: 500;
-`;
-
-const JobDuration = styled.div`
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-`;
-
-const AchievementsList = styled.div<{ expanded: boolean }>`
-  max-height: ${props => props.expanded ? '1000px' : '0'};
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-`;
-
-const Achievement = styled.div`
-  color: #666;
-  margin-bottom: 10px;
-  padding-left: 15px;
-  position: relative;
-  line-height: 1.5;
-  
-  &::before {
-    content: '•';
-    color: #667eea;
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-  }
-`;
-
-const ExpandButton = styled.button`
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-  
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  }
-`;
-
-// Skills Section
-const SkillsGrid = styled.div`
-  display: grid;
-  gap: 25px;
-`;
-
-const SkillCategory = styled.div`
-  background: white;
-  border: 2px solid #f0f0f0;
-  border-radius: 15px;
-  padding: 20px;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    border-color: #667eea;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
-  }
-`;
-
-const SkillCategoryTitle = styled.h3`
-  color: #333;
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   
   &::before {
     content: '';
-    width: 4px;
-    height: 18px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 2px;
+    width: 6px;
+    height: 40px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    border-radius: 3px;
   }
-`;
-
-const BadgeGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
+  
+  ${media.tablet} {
+    font-size: 1.8rem;
+  }
   
   ${media.mobile} {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 8px;
+    font-size: 1.5rem;
+    
+    &::before {
+      height: 30px;
+    }
   }
 `;
 
-const SkillBadge = styled.div<{ level: 'Expert' | 'Advanced' | 'Intermediate' }>`
+const Section = styled.section<{ bgAlt?: boolean }>`
+  margin-bottom: 80px;
+  scroll-margin-top: 140px;
+  padding: 50px;
+  border-radius: 32px;
+  background: ${props => props.bgAlt ? 'linear-gradient(135deg, rgba(102, 126, 234, 0.03), rgba(118, 75, 162, 0.03))' : 'white'};
+  border: 1px solid rgba(102, 126, 234, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  
+  ${media.mobile} {
+    margin-bottom: 40px;
+    padding: 24px;
+    border-radius: 24px;
+  }
+`;
+
+// Hero Section
+const HeroSection = styled.section`
+  padding: 0 0 60px;
+  animation: ${fadeInUp} 0.8s ease-out;
+  margin-bottom: 40px;
+`;
+
+const HeroCard = styled.div`
+  background: white;
+  border-radius: 32px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.1);
   position: relative;
-  background: ${props => {
-    switch(props.level) {
-      case 'Expert': return 'rgba(102, 126, 234, 0.1)';
-      case 'Advanced': return 'rgba(118, 75, 162, 0.1)';
-      case 'Intermediate': return 'rgba(160, 174, 192, 0.1)';
-      default: return 'rgba(226, 232, 240, 0.1)';
-    }
-  }};
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #333;
-  padding: 16px 12px;
-  border-radius: 16px;
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  border: 1px solid ${props => {
-    switch(props.level) {
-      case 'Expert': return 'rgba(102, 126, 234, 0.2)';
-      case 'Advanced': return 'rgba(118, 75, 162, 0.2)';
-      case 'Intermediate': return 'rgba(160, 174, 192, 0.2)';
-      default: return 'rgba(226, 232, 240, 0.2)';
-    }
-  }};
-  box-shadow: 
-    0 4px 20px rgba(102, 126, 234, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
   overflow: hidden;
   
   &::before {
@@ -530,752 +228,665 @@ const SkillBadge = styled.div<{ level: 'Expert' | 'Advanced' | 'Intermediate' }>
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: ${props => {
-      switch(props.level) {
-        case 'Expert': return 'linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15))';
-        case 'Advanced': return 'linear-gradient(135deg, rgba(118, 75, 162, 0.15), rgba(102, 126, 234, 0.15))';
-        case 'Intermediate': return 'linear-gradient(135deg, rgba(160, 174, 192, 0.15), rgba(113, 128, 150, 0.15))';
-        default: return 'linear-gradient(135deg, rgba(226, 232, 240, 0.15), rgba(203, 213, 224, 0.15))';
-      }
-    }};
-    opacity: 0;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 16px;
+    height: 6px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 100%;
+    animation: ${shimmer} 3s linear infinite;
   }
+  
+  ${media.mobile} {
+    padding: 30px 20px;
+    border-radius: 24px;
+  }
+`;
+
+const HeroGrid = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 40px;
+  
+  ${media.tablet} {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+`;
+
+const ProfileImageContainer = styled.div`
+  width: 140px;
+  height: 140px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+  border: 4px solid white;
+  position: relative;
   
   &::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(
-      transparent,
-      ${props => {
-        switch(props.level) {
-          case 'Expert': return 'rgba(102, 126, 234, 0.3)';
-          case 'Advanced': return 'rgba(118, 75, 162, 0.3)';
-          case 'Intermediate': return 'rgba(160, 174, 192, 0.3)';
-          default: return 'rgba(226, 232, 240, 0.3)';
-        }
-      }},
-      transparent
-    );
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: none;
+    inset: 0;
+    border-radius: 24px;
+    box-shadow: inset 0 0 0 1px rgba(102, 126, 234, 0.1);
   }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  ${media.tablet} {
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+  }
+`;
+
+const HeroInfo = styled.div`
+  ${media.tablet} {
+    text-align: center;
+  }
+`;
+
+const HeroTitle = styled.h1`
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  
+  ${media.tablet} {
+    font-size: 2.4rem;
+  }
+  
+  ${media.mobile} {
+    font-size: 2rem;
+  }
+`;
+
+const HeroSubtitle = styled.h2`
+  font-size: 1.2rem;
+  color: #667eea;
+  margin-bottom: 16px;
+  font-weight: 500;
+  
+  ${media.mobile} {
+    font-size: 1rem;
+  }
+`;
+
+const ContactInfo = styled.div`
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  
+  ${media.tablet} {
+    justify-content: center;
+  }
+  
+  ${media.mobile} {
+    gap: 12px;
+  }
+`;
+
+const ContactItem = styled.a`
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  
+  &:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+  }
+`;
+
+const HeroActions = styled.div`
+  ${media.tablet} {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+// Stats Grid
+const StatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  
+  ${media.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  ${media.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+`;
+
+const StatCard = styled.div<{ delay?: number }>`
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: ${fadeInUp} 0.6s ease-out ${props => (props.delay || 0) * 0.1}s both;
   
   &:hover {
     transform: translateY(-8px) scale(1.02);
-    background: ${props => {
-      switch(props.level) {
-        case 'Expert': return 'rgba(102, 126, 234, 0.2)';
-        case 'Advanced': return 'rgba(118, 75, 162, 0.2)';
-        case 'Intermediate': return 'rgba(160, 174, 192, 0.2)';
-        default: return 'rgba(226, 232, 240, 0.2)';
-      }
-    }};
-    border-color: ${props => {
-      switch(props.level) {
-        case 'Expert': return 'rgba(102, 126, 234, 0.4)';
-        case 'Advanced': return 'rgba(118, 75, 162, 0.4)';
-        case 'Intermediate': return 'rgba(160, 174, 192, 0.4)';
-        default: return 'rgba(226, 232, 240, 0.4)';
-      }
-    }};
-    box-shadow: 
-      0 12px 40px ${props => {
-        switch(props.level) {
-          case 'Expert': return 'rgba(102, 126, 234, 0.3)';
-          case 'Advanced': return 'rgba(118, 75, 162, 0.3)';
-          case 'Intermediate': return 'rgba(160, 174, 192, 0.25)';
-          default: return 'rgba(226, 232, 240, 0.2)';
-        }
-      }},
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.1),
-      0 0 30px ${props => {
-        switch(props.level) {
-          case 'Expert': return 'rgba(102, 126, 234, 0.4)';
-          case 'Advanced': return 'rgba(118, 75, 162, 0.4)';
-          case 'Intermediate': return 'rgba(160, 174, 192, 0.3)';
-          default: return 'rgba(226, 232, 240, 0.2)';
-        }
-      }};
-    
-    &::before {
-      opacity: 1;
-    }
-    
-    &::after {
-      opacity: 1;
-      animation: rotate 2s linear infinite;
-    }
-  }
-
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+    border-color: rgba(102, 126, 234, 0.3);
   }
 `;
 
-const FlatIcon = styled.div<{ iconType: string }>`
-  width: 28px;
-  height: 28px;
-  margin: 0 auto 10px;
-  position: relative;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 2;
-  transform-style: preserve-3d;
-  
-  ${props => {
-    switch(props.iconType) {
-      case 'lifecycle':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          border: 3px solid rgba(102, 126, 234, 0.3);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px;
-            height: 10px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 8px;
-            height: 8px;
-            background: #ffd700;
-            border-radius: 50%;
-            box-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
-          }
-        `;
-      case 'growth':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            bottom: 3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 4px;
-            background: #fff;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'api':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 6px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 4px;
-            right: 4px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 8px;
-            left: 4px;
-            right: 4px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'intelligence':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 6px;
-          transform: rotate(45deg);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            background: #fff;
-            border-radius: 3px;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'roadmap':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 4px;
-            width: 7px;
-            height: 3px;
-            background: #fff;
-            box-shadow: 0 5px 0 #fff, 0 10px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            top: 7px;
-            right: 4px;
-            width: 7px;
-            height: 3px;
-            background: #fff;
-            box-shadow: 0 5px 0 #fff, 0 10px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'revenue':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50% 50% 50% 0;
-          transform: rotate(-45deg);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 10px;
-            height: 10px;
-            background: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-          }
-        `;
-      case 'prioritization':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 5px;
-            width: 5px;
-            height: 18px;
-            background: #fff;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            right: 5px;
-            top: 9px;
-            width: 5px;
-            height: 14px;
-            background: #fff;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'ai':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 8px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 5px;
-            height: 5px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 9px 0 0 #fff, 5px 9px 0 #fff, 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'automation':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 9px;
-            left: 9px;
-            width: 10px;
-            height: 10px;
-            background: conic-gradient(#fff, rgba(255,255,255,0.5), #fff);
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'insights':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 5px;
-            width: 4px;
-            height: 10px;
-            background: #fff;
-            box-shadow: 5px 0 0 #fff, 10px 0 0 #fff, 15px 0 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'testing':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50% 50% 0 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 7px;
-            height: 7px;
-            background: #fff;
-            border-radius: 50% 0;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 7px;
-            right: 7px;
-            width: 7px;
-            height: 7px;
-            background: #fff;
-            border-radius: 0 50%;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'measurement':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          clip-path: polygon(0 100%, 25% 75%, 50% 25%, 75% 50%, 100% 0, 100% 100%);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            inset: 5px;
-            background: #fff;
-            clip-path: polygon(0 100%, 25% 75%, 50% 25%, 75% 50%, 100% 0, 100% 100%);
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'process':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            height: 3px;
-            background: #fff;
-            box-shadow: 0 7px 0 #fff, 0 14px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'communication':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50% 50% 0 50%;
-          transform: rotate(-45deg);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 10px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 5px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'project':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 18px;
-            height: 3px;
-            background: #fff;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 5px;
-            width: 14px;
-            height: 3px;
-            background: #fff;
-            box-shadow: 0 5px 0 #fff, 0 10px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'risk':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '!';
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            line-height: 1;
-            text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-          }
-        `;
-      case 'change':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 14px;
-            height: 14px;
-            border: 3px solid #fff;
-            border-radius: 50%;
-            border-left-color: transparent;
-            border-bottom-color: transparent;
-            transform: rotate(45deg);
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-        `;
-      case 'reporting':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 10px;
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 4px;
-            right: 4px;
-            height: 4px;
-            background: #333;
-            border-radius: 2px;
-          }
-        `;
-      case 'performance':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 9px;
-            left: 5px;
-            width: 0;
-            height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-bottom: 10px solid #10b981;
-            transform: rotate(45deg);
-            filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.5));
-          }
-        `;
-      case 'seo':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 10px;
-            height: 10px;
-            border: 3px solid #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 7px;
-            height: 3px;
-            background: #fff;
-            transform: rotate(45deg);
-            border-radius: 2px;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'media':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 7px;
-            left: 7px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid #fff;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 5px;
-            height: 5px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 10px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'marketing-auto':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 8px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 7px;
-            height: 7px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 10px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 -5px 0 #fff, 0 -10px 0 #fff, 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-        `;
-      case 'journey':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 4px;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 5px;
-            width: 18px;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: 3px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid #fff;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
-          }
-        `;
-      case 'retention':
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 18px;
-            height: 18px;
-            border: 3px solid #fff;
-            border-radius: 50%;
-            border-right-color: transparent;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
-          }
-          &::after {
-            content: '';
-            position: absolute;
-            top: 9px;
-            right: 7px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid #fff;
-            border-top: 3px solid transparent;
-            border-bottom: 3px solid transparent;
-            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
-          }
-        `;
-      default:
-        return `
-          background: linear-gradient(135deg, #667eea, #764ba2);
-          border-radius: 50%;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-        `;
-    }
-  }}
-`;
-
-const BadgeTitle = styled.div`
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 6px;
+const StatNumber = styled.div`
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
   line-height: 1.1;
-  transition: all 0.3s ease;
-  z-index: 2;
-  position: relative;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  ${media.mobile} {
+    font-size: 2.2rem;
+  }
 `;
 
-const BadgeLevel = styled.div<{ level: 'Expert' | 'Advanced' | 'Intermediate' }>`
-  font-size: 0.68rem;
+const StatLabel = styled.div`
+  color: #666;
+  font-size: 0.85rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  opacity: 0.8;
+`;
+
+// Professional Summary
+const SummarySection = styled.div`
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 24px;
+  padding: 32px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: ${float} 6s ease-in-out infinite;
+  }
+`;
+
+const SummaryText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  
+  ${media.mobile} {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+`;
+
+// Timeline Experience Section
+const Timeline = styled.div`
+  position: relative;
+  padding-left: 40px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    border-radius: 2px;
+  }
+  
+  ${media.mobile} {
+    padding-left: 30px;
+    
+    &::before {
+      left: 4px;
+    }
+  }
+`;
+
+const TimelineItem = styled.div<{ isFirst?: boolean }>`
+  position: relative;
+  padding-bottom: 40px;
+  
+  &:last-child {
+    padding-bottom: 0;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background: ${props => props.isFirst ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'white'};
+    border: 3px solid ${props => props.isFirst ? '#667eea' : '#764ba2'};
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+  }
+  
+  &:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  }
+  
+  ${media.mobile} {
+    &::before {
+      left: -30px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+`;
+
+const ExperienceCard = styled.div<{ expanded: boolean; isFirst?: boolean }>`
+  background: white;
+  border: 2px solid ${props => props.isFirst ? 'rgba(102, 126, 234, 0.2)' : '#f0f0f0'};
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  ${props => props.isFirst && css`
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.1);
+  `}
+  
+  &:hover {
+    border-color: #667eea;
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.12);
+    transform: translateX(8px);
+  }
+`;
+
+const CompanyRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  
+  ${media.mobile} {
+    flex-direction: column;
+    gap: 12px;
+  }
+`;
+
+const CompanyInfo = styled.div`
+  flex: 1;
+`;
+
+const CompanyBadge = styled.span<{ current?: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: ${props => props.current ? 'linear-gradient(135deg, #667eea, #764ba2)' : 'rgba(102, 126, 234, 0.1)'};
+  color: ${props => props.current ? 'white' : '#667eea'};
+  
+  ${props => props.current && css`
+    animation: ${pulse} 2s ease-in-out infinite;
+  `}
+`;
+
+const CompanyName = styled.h3`
+  color: #1a1a2e;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const JobTitle = styled.h4`
+  color: #667eea;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+`;
+
+const JobMeta = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #888;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+`;
+
+const MetaItem = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+const AchievementsList = styled.div<{ expanded: boolean }>`
+  max-height: ${props => props.expanded ? '2000px' : '0'};
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: ${props => props.expanded ? '20px' : '0'};
+`;
+
+const Achievement = styled.div`
+  color: #555;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: rgba(102, 126, 234, 0.03);
+  border-radius: 12px;
+  border-left: 3px solid #667eea;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(102, 126, 234, 0.06);
+    transform: translateX(4px);
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const ExpandButton = styled.button<{ expanded?: boolean }>`
+  background: ${props => props.expanded ? 'rgba(102, 126, 234, 0.1)' : 'linear-gradient(135deg, #667eea, #764ba2)'};
+  color: ${props => props.expanded ? '#667eea' : 'white'};
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${props => props.expanded ? 'none' : '0 6px 20px rgba(102, 126, 234, 0.3)'};
+  }
+  
+  svg {
+    transition: transform 0.3s ease;
+    transform: rotate(${props => props.expanded ? '180deg' : '0deg'});
+  }
+`;
+
+// Skills Section
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  
+  ${media.tablet} {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const SkillCategory = styled.div`
+  background: white;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  border-radius: 24px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.08);
+    transform: translateY(-4px);
+  }
+`;
+
+const SkillCategoryHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+`;
+
+const CategoryIconWrapper = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+`;
+
+const SkillCategoryTitle = styled.h3`
+  color: #1a1a2e;
+  font-size: 1.15rem;
+  font-weight: 700;
+`;
+
+const SkillsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+const SkillTag = styled.div<{ level: 'Expert' | 'Advanced' | 'Intermediate' }>`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
   background: ${props => {
     switch(props.level) {
-      case 'Expert': return 'rgba(102, 126, 234, 0.15)';
-      case 'Advanced': return 'rgba(118, 75, 162, 0.15)';
-      case 'Intermediate': return 'rgba(160, 174, 192, 0.15)';
-      default: return 'rgba(226, 232, 240, 0.15)';
+      case 'Expert': return 'linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.12))';
+      case 'Advanced': return 'rgba(118, 75, 162, 0.08)';
+      default: return 'rgba(160, 174, 192, 0.1)';
     }
   }};
   color: ${props => {
     switch(props.level) {
-      case 'Expert': return '#667eea';
+      case 'Expert': return '#5a6fd6';
       case 'Advanced': return '#764ba2';
-      case 'Intermediate': return '#a0aec0';
-      default: return '#cbd5e0';
+      default: return '#666';
     }
   }};
-  padding: 3px 8px;
-  border-radius: 12px;
-  display: inline-block;
-  margin-top: 4px;
-  transition: all 0.4s ease;
-  z-index: 2;
-  position: relative;
   border: 1px solid ${props => {
     switch(props.level) {
       case 'Expert': return 'rgba(102, 126, 234, 0.2)';
-      case 'Advanced': return 'rgba(118, 75, 162, 0.2)';
-      case 'Intermediate': return 'rgba(160, 174, 192, 0.2)';
-      default: return 'rgba(226, 232, 240, 0.2)';
+      case 'Advanced': return 'rgba(118, 75, 162, 0.15)';
+      default: return 'rgba(160, 174, 192, 0.2)';
+    }
+  }};
+  
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px ${props => {
+      switch(props.level) {
+        case 'Expert': return 'rgba(102, 126, 234, 0.2)';
+        case 'Advanced': return 'rgba(118, 75, 162, 0.15)';
+        default: return 'rgba(160, 174, 192, 0.1)';
+      }
+    }};
+  }
+`;
+
+const LevelDot = styled.span<{ level: 'Expert' | 'Advanced' | 'Intermediate' }>`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: ${props => {
+    switch(props.level) {
+      case 'Expert': return 'linear-gradient(135deg, #667eea, #764ba2)';
+      case 'Advanced': return '#764ba2';
+      default: return '#a0aec0';
     }
   }};
 `;
 
-const CategoryIcon = styled.span`
+// Tools Section
+const ToolsSection = styled.div`
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(102, 126, 234, 0.1);
+`;
+
+const ToolsSectionTitle = styled.h3`
   font-size: 1.1rem;
-  margin-right: 5px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  &::before {
+    content: '🛠️';
+  }
+`;
+
+const ToolsGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`;
+
+const ToolBadge = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: white;
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  border-radius: 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #444;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.12);
+  }
+`;
+
+const ToolIcon = styled.span`
+  font-size: 1.2rem;
 `;
 
 // Education Section
 const EducationGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+  
+  ${media.mobile} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const EducationCard = styled.div`
   background: white;
-  border: 2px solid #f0f0f0;
-  border-radius: 15px;
-  padding: 25px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  border-radius: 24px;
+  padding: 32px;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+  }
   
   &:hover {
-    border-color: #667eea;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
-    transform: translateY(-2px);
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.1);
+    transform: translateY(-6px);
   }
+`;
+
+const InstitutionName = styled.h3`
+  color: #1a1a2e;
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+`;
+
+const DegreeName = styled.h4`
+  color: #667eea;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+`;
+
+const EducationMeta = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 `;
 
 const SubjectsContainer = styled.div`
   margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(102, 126, 234, 0.1);
 `;
 
-const SubjectsLabel = styled.h4`
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 15px;
+const SubjectsLabel = styled.h5`
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -1283,7 +894,6 @@ const SubjectsLabel = styled.h4`
   
   &::before {
     content: '📚';
-    font-size: 1.1rem;
   }
 `;
 
@@ -1294,53 +904,94 @@ const SubjectTags = styled.div`
 `;
 
 const SubjectTag = styled.span`
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  color: #667eea;
-  padding: 6px 12px;
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+  color: #555;
+  padding: 8px 14px;
+  border-radius: 10px;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(102, 126, 234, 0.1);
   transition: all 0.3s ease;
-  cursor: default;
   
   &:hover {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-    border-color: #667eea;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+    color: #667eea;
+    transform: translateY(-2px);
   }
 `;
 
 // Download Section
 const DownloadSection = styled.div`
   text-align: center;
-  padding: 40px 0;
-  margin-top: 40px;
+  padding: 50px 0;
+  margin-top: 20px;
 `;
 
 const DownloadButton = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 15px 30px;
-  border-radius: 30px;
+  padding: 18px 36px;
+  border-radius: 16px;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+// Back to Top Button
+const BackToTopButton = styled.button<{ visible: boolean }>`
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  opacity: ${props => props.visible ? 1 : 0};
+  pointer-events: ${props => props.visible ? 'auto' : 'none'};
+  transform: ${props => props.visible ? 'translateY(0)' : 'translateY(20px)'};
+  z-index: 100;
+  
+  &:hover {
+    transform: ${props => props.visible ? 'translateY(-4px)' : 'translateY(20px)'};
+    box-shadow: 0 10px 35px rgba(102, 126, 234, 0.5);
+  }
+  
+  ${media.mobile} {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
   }
 `;
 
 // Component
 const Resume: React.FC = () => {
-  const [expandedCards, setExpandedCards] = useState<number[]>([]);
+  const [expandedCards, setExpandedCards] = useState<number[]>([0]); // First card expanded by default
+  const [activeSection, setActiveSection] = useState('experience');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [animatedStats, setAnimatedStats] = useState({
     experience: 0,
     projects: 0,
@@ -1349,34 +1000,65 @@ const Resume: React.FC = () => {
   });
 
   const statsRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLElement>(null);
+  const skillsRef = useRef<HTMLElement>(null);
+  const educationRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500);
+      
+      // Update active section based on scroll position
+      const sections = [
+        { id: 'experience', ref: experienceRef },
+        { id: 'skills', ref: skillsRef },
+        { id: 'education', ref: educationRef }
+      ];
+      
+      for (const section of sections) {
+        if (section.ref.current) {
+          const rect = section.ref.current.getBoundingClientRect();
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          const duration = 2000;
-          const steps = 60;
+          const duration = 1500;
+          const steps = 50;
           const stepDuration = duration / steps;
           
           let step = 0;
           const interval = setInterval(() => {
             step++;
             const progress = step / steps;
+            const easeOut = 1 - Math.pow(1 - progress, 3);
             
             setAnimatedStats({
-              experience: Math.floor(6 * progress),
-              projects: Math.floor(50 * progress),
-              revenue: Math.floor(2 * progress),
-              markets: Math.floor(4 * progress)
+              experience: Math.floor(6 * easeOut),
+              projects: Math.floor(50 * easeOut),
+              revenue: Math.floor(2 * easeOut),
+              markets: Math.floor(4 * easeOut)
             });
             
             if (step >= steps) {
               clearInterval(interval);
+              setAnimatedStats({ experience: 6, projects: 50, revenue: 2, markets: 4 });
             }
           }, stepDuration);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     if (statsRef.current) {
@@ -1401,12 +1083,17 @@ const Resume: React.FC = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const experiences = [
     {
       company: "RESULTA",
       title: "Digital Product Strategist - Solution Delivery",
       duration: "January 2024 - Present",
       location: "Bedford, Canada",
+      current: true,
       achievements: [
         "Led strategic planning and execution of product roadmaps using SAFe Agile frameworks, aligning cross-functional roadmaps to accelerate time-to-market and drive $2M+ ARR across five digital brands.",
         "Co-developed an AI-powered prototyping framework leveraging Cursor AI (code automation) and Figma AI (design), cutting development cycles in half and reducing MVP launch timelines from 12 weeks to 6.",
@@ -1491,50 +1178,67 @@ const Resume: React.FC = () => {
       title: "Product Strategy",
       icon: "🚀",
       skills: [
-        { name: "Product Lifecycle Management", level: 95, iconType: "lifecycle" },
-        { name: "Product-Led Growth", level: 90, iconType: "growth" },
-        { name: "API-First Design", level: 85, iconType: "api" },
-        { name: "Competitive Intelligence", level: 88, iconType: "intelligence" },
-        { name: "Roadmap Planning", level: 92, iconType: "roadmap" },
-        { name: "Revenue Model Strategy", level: 87, iconType: "revenue" },
-        { name: "Feature Prioritization", level: 90, iconType: "prioritization" },
+        { name: "Product Lifecycle Management", level: 95 },
+        { name: "Product-Led Growth", level: 90 },
+        { name: "API-First Design", level: 85 },
+        { name: "Competitive Intelligence", level: 88 },
+        { name: "Roadmap Planning", level: 92 },
+        { name: "Revenue Model Strategy", level: 87 },
+        { name: "Feature Prioritization", level: 90 },
       ]
     },
     {
       title: "AI & Data",
       icon: "🤖",
       skills: [
-        { name: "AI Prototyping", level: 88, iconType: "ai" },
-        { name: "Automation", level: 85, iconType: "automation" },
-        { name: "Customer Insights", level: 90, iconType: "insights" },
-        { name: "A/B Testing", level: 92, iconType: "testing" },
-        { name: "Performance Measurement", level: 95, iconType: "measurement" },
+        { name: "AI Prototyping", level: 88 },
+        { name: "Automation", level: 85 },
+        { name: "Customer Insights", level: 90 },
+        { name: "A/B Testing", level: 92 },
+        { name: "Performance Measurement", level: 95 },
       ]
     },
     {
       title: "Strategic Leadership",
       icon: "👑",
       skills: [
-        { name: "Process Standardization", level: 93, iconType: "process" },
-        { name: "Stakeholder Communication", level: 95, iconType: "communication" },
-        { name: "Project Management", level: 90, iconType: "project" },
-        { name: "Risk Assessment", level: 85, iconType: "risk" },
-        { name: "Change Management", level: 88, iconType: "change" },
-        { name: "Executive Reporting", level: 92, iconType: "reporting" },
+        { name: "Process Standardization", level: 93 },
+        { name: "Stakeholder Communication", level: 95 },
+        { name: "Project Management", level: 90 },
+        { name: "Risk Assessment", level: 85 },
+        { name: "Change Management", level: 88 },
+        { name: "Executive Reporting", level: 92 },
       ]
     },
     {
       title: "Growth Marketing",
       icon: "📈",
       skills: [
-        { name: "Performance Optimization", level: 90, iconType: "performance" },
-        { name: "SEO/SEM", level: 88, iconType: "seo" },
-        { name: "Paid Media Optimization", level: 92, iconType: "media" },
-        { name: "Marketing Automation", level: 87, iconType: "marketing-auto" },
-        { name: "Customer Journey Mapping", level: 90, iconType: "journey" },
-        { name: "Customer Retention", level: 85, iconType: "retention" },
+        { name: "Performance Optimization", level: 90 },
+        { name: "SEO/SEM", level: 88 },
+        { name: "Paid Media Optimization", level: 92 },
+        { name: "Marketing Automation", level: 87 },
+        { name: "Customer Journey Mapping", level: 90 },
+        { name: "Customer Retention", level: 85 },
       ]
     }
+  ];
+
+  const tools = [
+    { name: "Cursor AI", icon: "⚡" },
+    { name: "Figma", icon: "🎨" },
+    { name: "Jira", icon: "📋" },
+    { name: "Confluence", icon: "📝" },
+    { name: "Google Analytics", icon: "📊" },
+    { name: "Matomo", icon: "📈" },
+    { name: "Optimizely", icon: "🧪" },
+    { name: "VWO", icon: "🔬" },
+    { name: "HubSpot", icon: "🧲" },
+    { name: "Mailchimp", icon: "📧" },
+    { name: "Google Tag Manager", icon: "🏷️" },
+    { name: "Looker Studio", icon: "📉" },
+    { name: "Notion", icon: "📓" },
+    { name: "Miro", icon: "🖼️" },
   ];
 
   const education = [
@@ -1545,90 +1249,111 @@ const Resume: React.FC = () => {
       location: "Halifax, Canada",
       subjects: [
         "Advanced Marketing", "Quantitative Decision Making", "Global Markets & Institutions", 
-        "International Business", "Risk Management in Financial Institutions", "Leveraging Technology", 
-        "Managing People", "Advanced Corporate Finance", "Leading with Responsibility", 
-        "Strategic Leadership & Change Management", "Business Accounting"
+        "International Business", "Risk Management", "Leveraging Technology", 
+        "Managing People", "Corporate Finance", "Strategic Leadership"
       ]
     },
     {
       institution: "Vellore Institute of Technology",
-      degree: "Bachelors of Technology - Energy Engineering",
+      degree: "B.Tech - Energy Engineering",
       duration: "Graduated May 2017",
       location: "Vellore, India",
       subjects: [
-        "Manufacturing Processes", "Operations Research", "Materials Engineering & Technology", 
-        "Project Management", "Instrumentation & Control Engineering", "Applied Mechanics", 
-        "Principles of Marketing", "Energy Conservation, Audit & Management", "Energy System Modeling", 
-        "Renewable Energy Sources", "Modern Physics", "Thermal Engineering Systems", 
-        "Power Plant Engineering", "Computational Fluid Dynamics"
+        "Operations Research", "Project Management", "Control Engineering", 
+        "Applied Mechanics", "Marketing Principles", "Energy Systems", 
+        "Renewable Energy", "Thermal Engineering", "Fluid Dynamics"
       ]
     }
   ];
+
+  const getSkillLevel = (level: number): 'Expert' | 'Advanced' | 'Intermediate' => {
+    if (level >= 90) return 'Expert';
+    if (level >= 80) return 'Advanced';
+    return 'Intermediate';
+  };
 
   return (
     <ResumeContainer>
       <ContentWrapper>
         <HeroContentWrapper>
           <HeroSection>
-            <HeroGrid>
-              <HeroLeftContent>
-                <HeroTitle>Kushal HP</HeroTitle>
-                <HeroSubtitle>Product Team Lead · Digital Marketing Specialist · Solution Delivery</HeroSubtitle>
-                <ContactInfo>
-                  <ContactItem href="tel:+19024033023">📞 (+1) 902-403-3023</ContactItem>
-                  <ContactItem href="mailto:hp.kushal95@outlook.com">✉️ hp.kushal95@outlook.com</ContactItem>
-                  <ContactItem href="https://linkedin.com/in/kushal-hp-09121995" target="_blank">
-                    🔗 LinkedIn Profile
-                  </ContactItem>
-                </ContactInfo>
-              </HeroLeftContent>
-              <HeroRightContent>
-                <OfficeHoursButtonComponent />
-              </HeroRightContent>
-            </HeroGrid>
-            
-            <StatsGrid ref={statsRef}>
-              <StatCard>
-                <StatNumber>{animatedStats.experience}+</StatNumber>
-                <StatLabel>Years Experience</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>{animatedStats.projects}+</StatNumber>
-                <StatLabel>Projects Delivered</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>${animatedStats.revenue}M+</StatNumber>
-                <StatLabel>Revenue Generated</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>{animatedStats.markets}+</StatNumber>
-                <StatLabel>Global Markets</StatLabel>
-              </StatCard>
-            </StatsGrid>
+            <HeroCard>
+              <HeroGrid>
+                <ProfileImageContainer>
+                  <img src="/images/kushal-profile.jpg" alt="Kushal HP" />
+                </ProfileImageContainer>
+                <HeroInfo>
+                  <HeroTitle>Kushal HP</HeroTitle>
+                  <HeroSubtitle>Product Team Lead · Digital Marketing Specialist · Solution Delivery</HeroSubtitle>
+                  <ContactInfo>
+                    <ContactItem href="tel:+19024033023">
+                      📞 (+1) 902-403-3023
+                    </ContactItem>
+                    <ContactItem href="mailto:hp.kushal95@outlook.com">
+                      ✉️ hp.kushal95@outlook.com
+                    </ContactItem>
+                    <ContactItem href="https://linkedin.com/in/kushal-hp-09121995" target="_blank">
+                      🔗 LinkedIn
+                    </ContactItem>
+                  </ContactInfo>
+                </HeroInfo>
+                <HeroActions>
+                  <OfficeHoursButtonComponent />
+                </HeroActions>
+              </HeroGrid>
+              
+              <StatsGrid ref={statsRef}>
+                <StatCard delay={1}>
+                  <StatNumber>{animatedStats.experience}+</StatNumber>
+                  <StatLabel>Years Experience</StatLabel>
+                </StatCard>
+                <StatCard delay={2}>
+                  <StatNumber>{animatedStats.projects}+</StatNumber>
+                  <StatLabel>Projects Delivered</StatLabel>
+                </StatCard>
+                <StatCard delay={3}>
+                  <StatNumber>${animatedStats.revenue}M+</StatNumber>
+                  <StatLabel>Revenue Generated</StatLabel>
+                </StatCard>
+                <StatCard delay={4}>
+                  <StatNumber>{animatedStats.markets}+</StatNumber>
+                  <StatLabel>Global Markets</StatLabel>
+                </StatCard>
+              </StatsGrid>
 
-            <SummarySection>
-              <SummaryText>
-                Product Leader with 6+ years of expertise in successful digital product launches and optimizing global market presence. 
-                My experience in leveraging AI, machine learning, and digital marketing strategies sets me apart as a trailblazer in product evolution. 
-                Recognized for transforming market insights into high-impact growth strategies, I have successfully driven product lifecycle success 
-                across global markets, including LATAM, Europe, Australia, and India.
-              </SummaryText>
-            </SummarySection>
+              <SummarySection>
+                <SummaryText>
+                  Product Leader with 6+ years of expertise in successful digital product launches and optimizing global market presence. 
+                  My experience in leveraging AI, machine learning, and digital marketing strategies sets me apart as a trailblazer in product evolution. 
+                  Recognized for transforming market insights into high-impact growth strategies, I have successfully driven product lifecycle success 
+                  across global markets, including LATAM, Europe, Australia, and India.
+                </SummaryText>
+              </SummarySection>
+            </HeroCard>
           </HeroSection>
         </HeroContentWrapper>
 
         <MainContentWrapper>
           <SidebarNav>
             <TabsList>
-              <SidebarTabButton onClick={() => scrollToSection('experience')}>
+              <SidebarTabButton 
+                active={activeSection === 'experience'} 
+                onClick={() => scrollToSection('experience')}
+              >
                 <TabIcon>💼</TabIcon>
                 <TabText>Work Experience</TabText>
               </SidebarTabButton>
-              <SidebarTabButton onClick={() => scrollToSection('skills')}>
+              <SidebarTabButton 
+                active={activeSection === 'skills'} 
+                onClick={() => scrollToSection('skills')}
+              >
                 <TabIcon>💡</TabIcon>
                 <TabText>Skills & Expertise</TabText>
               </SidebarTabButton>
-              <SidebarTabButton onClick={() => scrollToSection('education')}>
+              <SidebarTabButton 
+                active={activeSection === 'education'} 
+                onClick={() => scrollToSection('education')}
+              >
                 <TabIcon>🎓</TabIcon>
                 <TabText>Education</TabText>
               </SidebarTabButton>
@@ -1636,66 +1361,92 @@ const Resume: React.FC = () => {
           </SidebarNav>
 
           <MainContent>
-            <Section id="experience">
+            <Section id="experience" ref={experienceRef}>
               <SectionHeader>Work Experience</SectionHeader>
-              <ExperienceGrid>
+              <Timeline>
                 {experiences.map((exp, index) => (
-                  <ExperienceCard key={index} expanded={expandedCards.includes(index)}>
-                    <CompanyHeader>
-                      <div>
-                        <CompanyName>{exp.company}</CompanyName>
-                        <JobTitle>{exp.title}</JobTitle>
-                        <JobDuration>{exp.duration} | {exp.location}</JobDuration>
-                      </div>
-                    </CompanyHeader>
-                    <ExpandButton onClick={() => toggleCard(index)}>
-                      {expandedCards.includes(index) ? 'Show Less' : 'Show Details'}
-                    </ExpandButton>
-                    <AchievementsList expanded={expandedCards.includes(index)}>
-                      {exp.achievements.map((achievement, i) => (
-                        <Achievement key={i}>{achievement}</Achievement>
-                      ))}
-                    </AchievementsList>
-                  </ExperienceCard>
+                  <TimelineItem key={index} isFirst={index === 0}>
+                    <ExperienceCard expanded={expandedCards.includes(index)} isFirst={index === 0}>
+                      <CompanyRow>
+                        <CompanyInfo>
+                          <CompanyName>
+                            {exp.company}
+                            {exp.current && <CompanyBadge current>● Current</CompanyBadge>}
+                          </CompanyName>
+                          <JobTitle>{exp.title}</JobTitle>
+                          <JobMeta>
+                            <MetaItem>📅 {exp.duration}</MetaItem>
+                            <MetaItem>📍 {exp.location}</MetaItem>
+                          </JobMeta>
+                        </CompanyInfo>
+                      </CompanyRow>
+                      <ExpandButton 
+                        expanded={expandedCards.includes(index)}
+                        onClick={() => toggleCard(index)}
+                      >
+                        {expandedCards.includes(index) ? 'Hide Details' : 'Show Achievements'}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </ExpandButton>
+                      <AchievementsList expanded={expandedCards.includes(index)}>
+                        {exp.achievements.map((achievement, i) => (
+                          <Achievement key={i}>{achievement}</Achievement>
+                        ))}
+                      </AchievementsList>
+                    </ExperienceCard>
+                  </TimelineItem>
                 ))}
-              </ExperienceGrid>
+              </Timeline>
             </Section>
 
-            <Section id="skills">
+            <Section id="skills" ref={skillsRef} bgAlt>
               <SectionHeader>Skills & Expertise</SectionHeader>
               <SkillsGrid>
                 {skillCategories.map((category, index) => (
                   <SkillCategory key={index}>
-                    <SkillCategoryTitle>
-                      <CategoryIcon>{category.icon}</CategoryIcon>
-                      {category.title}
-                    </SkillCategoryTitle>
-                    <BadgeGrid>
+                    <SkillCategoryHeader>
+                      <CategoryIconWrapper>{category.icon}</CategoryIconWrapper>
+                      <SkillCategoryTitle>{category.title}</SkillCategoryTitle>
+                    </SkillCategoryHeader>
+                    <SkillsList>
                       {category.skills.map((skill, i) => (
-                        <SkillBadge key={i} level={skill.level >= 90 ? 'Expert' : skill.level >= 80 ? 'Advanced' : 'Intermediate'}>
-                          <FlatIcon iconType={skill.iconType} />
-                          <BadgeTitle>{skill.name}</BadgeTitle>
-                          <BadgeLevel level={skill.level >= 90 ? 'Expert' : skill.level >= 80 ? 'Advanced' : 'Intermediate'}>
-                            {skill.level >= 90 ? 'Expert' : skill.level >= 80 ? 'Advanced' : 'Intermediate'}
-                          </BadgeLevel>
-                        </SkillBadge>
+                        <SkillTag key={i} level={getSkillLevel(skill.level)}>
+                          <LevelDot level={getSkillLevel(skill.level)} />
+                          {skill.name}
+                        </SkillTag>
                       ))}
-                    </BadgeGrid>
+                    </SkillsList>
                   </SkillCategory>
                 ))}
               </SkillsGrid>
+              
+              <ToolsSection>
+                <ToolsSectionTitle>Tools & Technologies</ToolsSectionTitle>
+                <ToolsGrid>
+                  {tools.map((tool, index) => (
+                    <ToolBadge key={index}>
+                      <ToolIcon>{tool.icon}</ToolIcon>
+                      {tool.name}
+                    </ToolBadge>
+                  ))}
+                </ToolsGrid>
+              </ToolsSection>
             </Section>
 
-            <Section id="education">
+            <Section id="education" ref={educationRef}>
               <SectionHeader>Education</SectionHeader>
               <EducationGrid>
                 {education.map((edu, index) => (
                   <EducationCard key={index}>
-                    <CompanyName>{edu.institution}</CompanyName>
-                    <JobTitle>{edu.degree}</JobTitle>
-                    <JobDuration>{edu.duration} | {edu.location}</JobDuration>
+                    <InstitutionName>{edu.institution}</InstitutionName>
+                    <DegreeName>{edu.degree}</DegreeName>
+                    <EducationMeta>
+                      <MetaItem>📅 {edu.duration}</MetaItem>
+                      <MetaItem>📍 {edu.location}</MetaItem>
+                    </EducationMeta>
                     <SubjectsContainer>
-                      <SubjectsLabel>Key Subjects:</SubjectsLabel>
+                      <SubjectsLabel>Key Subjects</SubjectsLabel>
                       <SubjectTags>
                         {edu.subjects.map((subject, i) => (
                           <SubjectTag key={i}>{subject}</SubjectTag>
@@ -1709,12 +1460,23 @@ const Resume: React.FC = () => {
 
             <DownloadSection>
               <DownloadButton href="/KushalHP_CV_Product.pdf" download>
-                📄 Download PDF Resume
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF Resume
               </DownloadButton>
             </DownloadSection>
           </MainContent>
         </MainContentWrapper>
       </ContentWrapper>
+
+      <BackToTopButton visible={showBackToTop} onClick={scrollToTop}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </BackToTopButton>
     </ResumeContainer>
   );
 };
