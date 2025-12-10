@@ -8,6 +8,7 @@ import Home from './components/Home';
 import AboutMe from './components/AboutMe';
 import Resume from './components/Resume';
 import Projects from './components/Projects';
+import Tools from './components/Tools';
 import Footer from './components/Footer';
 import MobileFooter from './components/MobileFooter';
 import NotFound from './components/NotFound';
@@ -44,6 +45,11 @@ import ConsultingIndustryAIDisruption from './pages/writings/ConsultingIndustryA
 import GrowthHackingMaturation from './pages/writings/GrowthHackingMaturation';
 import PricingPsychologyRevolution from './pages/writings/PricingPsychologyRevolution';
 import PMSkillStack2025 from './pages/writings/PMSkillStack2025';
+
+// AI Tools
+import AIPrioritizer from './pages/tools/ai/AIPrioritizer';
+import AIFeedbackAnalyzer from './pages/tools/ai/AIFeedbackAnalyzer';
+import AIUserStoryGenerator from './pages/tools/ai/AIUserStoryGenerator';
  
  function App() {
   return (
@@ -58,6 +64,7 @@ import PMSkillStack2025 from './pages/writings/PMSkillStack2025';
           <Route path="/about" element={<AboutMe />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/tools" element={<Tools />} />
           <Route path="/writings" element={<Writings />} />
           
           {/* Case Study Routes */}
@@ -91,6 +98,11 @@ import PMSkillStack2025 from './pages/writings/PMSkillStack2025';
           <Route path="/writings/growth-hacking-maturation" element={<GrowthHackingMaturation />} />
                     <Route path="/writings/pricing-psychology-revolution" element={<PricingPsychologyRevolution />} />
           <Route path="/writings/pm-os-2025" element={<PMSkillStack2025 />} />
+          
+          {/* AI Tool Routes */}
+          <Route path="/tools/ai-prioritizer" element={<AIPrioritizer />} />
+          <Route path="/tools/ai-feedback-analyzer" element={<AIFeedbackAnalyzer />} />
+          <Route path="/tools/ai-user-story-generator" element={<AIUserStoryGenerator />} />
            
            <Route path="*" element={<NotFound />} />
         </Routes>

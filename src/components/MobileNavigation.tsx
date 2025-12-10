@@ -286,6 +286,11 @@ const MobileNavigation: React.FC = () => {
             </MobileRouterLink>
           </MobileMenuItem>
           <MobileMenuItem>
+            <MobileRouterLink to="/tools" onClick={scrollToTop}>
+              Tools
+            </MobileRouterLink>
+          </MobileMenuItem>
+          <MobileMenuItem>
             <MobileMenuLink
               href="#get-help"
               onClick={(e) => {

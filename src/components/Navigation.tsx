@@ -254,20 +254,13 @@ const Navigation: React.FC = () => {
           >
             Writings
           </RouterNavLink>
-          <NavLink 
-            href="#get-help" 
+          <RouterNavLink 
+            to="/tools" 
             isCompact={isCompact}
-            onClick={(e) => {
-              e.preventDefault();
-              if (location.pathname !== '/') {
-                window.location.href = '/#get-in-touch';
-              } else {
-                scrollToSection('get-in-touch');
-              }
-            }}
+            onClick={scrollToTop}
           >
-            Get Help
-          </NavLink>
+            Tools
+          </RouterNavLink>
         </NavSection>
 
         <NavLogo isCompact={isCompact}>
