@@ -1,6 +1,6 @@
 # Kushal HP Portfolio 
 
-A modern, responsive portfolio website built with React 19, TypeScript, and styled-components. This project showcases professional product management experience, thought leadership through writings, and comprehensive case studies with real business impact metrics.
+A modern, responsive portfolio website built with React 19, TypeScript, and styled-components. This project showcases professional product management experience, thought leadership through writings, comprehensive case studies with real business impact metrics, and an AI-powered PM toolkit.
 
 **Live Demo**: [stillfiguringthatout.com](http://localhost:3000) *(Update with production URL)*
 
@@ -12,6 +12,7 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 - [Features Overview](#-features-overview)
 - [Navigation Guide](#-navigation-guide)
 - [Content Sections](#-content-sections)
+- [AI-Powered PM Toolkit](#-ai-powered-pm-toolkit)
 
 ### For Developers
 - [Tech Stack](#-tech-stack)
@@ -20,6 +21,7 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 - [Component Reference](#-component-reference)
 - [Styling System](#-styling-system)
 - [Adding Content](#-adding-content)
+- [Adding AI Tools](#-adding-ai-tools)
 - [Deployment](#-deployment)
 
 ### Project History
@@ -33,7 +35,8 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 ### Core Features
 | Feature | Description |
 |---------|-------------|
-| **Multi-Page Routing** | Seamless navigation between Home, About, Resume, Projects, and Writings |
+| **Multi-Page Routing** | Seamless navigation between Home, About, Resume, Projects, Tools, and Writings |
+| **AI-Powered PM Toolkit** | Suite of GPT-4 powered tools for product managers (BYOK: Bring Your Own Key) |
 | **Interactive Chat Interface** | AI-style conversation on About page for engaging user experience |
 | **Comprehensive Writings Hub** | 20 in-depth articles on AI, technology, and business strategy |
 | **Projects Portfolio** | 8 detailed case studies with $5M+ combined business impact |
@@ -41,6 +44,16 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 | **Responsive Design** | Mobile-first approach with optimized breakpoints |
 | **Lottie Animations** | Professional animations throughout the site |
 | **Related Articles System** | Dynamic article recommendations |
+
+### AI Tools Suite
+| Tool | Description | Status |
+|------|-------------|--------|
+| **AI Prioritizer** | RICE scoring with AI-generated reasoning, risks, and acceptance criteria | ✅ Active |
+| **AI Feedback Analyzer** | Extract themes, sentiment, and insights from customer feedback | ✅ Active |
+| **AI User Story Generator** | Generate user stories with acceptance criteria from feature descriptions | ✅ Active |
+| **AI Competitive Analysis** | Analyze competitors and identify market opportunities | 🔜 Coming Soon |
+| **AI Roadmap Advisor** | Get strategic recommendations for your product roadmap | 🔜 Coming Soon |
+| **AI Metrics Dashboard** | Generate KPI suggestions and metric frameworks | 🔜 Coming Soon |
 
 ### Visual & UX Elements
 - **Brand Gradient**: `#667eea` → `#764ba2` (Purple gradient theme)
@@ -57,11 +70,20 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 
 | Route | Page | Description |
 |-------|------|-------------|
-| `/` | Home | Hero section, services, latest content, contact |
+| `/` | Home | Hero section, services, featured tools, latest content, contact |
 | `/about` | About Me | Interactive chat interface with profile |
 | `/resume` | Resume | Professional experience with sidebar navigation |
 | `/projects` | Projects | Portfolio overview with 8 case studies |
+| `/tools` | Tools | AI-powered PM toolkit hub |
 | `/writings` | Writings | Article hub with category filters |
+
+### AI Tools Routes
+
+| Route | Tool |
+|-------|------|
+| `/tools/ai-prioritizer` | AI Prioritization Assistant |
+| `/tools/ai-feedback-analyzer` | AI Feedback Analyzer |
+| `/tools/ai-user-story-generator` | AI User Story Generator |
 
 ### Project Case Studies
 
@@ -133,6 +155,49 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 
 ---
 
+## 🤖 AI-Powered PM Toolkit
+
+The portfolio includes a suite of AI-powered tools designed specifically for product managers. All tools use the **BYOK (Bring Your Own Key)** model, where users provide their own OpenAI API key for GPT-4 access.
+
+### How It Works
+
+1. **API Key Setup**: Users enter their OpenAI API key (stored securely in browser localStorage)
+2. **Tool Selection**: Choose from available AI tools on the `/tools` page
+3. **AI-Powered Analysis**: Get intelligent insights powered by GPT-4
+4. **Export & Share**: Download results in various formats (CSV, JSON, Markdown)
+
+### Available Tools
+
+#### AI Prioritization Assistant (`/tools/ai-prioritizer`)
+A comprehensive feature prioritization tool using the RICE framework:
+- **AI-Generated RICE Scores**: Reach, Impact, Confidence, Effort scoring with reasoning
+- **Risk Identification**: Automated risk analysis for each feature
+- **Acceptance Criteria**: AI-generated acceptance criteria
+- **Score Adjustment**: Manual override capability with slider controls
+- **Feature Backlog**: Save and manage multiple features
+- **Comparison Chart**: Visual impact vs. effort matrix
+- **Export Options**: CSV, JSON, Markdown, and clipboard
+
+#### AI Feedback Analyzer (`/tools/ai-feedback-analyzer`)
+Extract insights from customer feedback:
+- **Theme Extraction**: Identify key themes and topics
+- **Sentiment Analysis**: Positive, negative, neutral, or mixed sentiment
+- **Pain Point Identification**: Specific areas for improvement
+- **Feature Requests**: Potential feature suggestions from feedback
+
+#### AI User Story Generator (`/tools/ai-user-story-generator`)
+Generate user stories from feature descriptions:
+- **User Story Format**: "As a... I want... So that..." structure
+- **Acceptance Criteria**: 3-5 detailed criteria per story
+- **Multiple Stories**: Generate multiple stories per feature
+
+### Security & Privacy
+- API keys are stored only in browser localStorage
+- Keys never leave the user's device (direct OpenAI API calls)
+- No server-side storage of sensitive data
+
+---
+
 ## 🛠️ Tech Stack
 
 ### Core Technologies
@@ -145,6 +210,13 @@ A modern, responsive portfolio website built with React 19, TypeScript, and styl
 | Styled Components | 6.1.18 | CSS-in-JS Styling |
 | Framer Motion | 12.15.0 | Animations |
 | @lottiefiles/dotlottie-react | 0.13.5 | Lottie Animations |
+
+### AI Integration
+
+| Technology | Purpose |
+|------------|---------|
+| OpenAI API (GPT-4) | AI-powered tool functionality |
+| Browser localStorage | Secure API key storage |
 
 ### Development Tools
 
@@ -199,7 +271,7 @@ hpk-CursorExperiments/
 │       └── kushal-profile.svg        # Profile vector
 │
 ├── src/
-│   ├── App.tsx                       # Main app with routing (105 lines)
+│   ├── App.tsx                       # Main app with routing
 │   ├── index.tsx                     # React entry point
 │   ├── index.css                     # Base CSS reset
 │   ├── react-app-env.d.ts            # TypeScript environment
@@ -215,17 +287,19 @@ hpk-CursorExperiments/
 │   │   ├── HeroSection.tsx           # Hero with typewriter + Lottie
 │   │   ├── MobileHeroSection.tsx     # Mobile-optimized hero
 │   │   ├── WhatIDoSection.tsx        # Services showcase
+│   │   ├── FeaturedToolsSection.tsx  # AI tools preview on homepage
 │   │   ├── LatestContentSection.tsx  # Articles preview + Lottie
 │   │   ├── GetInTouchSection.tsx     # Contact section + Lottie
 │   │   │
-│   │   ├── AboutMe.tsx               # Interactive chat interface (854 lines)
+│   │   ├── AboutMe.tsx               # Interactive chat interface
 │   │   ├── Resume.tsx                # Professional resume
 │   │   ├── Projects.tsx              # Projects overview
-│   │   ├── Writings.tsx              # Article hub with filters (627 lines)
+│   │   ├── Tools.tsx                 # AI tools hub page
+│   │   ├── Writings.tsx              # Article hub with filters
 │   │   │
 │   │   ├── CaseStudyLayout.tsx       # Reusable case study template
-│   │   ├── ArticleLayout.tsx         # Reusable article template (515 lines)
-│   │   ├── RelatedArticles.tsx       # Dynamic article recommendations (348 lines)
+│   │   ├── ArticleLayout.tsx         # Reusable article template
+│   │   ├── RelatedArticles.tsx       # Dynamic article recommendations
 │   │   │
 │   │   ├── OfficeHours.tsx           # Office hours component
 │   │   ├── OfficeHoursButton.tsx     # Lottie button component
@@ -236,6 +310,11 @@ hpk-CursorExperiments/
 │   │       ├── MyStorySection.tsx
 │   │       ├── OutsideRoadmapSection.tsx
 │   │       └── WhatIBelieveSection.tsx
+│   │
+│   ├── data/
+│   │   ├── articles.ts               # Article metadata
+│   │   ├── projects.ts               # Project metadata
+│   │   └── tools.ts                  # AI tools metadata & configuration
 │   │
 │   ├── pages/
 │   │   ├── projects/                 # Case study pages (8 files)
@@ -248,34 +327,39 @@ hpk-CursorExperiments/
 │   │   │   ├── MarketingAutomation.tsx
 │   │   │   └── APIIntegrationSuite.tsx
 │   │   │
+│   │   ├── tools/                    # AI-powered tools
+│   │   │   └── ai/                   # AI tool implementations
+│   │   │       ├── AIPrioritizer.tsx           # Main prioritization tool
+│   │   │       ├── AIFeedbackAnalyzer.tsx      # Feedback analysis tool
+│   │   │       ├── AIUserStoryGenerator.tsx   # User story generator
+│   │   │       │
+│   │   │       ├── components/       # Shared AI tool components
+│   │   │       │   ├── APIKeySetup.tsx         # API key input/storage
+│   │   │       │   ├── AIAnalysisCard.tsx      # Analysis result display
+│   │   │       │   ├── FeatureInput.tsx        # Feature input form
+│   │   │       │   ├── ScoreAdjuster.tsx       # RICE score sliders
+│   │   │       │   ├── FeatureBacklog.tsx      # Backlog management
+│   │   │       │   ├── ComparisonChart.tsx     # Impact/Effort matrix
+│   │   │       │   └── ExportOptions.tsx       # Export functionality
+│   │   │       │
+│   │   │       ├── hooks/
+│   │   │       │   └── useOpenAI.ts            # OpenAI API hook
+│   │   │       │
+│   │   │       └── utils/
+│   │   │           └── prompts.ts              # AI prompt templates
+│   │   │
 │   │   └── writings/                 # Article pages (20 files)
 │   │       ├── PMSkillStack2025.tsx
 │   │       ├── AIWinterThatNeverCame.tsx
-│   │       ├── BeyondChatGPTEnterpriseAI.tsx
-│   │       ├── GreatAITalentWar.tsx
-│   │       ├── DeathOfTenYearBusinessPlan.tsx
-│   │       ├── VentureCapitalNewPlaybook.tsx
-│   │       ├── RemoteWorkSettlement.tsx
-│   │       ├── SubscriptionEconomyNextChapter.tsx
-│   │       ├── GreatAIModelCommoditization.tsx
-│   │       ├── AIGovernanceGap.tsx
-│   │       ├── MultimodalAIEndOfSpecializedSoftware.tsx
-│   │       ├── AIInfrastructureWars.tsx
-│   │       ├── PlatformEconomicsUnbundlingRebundling.tsx
-│   │       ├── CreatorEconomyMaturation.tsx
-│   │       ├── AttentionEconomyBacklash.tsx
-│   │       ├── AIAlignmentControlProblem.tsx
-│   │       ├── AIRegulationInnovationBalance.tsx
-│   │       ├── ConsultingIndustryAIDisruption.tsx
-│   │       ├── GrowthHackingMaturation.tsx
-│   │       └── PricingPsychologyRevolution.tsx
+│   │       └── ... (18 more articles)
 │   │
 │   └── styles/
-│       └── GlobalStyles.ts           # Global styles + breakpoints (119 lines)
+│       └── GlobalStyles.ts           # Global styles + breakpoints
 │
 ├── package.json                      # Dependencies and scripts
 ├── package-lock.json                 # Dependency lock file
 ├── tsconfig.json                     # TypeScript configuration
+├── .cursorules                       # Cursor AI style guide
 ├── KushalHP_CV_Product.pdf           # Resume source file
 └── README.md                         # This documentation
 ```
@@ -288,6 +372,7 @@ hpk-CursorExperiments/
 
 - **Node.js**: v16.0.0 or higher
 - **npm**: v8.0.0 or higher (or yarn)
+- **OpenAI API Key**: Required for AI tools functionality
 
 ### Installation
 
@@ -326,6 +411,8 @@ REACT_APP_GA_TRACKING_ID=UA-XXXXXXXXX-X
 REACT_APP_CONTACT_ENDPOINT=https://api.example.com/contact
 ```
 
+**Note**: OpenAI API keys are managed client-side via the AI tools interface, not environment variables.
+
 ---
 
 ## 🧩 Component Reference
@@ -336,17 +423,19 @@ REACT_APP_CONTACT_ENDPOINT=https://api.example.com/contact
 Desktop floating navigation with logo and menu items.
 - Sticky positioning with scroll-based opacity
 - Brand logo integration
+- Tools link in navigation menu
 - Responsive breakpoint at 768px
 
 #### `MobileNavigation.tsx`
 Mobile hamburger menu with slide-out drawer.
 - Full-screen overlay menu
+- Tools link included
 - Animated hamburger icon
 - Touch-optimized interactions
 
 #### `Footer.tsx` / `MobileFooter.tsx`
 Site footer with navigation links and social media.
-- Quick links to all main sections
+- Quick links to all main sections including Tools
 - Contact information
 - Social media icons
 
@@ -356,8 +445,16 @@ Site footer with navigation links and social media.
 Main landing page container assembling:
 - HeroSection (typewriter + Lottie)
 - WhatIDoSection (services)
+- **FeaturedToolsSection** (AI tools preview)
 - LatestContentSection (articles preview)
 - GetInTouchSection (contact CTA)
+
+#### `Tools.tsx`
+AI tools hub page featuring:
+- Hero section with AI-powered branding
+- Category filter buttons (All, Active, Coming Soon)
+- Tool cards with descriptions and status
+- Navigation to individual tools
 
 #### `AboutMe.tsx`
 Interactive chat interface featuring:
@@ -386,6 +483,38 @@ Article hub featuring:
 - Dynamic stats (article count, word count)
 - Date-sorted display
 
+### AI Tool Components
+
+#### `AIPrioritizer.tsx`
+Main prioritization tool orchestrating:
+- API key setup
+- Feature input with context
+- AI analysis display
+- Score adjustment sliders
+- Backlog management
+- Comparison chart
+- Export options
+
+#### `AIFeedbackAnalyzer.tsx`
+Feedback analysis tool with:
+- Text area for feedback input
+- Theme extraction
+- Sentiment analysis
+- Pain point identification
+
+#### `AIUserStoryGenerator.tsx`
+User story generator with:
+- Feature description input
+- Multiple story generation
+- Acceptance criteria output
+
+#### `useOpenAI.ts` (Hook)
+Custom React hook for OpenAI integration:
+- API key management (localStorage)
+- API call handling
+- Error management
+- Loading states
+
 ### Template Components
 
 #### `CaseStudyLayout.tsx`
@@ -398,22 +527,6 @@ Reusable case study template with sections:
 6. Impact (results, business outcomes)
 7. GetInTouchSection (lead generation)
 
-```typescript
-interface CaseStudyData {
-  category: string;
-  title: string;
-  subtitle: string;
-  date: string;
-  heroImage: { src: string; alt: string; };
-  tldr: { keyResults: string[]; metrics: MetricItem[]; };
-  customer: { title: string; content: JSX.Element; };
-  problem: { title: string; content: JSX.Element; quote: Quote; };
-  solution: { title: string; content: JSX.Element; features: string[]; quote: Quote; };
-  impact: { title: string; content: JSX.Element; quote: Quote; };
-  tags: string[];
-}
-```
-
 #### `ArticleLayout.tsx`
 Reusable article template with:
 - Breadcrumb navigation
@@ -422,28 +535,6 @@ Reusable article template with:
 - Tags section
 - Social share buttons
 - Related articles integration
-
-```typescript
-interface ArticleLayoutProps {
-  category: string;
-  title: string;
-  subtitle: string;
-  author: string;
-  date: string;
-  readTime: string;
-  heroImage: { src: string; alt: string; };
-  keyTakeaways?: string[];
-  tags: string[];
-  articleId?: string;
-  children: React.ReactNode;
-}
-```
-
-#### `RelatedArticles.tsx`
-Dynamic article recommendations:
-- Filters out current article
-- Randomizes from article pool
-- Displays 3 related articles
 
 ---
 
@@ -501,6 +592,12 @@ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 --bg-white: #FFFFFF;
 --bg-light: #f8f9fa;
 --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+/* Tool Category Colors */
+--tool-purple: #667eea;
+--tool-green: #28a745;
+--tool-orange: #fd7e14;
+--tool-blue: #007bff;
 ```
 
 ### Animation Keyframes
@@ -567,55 +664,104 @@ import NewArticle from './pages/writings/NewArticle';
 <Route path="/writings/new-article-slug" element={<NewArticle />} />
 ```
 
-3. **Add to `Writings.tsx`** articles array:
-
-```typescript
-{
-  id: 'new-article-slug',
-  title: 'Your Article Title',
-  excerpt: 'Brief description...',
-  category: 'AI & Technology',
-  image: 'https://source.unsplash.com/800x400/?ai,technology',
-  readTime: '10 min read',
-  date: 'Nov 26, 2025',
-  tags: ['AI', 'Technology', 'Innovation']
-}
-```
+3. **Add to `Writings.tsx`** articles array.
 
 4. **Add to `RelatedArticles.tsx`** allArticles array with same structure.
 
 ### Adding a New Case Study
 
-1. **Create case study component** in `src/pages/projects/`:
-
-```typescript
-// src/pages/projects/NewProject.tsx
-import React from 'react';
-import CaseStudyLayout from '../../components/CaseStudyLayout';
-
-const NewProject: React.FC = () => {
-  const caseStudyData = {
-    category: 'Product Development',
-    title: 'Project Title',
-    subtitle: 'Brief project description',
-    date: 'Q4 2025',
-    heroImage: { src: '...', alt: '...' },
-    tldr: { keyResults: [...], metrics: [...] },
-    customer: { title: '...', content: <p>...</p> },
-    problem: { title: '...', content: <p>...</p>, quote: {...} },
-    solution: { title: '...', content: <p>...</p>, features: [...], quote: {...} },
-    impact: { title: '...', content: <p>...</p>, quote: {...} },
-    tags: ['Tag1', 'Tag2']
-  };
-
-  return <CaseStudyLayout data={caseStudyData} />;
-};
-
-export default NewProject;
-```
-
+1. **Create case study component** in `src/pages/projects/`
 2. **Add route in `App.tsx`**
 3. **Add card in `Projects.tsx`**
+
+---
+
+## 🤖 Adding AI Tools
+
+### Creating a New AI Tool
+
+1. **Create the tool component** in `src/pages/tools/ai/`:
+
+```typescript
+// src/pages/tools/ai/NewAITool.tsx
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { media } from '../../../styles/GlobalStyles';
+import APIKeySetup from './components/APIKeySetup';
+import { useOpenAI } from './hooks/useOpenAI';
+
+const ToolContainer = styled.div`
+  padding: 120px 20px 80px;
+  min-height: 100vh;
+  background: #FFFFFF;
+  ${media.mobile} {
+    padding-top: 100px;
+  }
+`;
+
+const NewAITool: React.FC = () => {
+  const [inputText, setInputText] = useState('');
+  const [result, setResult] = useState('');
+  const { apiKey, getAIResponse, isLoading, error } = useOpenAI();
+
+  const handleAnalyze = async () => {
+    const prompt = `Your custom prompt here: "${inputText}"`;
+    const response = await getAIResponse(prompt);
+    setResult(response);
+  };
+
+  return (
+    <ToolContainer>
+      {/* Your tool UI */}
+      <APIKeySetup />
+      {apiKey && (
+        // Tool functionality
+      )}
+    </ToolContainer>
+  );
+};
+
+export default NewAITool;
+```
+
+2. **Add to `src/data/tools.ts`**:
+
+```typescript
+{
+  id: 'new-ai-tool',
+  title: 'New AI Tool',
+  category: 'AI Mini-App',
+  shortDescription: 'Brief description of what this tool does.',
+  longDescription: 'Detailed description with use cases and benefits.',
+  route: '/tools/new-ai-tool',
+  icon: '🔮',
+  color: 'purple',
+  comingSoon: false,
+}
+```
+
+3. **Add route in `App.tsx`**:
+
+```typescript
+import NewAITool from './pages/tools/ai/NewAITool';
+
+// In Routes
+<Route path="/tools/new-ai-tool" element={<NewAITool />} />
+```
+
+### Using the OpenAI Hook
+
+```typescript
+const { apiKey, getAIResponse, isLoading, error, setApiKey } = useOpenAI();
+
+// Check if API key is set
+if (!apiKey) {
+  return <APIKeySetup />;
+}
+
+// Make AI request
+const response = await getAIResponse('Your prompt here');
+```
 
 ---
 
@@ -673,6 +819,7 @@ npm run deploy
 
 | Hash | Date | Description |
 |------|------|-------------|
+| `82642c2` | Dec 2025 | Add AI-powered PM toolkit: AI Prioritizer, Feedback Analyzer, and User Story Generator |
 | `1758f06` | Nov 2025 | Standardize unique contextual images for all articles; update PM OS article hero |
 | `a907bc3` | Nov 2025 | Add PM OS 2025 article; update route to /writings/pm-os-2025 |
 | `23deaaf` | Nov 2025 | Increase logo size and add overflow effect in navbar and footer |
@@ -684,7 +831,7 @@ npm run deploy
 | `82fc7c4` | Nov 2025 | Update footer navigation with proper routing and real links |
 | `15d9ca0` | Nov 2025 | Add Office Hours Lottie animation button to resume page |
 | `3716da3` | Nov 2025 | Update README with ShipwithKushal branding and new features |
-| `8ac411e` | Nov 2025 | Major portfolio updates - new branding, logo integration, resume layout redesign |
+| `8ac411e` | Nov 2025 | Major portfolio updates: new branding, logo integration, resume layout redesign |
 | `ff00c32` | Nov 2025 | Complete About Me page redesign with interactive chat interface |
 | `92fef16` | Nov 2025 | Complete React Portfolio Migration with Lottie Integration |
 | `53b81dc` | Nov 2025 | Initial commit: Add interactive portfolio with README |
@@ -693,7 +840,25 @@ npm run deploy
 
 ## 📋 Version Changelog
 
-### v2.0.0 (Current) - November 2025
+### v3.0.0 (Current) - December 2025
+**AI-Powered PM Toolkit Release**
+
+#### New Features
+- ✅ **AI Prioritization Assistant**: GPT-4 powered RICE scoring with reasoning, risks, and acceptance criteria
+- ✅ **AI Feedback Analyzer**: Extract themes, sentiment, and insights from customer feedback
+- ✅ **AI User Story Generator**: Generate user stories with acceptance criteria
+- ✅ **Tools Hub Page**: Central navigation for all AI tools with category filters
+- ✅ **Featured Tools Section**: Homepage integration with tool previews
+- ✅ **BYOK Model**: Bring Your Own Key architecture for secure API usage
+- ✅ **Export Options**: CSV, JSON, Markdown, and clipboard export for AI results
+
+#### Technical Additions
+- ✅ `useOpenAI` custom hook for API integration
+- ✅ Shared AI component library (APIKeySetup, AIAnalysisCard, etc.)
+- ✅ Tools data configuration (`src/data/tools.ts`)
+- ✅ Navigation updated with Tools link
+
+### v2.0.0 - November 2025
 **Major Feature Release**
 
 #### New Features
@@ -749,4 +914,4 @@ This is a personal portfolio project. For questions or collaboration opportuniti
 
 ---
 
-**Built with ❤️ using React, TypeScript, and Cursor AI**
+**Built with ❤️ using React, TypeScript, OpenAI GPT-4, and Cursor AI**
