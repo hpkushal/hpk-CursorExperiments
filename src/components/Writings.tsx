@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { media } from '../styles/GlobalStyles';
@@ -211,9 +211,11 @@ const ArticleCard = styled(Link)`
   }
 `;
 
-const ArticleImage = styled.div<{ backgroundImage: string }>`
+const ArticleImageBase = styled.div<{ backgroundImage: string; isLoaded: boolean }>`
   height: 250px;
-  background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)), url(${props => props.backgroundImage});
+  background: ${props => props.isLoaded 
+    ? `linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)), url(${props.backgroundImage})`
+    : 'linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))'};
   background-size: cover;
   background-position: center;
   display: flex;
@@ -221,6 +223,7 @@ const ArticleImage = styled.div<{ backgroundImage: string }>`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: background 0.3s ease;
   
   &::before {
     content: '';
@@ -238,6 +241,52 @@ const ArticleImage = styled.div<{ backgroundImage: string }>`
     opacity: 1;
   }
 `;
+
+// Lazy loading wrapper component for article images
+const LazyArticleImage: React.FC<{ src: string }> = ({ src }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState('');
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = elementRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Preload the image
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+              setCurrentSrc(src);
+              setIsLoaded(true);
+            };
+            img.onerror = () => {
+              setCurrentSrc(src);
+              setIsLoaded(true);
+            };
+            observer.unobserve(element);
+          }
+        });
+      },
+      { rootMargin: '200px', threshold: 0 }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [src]);
+
+  return (
+    <ArticleImageBase
+      ref={elementRef}
+      backgroundImage={currentSrc}
+      isLoaded={isLoaded}
+    />
+  );
+};
 
 const ArticleContent = styled.div`
   padding: 30px;
@@ -386,7 +435,7 @@ const Writings: React.FC = () => {
               key={article.id}
               to={`/writings/${article.id}`}
             >
-              <ArticleImage backgroundImage={article.image} />
+              <LazyArticleImage src={article.image} />
               <ArticleContent>
                 <ArticleCategory>{article.category}</ArticleCategory>
                 <ArticleTitle>{article.title}</ArticleTitle>
