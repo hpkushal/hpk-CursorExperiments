@@ -59,6 +59,19 @@ const HeaderText = styled.div`
   }
 `;
 
+const Badge = styled.span`
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+`;
+
 const SectionTitle = styled.h2`
   font-size: 3.2rem;
   font-weight: 700;
@@ -107,19 +120,6 @@ const SectionSubtitle = styled.p`
   ${media.mobile} {
     font-size: 1rem;
   }
-`;
-
-const Badge = styled.span`
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-  display: inline-block;
 `;
 
 const HeaderVisual = styled.div`

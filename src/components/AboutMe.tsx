@@ -706,6 +706,8 @@ const AboutMe: React.FC = () => {
               src="/images/kushal-profile.jpg" 
               alt="Kushal Horabylu Parameshwara"
               loading="lazy"
+              width={288}
+              height={288}
             />
           </ProfileImageContainer>
         </LeftContent>

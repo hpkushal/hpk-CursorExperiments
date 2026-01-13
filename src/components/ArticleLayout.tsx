@@ -466,7 +466,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({
       </Header>
 
       <HeroImageSection>
-        <HeroImage src={heroImage.src} alt={heroImage.alt} loading="lazy" />
+        <HeroImage src={heroImage.src} alt={heroImage.alt} loading="lazy" width={900} height={500} />
       </HeroImageSection>
 
       <Content>

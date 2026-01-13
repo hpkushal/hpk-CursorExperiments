@@ -634,7 +634,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
         </Header>
 
         <HeroImageSection>
-          <HeroImage src={heroImage.src} alt={heroImage.alt} loading="lazy" />
+          <HeroImage src={heroImage.src} alt={heroImage.alt} loading="lazy" width={800} height={400} />
         </HeroImageSection>
 
         <TLDRSection
@@ -708,7 +708,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
         {problemImage && (
           <>
             <ContentBreakImage>
-              <img src={problemImage.src} alt={problemImage.alt} loading="lazy" />
+              <img src={problemImage.src} alt={problemImage.alt} loading="lazy" width={800} height={280} />
             </ContentBreakImage>
             {problemImage.caption && <ImageCaption>{problemImage.caption}</ImageCaption>}
           </>
@@ -728,7 +728,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
         {solutionImage && (
           <>
             <ContentBreakImage>
-              <img src={solutionImage.src} alt={solutionImage.alt} loading="lazy" />
+              <img src={solutionImage.src} alt={solutionImage.alt} loading="lazy" width={800} height={280} />
             </ContentBreakImage>
             {solutionImage.caption && <ImageCaption>{solutionImage.caption}</ImageCaption>}
           </>
@@ -758,7 +758,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
         {impactImage && (
           <>
             <ContentBreakImage>
-              <img src={impactImage.src} alt={impactImage.alt} loading="lazy" />
+              <img src={impactImage.src} alt={impactImage.alt} loading="lazy" width={800} height={280} />
             </ContentBreakImage>
             {impactImage.caption && <ImageCaption>{impactImage.caption}</ImageCaption>}
           </>
