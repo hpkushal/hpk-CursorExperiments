@@ -388,7 +388,6 @@ const FeaturedToolsSection: React.FC = () => {
       <Container>
         <SectionHeader>
           <HeaderText>
-            <Badge>New</Badge>
             <SectionTitle>AI-Powered PM Suite</SectionTitle>
             <SectionSubtitle>
               Supercharge your product workflow with intelligent tools powered by GPT-4. 
