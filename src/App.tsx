@@ -49,6 +49,7 @@ const GrowthHackingMaturation = lazy(() => import('./pages/writings/GrowthHackin
 const PricingPsychologyRevolution = lazy(() => import('./pages/writings/PricingPsychologyRevolution'));
 const PMSkillStack2025 = lazy(() => import('./pages/writings/PMSkillStack2025'));
 const FromGrowthMetricsToHealthOutcomes = lazy(() => import('./pages/writings/FromGrowthMetricsToHealthOutcomes'));
+const MarketplacesVsAgents = lazy(() => import('./pages/writings/MarketplacesVsAgents'));
 
 // AI Tools - Lazy loaded
 const AIPrioritizer = lazy(() => import('./pages/tools/ai/AIPrioritizer'));
@@ -137,6 +138,7 @@ function App() {
             <Route path="/writings/pricing-psychology-revolution" element={<PricingPsychologyRevolution />} />
             <Route path="/writings/pm-os-2025" element={<PMSkillStack2025 />} />
             <Route path="/writings/from-growth-metrics-to-health-outcomes" element={<FromGrowthMetricsToHealthOutcomes />} />
+            <Route path="/writings/marketplaces-vs-agents" element={<MarketplacesVsAgents />} />
             
             {/* AI Tool Routes */}
             <Route path="/tools/ai-prioritizer" element={<AIPrioritizer />} />

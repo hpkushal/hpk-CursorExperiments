@@ -12,6 +12,16 @@ export interface Article {
 export const articles: Article[] = [
   // New articles (Latest)
   {
+    id: 'marketplaces-vs-agents',
+    title: 'Marketplaces vs Agents: Who Owns Distribution When the Interface Is a Chat?',
+    excerpt: 'As chat becomes the default UI, marketplaces risk becoming inventory providers—unless they win the routing layer. Here’s what distribution means in an agent-first world.',
+    category: 'Business & Strategy',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+    readTime: '12 min read',
+    date: 'Jan 14, 2026',
+    tags: ['Agents', 'Marketplaces', 'Distribution', 'Platform Economics', 'AI', 'Product Strategy']
+  },
+  {
     id: 'from-growth-metrics-to-health-outcomes',
     title: "From Growth Metrics to Health Outcomes: Why I'm Moving into Healthcare Product Management",
     excerpt: "How moving from conversion dashboards to provider workflows is reshaping my definition of impact and what I'm bringing from growth to healthcare.",

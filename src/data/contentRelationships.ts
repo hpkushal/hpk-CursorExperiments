@@ -15,6 +15,13 @@ export interface ContentRelationship {
 
 // Article relationships
 export const articleRelationships: Record<string, ContentRelationship> = {
+  'marketplaces-vs-agents': {
+    id: 'marketplaces-vs-agents',
+    type: 'article',
+    relatedArticles: ['platform-economics-unbundling-rebundling', 'great-ai-model-commoditization', 'beyond-chatgpt-enterprise-ai'],
+    relatedProjects: ['api-integration-suite', 'multi-brand-launch'],
+    relatedTools: ['ai-competitive-analysis', 'ai-roadmap-advisor']
+  },
   'pm-os-2025': {
     id: 'pm-os-2025',
     type: 'article',
@@ -53,7 +60,7 @@ export const articleRelationships: Record<string, ContentRelationship> = {
   'beyond-chatgpt-enterprise-ai': {
     id: 'beyond-chatgpt-enterprise-ai',
     type: 'article',
-    relatedArticles: ['pm-os-2025', 'great-ai-model-commoditization', 'consulting-industry-ai-disruption'],
+    relatedArticles: ['marketplaces-vs-agents', 'pm-os-2025', 'great-ai-model-commoditization'],
     relatedProjects: ['ai-prototyping-framework', 'api-integration-suite'],
     relatedTools: ['ai-prioritizer', 'ai-user-story-generator']
   },
@@ -67,7 +74,7 @@ export const articleRelationships: Record<string, ContentRelationship> = {
   'great-ai-model-commoditization': {
     id: 'great-ai-model-commoditization',
     type: 'article',
-    relatedArticles: ['ai-infrastructure-wars', 'beyond-chatgpt-enterprise-ai', 'ai-winter-that-never-came'],
+    relatedArticles: ['marketplaces-vs-agents', 'ai-infrastructure-wars', 'beyond-chatgpt-enterprise-ai'],
     relatedProjects: ['ai-prototyping-framework'],
     relatedTools: ['ai-prioritizer', 'ai-competitive-analysis']
   },
@@ -88,7 +95,7 @@ export const articleRelationships: Record<string, ContentRelationship> = {
   'platform-economics-unbundling-rebundling': {
     id: 'platform-economics-unbundling-rebundling',
     type: 'article',
-    relatedArticles: ['death-of-ten-year-business-plan', 'venture-capital-new-playbook', 'creator-economy-maturation'],
+    relatedArticles: ['marketplaces-vs-agents', 'death-of-ten-year-business-plan', 'venture-capital-new-playbook'],
     relatedProjects: ['multi-brand-launch', 'api-integration-suite'],
     relatedTools: ['ai-roadmap-advisor']
   },
