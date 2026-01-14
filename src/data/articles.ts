@@ -16,7 +16,7 @@ export const articles: Article[] = [
     title: "From Growth Metrics to Health Outcomes: Why I'm Moving into Healthcare Product Management",
     excerpt: "How moving from conversion dashboards to provider workflows is reshaping my definition of impact and what I'm bringing from growth to healthcare.",
     category: 'Product Management',
-    image: '/images/resmed-office.jpg',
+    image: '/images/resmed-office.webp',
     readTime: '12 min read',
     date: 'Jan 12, 2026',
     tags: ['Healthcare', 'Product Management', 'Growth', 'Career', 'Outcomes']

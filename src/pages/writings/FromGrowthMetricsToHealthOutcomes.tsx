@@ -101,7 +101,7 @@ const FromGrowthMetricsToHealthOutcomes: React.FC = () => {
       date="January 12, 2026"
       readTime="12 min read"
       heroImage={{
-        src: '/images/resmed-office.jpg',
+        src: '/images/resmed-office.webp',
         alt: 'ResMed office reception with logo and celebratory flowers'
       }}
       keyTakeaways={[

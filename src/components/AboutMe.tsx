@@ -702,13 +702,16 @@ const AboutMe: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <ProfileImage 
-              src="/images/kushal-profile.jpg" 
-              alt="Kushal Horabylu Parameshwara - Product Manager professional headshot"
-              loading="lazy"
-              width={288}
-              height={288}
-            />
+            <picture>
+              <source srcSet="/images/kushal-profile.webp" type="image/webp" />
+              <ProfileImage 
+                src="/images/kushal-profile.jpg" 
+                alt="Kushal Horabylu Parameshwara - Product Manager professional headshot"
+                loading="lazy"
+                width={288}
+                height={288}
+              />
+            </picture>
           </ProfileImageContainer>
         </LeftContent>
 
